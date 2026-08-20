@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Principal Chemistry{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'core:home' %}">Home</a>
+            <a href="{% url 'core:about' %}">About</a>
+            <a href="{% url 'catalogue:product_list' %}">Catalogue</a>
+            <a href="{% url 'contact:contact_page' %}">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        {% if company_info %}
+            <p>{{ company_info.address }}</p>
+            <p>{{ company_info.phone_number }} | {{ company_info.email }}</p>
+            <p>
+                {% if company_info.facebook_url %}<a href="{{ company_info.facebook_url }}">Facebook</a>{% endif %}
+                {% if company_info.instagram_url %}<a href="{{ company_info.instagram_url }}">Instagram</a>{% endif %}
+                {% if company_info.linkedin_url %}<a href="{{ company_info.linkedin_url }}">LinkedIn</a>{% endif %}
+            </p>
+        {% endif %}
+    </footer>
+</body>
+</html>

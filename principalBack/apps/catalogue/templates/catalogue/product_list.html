@@ -1,0 +1,45 @@
+{% extends "core/base.html" %}
+
+{% block title %}Catalogue | Principal Chemistry{% endblock %}
+
+{% block content %}
+    <h1>Catalogue</h1>
+
+    <form method="get">
+        <input type="text" name="q" value="{{ search_query }}" placeholder="Search products...">
+        <select name="category" onchange="this.form.submit()">
+            <option value="">All categories</option>
+            {% for category in categories %}
+                <option value="{{ category.slug }}" {% if category.slug == active_category %}selected{% endif %}>
+                    {{ category.name }}
+                </option>
+            {% endfor %}
+        </select>
+        <select name="subcategory" onchange="this.form.submit()">
+            <option value="">All subcategories</option>
+            {% for subcategory in subcategories %}
+                <option value="{{ subcategory.slug }}" {% if subcategory.slug == active_subcategory %}selected{% endif %}>
+                    {{ subcategory.name }}
+                </option>
+            {% endfor %}
+        </select>
+        <button type="submit">Filter</button>
+    </form>
+
+    <ul>
+        {% for product in products %}
+            <li>
+                {% if product.image %}<img src="{{ product.image.url }}" alt="{{ product.name }}" width="80">{% endif %}
+                <span>{{ product.subcategory.category.name }} / {{ product.subcategory.name }}</span>
+                {% if product.is_bio_rational %}<span>Bio-Rational</span>{% endif %}
+                <a href="{% url 'catalogue:product_detail' product.slug %}">{{ product.name }}</a>
+                {% if product.subtitle %}<p>{{ product.subtitle }}</p>{% endif %}
+                — {{ product.price }} / {{ product.get_unit_display }}
+                <p>{{ product.get_formulation_display }}</p>
+                {% if not product.in_stock %}(out of stock){% endif %}
+            </li>
+        {% empty %}
+            <li>No products found.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

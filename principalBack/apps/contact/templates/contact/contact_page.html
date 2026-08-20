@@ -1,0 +1,48 @@
+{% extends "core/base.html" %}
+
+{% block title %}Contact | Principal Chemistry{% endblock %}
+
+{% block content %}
+    <h1>Contact Us</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Send</button>
+    </form>
+
+    {% if company_info %}
+        <section>
+            <h2>Reach us directly</h2>
+            <p>Phone: {{ company_info.phone_number }}</p>
+            <p>Email: {{ company_info.email }}</p>
+            <p>Address: {{ company_info.address }}</p>
+
+            {% if company_info.google_map_embed_url %}
+                <iframe
+                    src="{{ company_info.google_map_embed_url }}"
+                    width="600"
+                    height="450"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            {% endif %}
+        </section>
+    {% endif %}
+
+    {% if regional_offices %}
+        <section>
+            <h2>Our Regional Presence</h2>
+            {% for office in regional_offices %}
+                <div>
+                    <h3>{{ office.region_name }}</h3>
+                    <p>{{ office.address }}</p>
+                    <p>{{ office.phone_number }}</p>
+                    <p>{{ office.email }}</p>
+                </div>
+            {% endfor %}
+        </section>
+    {% endif %}
+{% endblock %}

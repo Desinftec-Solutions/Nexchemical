@@ -1,0 +1,66 @@
+{% extends "core/base.html" %}
+
+{% block title %}{{ product.name }} | Principal Chemistry{% endblock %}
+
+{% block content %}
+    <a href="{% url 'catalogue:product_list' %}">&larr; Back to catalogue</a>
+
+    <h1>{{ product.name }}</h1>
+    {% if product.subtitle %}<h2>{{ product.subtitle }}</h2>{% endif %}
+    {% if product.image %}<img src="{{ product.image.url }}" alt="{{ product.name }}" width="300">{% endif %}
+
+    {% if product.purity_percentage %}
+        <p>Purity Level: {{ product.purity_percentage }}% Pure</p>
+        {% if product.certification_note %}<p>{{ product.certification_note }}</p>{% endif %}
+    {% endif %}
+
+    <p>SKU: {{ product.sku }}</p>
+    <p>
+        Category:
+        <a href="{% url 'catalogue:product_list' %}?category={{ product.subcategory.category.slug }}">{{ product.subcategory.category.name }}</a>
+        /
+        <a href="{% url 'catalogue:product_list' %}?subcategory={{ product.subcategory.slug }}">{{ product.subcategory.name }}</a>
+    </p>
+    <p>Formulation: {{ product.get_formulation_display }}</p>
+    {% if product.is_bio_rational %}<p>Bio-Rational</p>{% endif %}
+    <p>Price: {{ product.price }} / {{ product.get_unit_display }}</p>
+    <p>{% if product.in_stock %}In stock ({{ product.stock_quantity }}){% else %}Out of stock{% endif %}</p>
+
+    <div>{{ product.description|linebreaks }}</div>
+
+    {% if product.gallery_images.all %}
+        <section>
+            <h3>Gallery</h3>
+            {% for image in product.gallery_images.all %}
+                <img src="{{ image.image.url }}" alt="{{ image.alt_text|default:product.name }}" width="150">
+            {% endfor %}
+        </section>
+    {% endif %}
+
+    <section>
+        <h3>Regulatory Information</h3>
+
+        {% if product.chemical_components.all %}
+            <h4>Chemical Composition</h4>
+            <table>
+                {% for component in product.chemical_components.all %}
+                    <tr>
+                        <td>{{ component.name }}</td>
+                        <td>{{ component.amount }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+
+        {% if product.registration_number %}<p>Registration No: {{ product.registration_number }}</p>{% endif %}
+
+        {% if product.dosage_usage %}
+            <h4>Dosage / Usage</h4>
+            <div>{{ product.dosage_usage|linebreaks }}</div>
+        {% endif %}
+
+        {% if product.sds_file %}
+            <p><a href="{{ product.sds_file.url }}">Download SDS</a></p>
+        {% endif %}
+    </section>
+{% endblock %}

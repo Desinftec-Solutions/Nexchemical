@@ -1,0 +1,28 @@
+{% extends "core/base.html" %}
+
+{% block title %}Home | Principal Chemistry{% endblock %}
+
+{% block content %}
+    <section>
+        {% if company_info.hero_image %}
+            <img src="{{ company_info.hero_image.url }}" alt="{{ company_info.hero_heading }}" width="100%">
+        {% endif %}
+        <h1>{{ company_info.hero_heading|default:"Principal Chemistry" }}</h1>
+        <p>{{ company_info.hero_subheading|default:"Quality chemistry products for industry and research." }}</p>
+        <a href="{% url 'catalogue:product_list' %}">View Product Catalog</a>
+    </section>
+
+    <section>
+        <h2>Featured Products</h2>
+        <ul>
+            {% for product in featured_products %}
+                <li>
+                    <a href="{% url 'catalogue:product_detail' product.slug %}">{{ product.name }}</a>
+                    — {{ product.price }} / {{ product.get_unit_display }}
+                </li>
+            {% empty %}
+                <li>No products yet.</li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}
