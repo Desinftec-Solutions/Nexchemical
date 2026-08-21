@@ -1,28 +1,122 @@
 {% extends "core/base.html" %}
+{% load static %}
 
-{% block title %}Home | Principal Chemistry{% endblock %}
+{% block title %}Home | NexChemical{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
 
 {% block content %}
-    <section>
-        {% if company_info.hero_image %}
-            <img src="{{ company_info.hero_image.url }}" alt="{{ company_info.hero_heading }}" width="100%">
-        {% endif %}
-        <h1>{{ company_info.hero_heading|default:"Principal Chemistry" }}</h1>
-        <p>{{ company_info.hero_subheading|default:"Quality chemistry products for industry and research." }}</p>
-        <a href="{% url 'catalogue:product_list' %}">View Product Catalog</a>
+    <section class="hero">
+        <div class="hero__inner">
+            <div class="hero__copy">
+                <span class="eyebrow" style="color:#8fc1ef;">Pioneering Chemistry</span>
+                <h1>{{ company_info.hero_heading|default:"Pioneering Chemistry for a Sustainable Future" }}</h1>
+                <p>{{ company_info.hero_subheading|default:"Rooted in innovation, growing smarter and more sustainable agriculture and industrial chemical solutions for tomorrow." }}</p>
+                <div class="hero__actions">
+                    <a href="{% url 'catalogue:product_list' %}" class="btn btn-primary">View Product Catalog</a>
+                    <a href="{% url 'core:about' %}" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.4);">Get Sustainability Report</a>
+                </div>
+            </div>
+            <div class="hero__visual">
+                {% if company_info.hero_image %}
+                    <img src="{{ company_info.hero_image.url }}" alt="{{ company_info.hero_heading|default:'NexChemical' }}">
+                {% else %}
+                    <div class="img-placeholder">Hero image</div>
+                {% endif %}
+            </div>
+        </div>
     </section>
 
-    <section>
-        <h2>Featured Products</h2>
-        <ul>
-            {% for product in featured_products %}
-                <li>
-                    <a href="{% url 'catalogue:product_detail' product.slug %}">{{ product.name }}</a>
-                    — {{ product.price }} / {{ product.get_unit_display }}
-                </li>
-            {% empty %}
-                <li>No products yet.</li>
-            {% endfor %}
-        </ul>
+    <div class="stats-bar">
+        <div class="stats-bar__item"><strong>60+</strong><span>Countries served</span></div>
+        <div class="stats-bar__item"><strong>70K</strong><span>Tons produced yearly</span></div>
+        <div class="stats-bar__item"><strong>25+</strong><span>Years of research</span></div>
+        <div class="stats-bar__item"><strong>99.8%</strong><span>Average purity</span></div>
+    </div>
+
+    <section class="about-teaser">
+        <div class="container">
+            <div class="section-heading">
+                <span class="eyebrow">Who we are</span>
+                <h2>Driving Agri Tech Innovation Forward</h2>
+            </div>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-item__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3h6M10 3v6l-5.5 9.5A2 2 0 006.2 21h11.6a2 2 0 001.7-2.5L14 9V3"/></svg>
+                    </div>
+                    <div>
+                        <h3>Genomic Research</h3>
+                        <p>Deep molecular analysis to develop resilient crop varieties optimized for local soil and climate.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3.3"/><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+                    </div>
+                    <div>
+                        <h3>AI Farming Intelligence</h3>
+                        <p>Machine-learning driven insights forecast yields and recommend precise treatment schedules.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-item__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21c4-2.5 7-6 7-10a7 7 0 10-14 0c0 4 3 7.5 7 10z"/></svg>
+                    </div>
+                    <div>
+                        <h3>Bio Fertilizers</h3>
+                        <p>Naturally derived formulations that improve soil health while reducing environmental impact.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-gallery">
+        <div class="container">
+            <div class="product-gallery__head">
+                <div class="section-heading" style="margin-bottom:0;">
+                    <span class="eyebrow">Our products</span>
+                    <h2>Smart Solutions, Modern Farming</h2>
+                </div>
+                <a href="{% url 'catalogue:product_list' %}" class="btn btn-outline">View full catalog</a>
+            </div>
+
+            <div class="grid-responsive grid-responsive--3">
+                {% for product in featured_products %}
+                    <article class="product-card">
+                        <div class="product-card__media">
+                            {% if product.image %}
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                            {% else %}
+                                <div class="img-placeholder">{{ product.name }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="product-card__body">
+                            <div class="product-card__meta">
+                                <span class="badge">{{ product.subcategory.category.name }}</span>
+                                {% if product.is_bio_rational %}<span class="badge badge--bio">Bio-Rational</span>{% endif %}
+                            </div>
+                            <h3>{{ product.name }}</h3>
+                            {% if product.subtitle %}<p class="product-card__sub">{{ product.subtitle }}</p>{% endif %}
+                            <p class="product-card__price">{{ product.price }} / {{ product.get_unit_display }}</p>
+                            <a href="{% url 'catalogue:product_detail' product.slug %}" class="btn btn-primary btn-sm">View Details</a>
+                        </div>
+                    </article>
+                {% empty %}
+                    <p>No products yet &mdash; check back soon.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="catalog-cta">
+        <div>
+            <h2>Unlock industrial potential in our catalog</h2>
+            <p>Discover a comprehensive range of chemical products, backed by technical data and regulatory support.</p>
+        </div>
+        <a href="{% url 'catalogue:product_list' %}" class="btn btn-white">Explore Catalog</a>
     </section>
 {% endblock %}

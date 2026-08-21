@@ -1,45 +1,84 @@
 {% extends "core/base.html" %}
+{% load static %}
 
-{% block title %}Catalogue | Principal Chemistry{% endblock %}
+{% block title %}Catalogue | NexChemical{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/catalogue.css' %}">
+{% endblock %}
 
 {% block content %}
-    <h1>Catalogue</h1>
+    <section class="cat-hero">
+        <div class="cat-hero__copy">
+            <span class="eyebrow">Product Catalog</span>
+            <h1>Advanced Crop Protection</h1>
+            <p>NexChemical delivers regulatory-certified chemical solutions engineered for sustainable agriculture and industrial precision. Browse our validated product catalog below.</p>
+        </div>
+        <div class="cat-hero__visual">
+            <div class="img-placeholder">NexChemical</div>
+        </div>
+    </section>
 
-    <form method="get">
-        <input type="text" name="q" value="{{ search_query }}" placeholder="Search products...">
-        <select name="category" onchange="this.form.submit()">
-            <option value="">All categories</option>
+    <div class="container">
+        <form method="get" class="cat-toolbar">
+            {% if active_category %}<input type="hidden" name="category" value="{{ active_category }}">{% endif %}
+            {% if active_subcategory %}<input type="hidden" name="subcategory" value="{{ active_subcategory }}">{% endif %}
+            <div class="search-form">
+                <input type="text" name="q" value="{{ search_query }}" placeholder="Search catalog...">
+                <button type="submit" class="btn btn-primary btn-sm">Search</button>
+            </div>
+            <button type="button" class="filter-toggle" id="filterToggle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+                Filter and sorts
+            </button>
+        </form>
+
+        <div class="filter-panel" id="filterPanel">
+            <a href="?{% if search_query %}q={{ search_query }}&{% endif %}" class="filter-pill {% if not active_category %}is-active{% endif %}">All</a>
             {% for category in categories %}
-                <option value="{{ category.slug }}" {% if category.slug == active_category %}selected{% endif %}>
-                    {{ category.name }}
-                </option>
+                <a href="?category={{ category.slug }}{% if search_query %}&q={{ search_query }}{% endif %}"
+                   class="filter-pill {% if category.slug == active_category %}is-active{% endif %}">{{ category.name }}</a>
             {% endfor %}
-        </select>
-        <select name="subcategory" onchange="this.form.submit()">
-            <option value="">All subcategories</option>
-            {% for subcategory in subcategories %}
-                <option value="{{ subcategory.slug }}" {% if subcategory.slug == active_subcategory %}selected{% endif %}>
-                    {{ subcategory.name }}
-                </option>
-            {% endfor %}
-        </select>
-        <button type="submit">Filter</button>
-    </form>
+            {% if active_category %}
+                {% for subcategory in subcategories %}
+                    <a href="?category={{ active_category }}&subcategory={{ subcategory.slug }}{% if search_query %}&q={{ search_query }}{% endif %}"
+                       class="filter-pill {% if subcategory.slug == active_subcategory %}is-active{% endif %}">{{ subcategory.name }}</a>
+                {% endfor %}
+            {% endif %}
+        </div>
 
-    <ul>
-        {% for product in products %}
-            <li>
-                {% if product.image %}<img src="{{ product.image.url }}" alt="{{ product.name }}" width="80">{% endif %}
-                <span>{{ product.subcategory.category.name }} / {{ product.subcategory.name }}</span>
-                {% if product.is_bio_rational %}<span>Bio-Rational</span>{% endif %}
-                <a href="{% url 'catalogue:product_detail' product.slug %}">{{ product.name }}</a>
-                {% if product.subtitle %}<p>{{ product.subtitle }}</p>{% endif %}
-                — {{ product.price }} / {{ product.get_unit_display }}
-                <p>{{ product.get_formulation_display }}</p>
-                {% if not product.in_stock %}(out of stock){% endif %}
-            </li>
-        {% empty %}
-            <li>No products found.</li>
-        {% endfor %}
-    </ul>
+        <div class="catalogue-grid grid-responsive grid-responsive--4">
+            {% for product in products %}
+                <article class="product-card">
+                    <div class="product-card__media">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        {% else %}
+                            <div class="img-placeholder">{{ product.name }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="product-card__body">
+                        <div class="product-card__badge-row">
+                            <span class="badge">{{ product.get_formulation_display }}</span>
+                            {% if product.is_bio_rational %}<span class="badge badge--bio">Bio-Rational</span>{% endif %}
+                        </div>
+                        <h3>{{ product.name }}</h3>
+                        {% if product.subtitle %}<p class="product-card__sub">{{ product.subtitle }}</p>{% endif %}
+                        <p class="product-card__price">{{ product.price }} / {{ product.get_unit_display }}</p>
+                        {% if not product.in_stock %}<span class="stock-flag">Out of stock</span>{% endif %}
+                        <a href="{% url 'catalogue:product_detail' product.slug %}" class="btn btn-outline btn-sm">View Details</a>
+                    </div>
+                </article>
+            {% empty %}
+                <div class="empty-state">
+                    <h3>No products found</h3>
+                    <p>Try adjusting your search or filters.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'js/catalogue.js' %}"></script>
 {% endblock %}
