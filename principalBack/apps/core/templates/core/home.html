@@ -9,22 +9,17 @@
 
 {% block content %}
     <section class="hero">
+        {% if company_info.hero_image %}
+            <img src="{{ company_info.hero_image.url }}" alt="" class="hero__bg">
+        {% endif %}
         <div class="hero__inner">
             <div class="hero__copy">
-                <span class="eyebrow" style="color:#8fc1ef;">Pioneering Chemistry</span>
                 <h1>{{ company_info.hero_heading|default:"Pioneering Chemistry for a Sustainable Future" }}</h1>
-                <p>{{ company_info.hero_subheading|default:"Rooted in innovation, growing smarter and more sustainable agriculture and industrial chemical solutions for tomorrow." }}</p>
+                <p>{{ company_info.hero_subheading|default:"Bridging the gap between laboratory innovation and agricultural excellence with regulatory-compliant chemical solutions." }}</p>
                 <div class="hero__actions">
                     <a href="{% url 'catalogue:product_list' %}" class="btn btn-primary">View Product Catalog</a>
-                    <a href="{% url 'core:about' %}" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.4);">Get Sustainability Report</a>
+                    <a href="{% url 'core:about' %}" class="btn btn-outline">Our Sustainability Commitment</a>
                 </div>
-            </div>
-            <div class="hero__visual">
-                {% if company_info.hero_image %}
-                    <img src="{{ company_info.hero_image.url }}" alt="{{ company_info.hero_heading|default:'NexChemical' }}">
-                {% else %}
-                    <div class="img-placeholder">Hero image</div>
-                {% endif %}
             </div>
         </div>
     </section>
