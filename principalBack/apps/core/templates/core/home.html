@@ -11,6 +11,8 @@
     <section class="hero">
         {% if company_info.hero_image %}
             <img src="{{ company_info.hero_image.url }}" alt="" class="hero__bg">
+        {% else %}
+            <img src="{% static 'img/hero.png' %}" alt="" class="hero__bg">
         {% endif %}
         <div class="hero__inner">
             <div class="hero__copy">
@@ -24,87 +26,122 @@
         </div>
     </section>
 
-    <div class="stats-bar">
-        <div class="stats-bar__item"><strong>60+</strong><span>Countries served</span></div>
-        <div class="stats-bar__item"><strong>70K</strong><span>Tons produced yearly</span></div>
-        <div class="stats-bar__item"><strong>25+</strong><span>Years of research</span></div>
-        <div class="stats-bar__item"><strong>99.8%</strong><span>Average purity</span></div>
-    </div>
-
-    <section class="about-teaser">
-        <div class="container">
-            <div class="section-heading">
+    <section class="who-we-are">
+        <div class="container who-we-are__grid">
+            <div class="who-we-are__copy">
                 <span class="eyebrow">Who we are</span>
-                <h2>Driving Agri Tech Innovation Forward</h2>
+                <h2>Rooted in innovation, growing smarter and more sustainable <span class="text-muted">modern agriculture</span></h2>
             </div>
-            <div class="feature-list">
-                <div class="feature-item">
-                    <div class="feature-item__icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3h6M10 3v6l-5.5 9.5A2 2 0 006.2 21h11.6a2 2 0 001.7-2.5L14 9V3"/></svg>
+            <div class="who-we-are__media">
+                <div class="stat-card">
+                    <strong>60+</strong>
+                    <span>Agricultural research projects</span>
+                </div>
+                <div class="stat-card">
+                    <strong>70K</strong>
+                    <span>Smart Farming Hectares</span>
+                </div>
+                <div class="who-we-are__photo">
+                    <img src="{% static 'img/who-we-are-1.jpg' %}" alt="NexChemical laboratory">
+                </div>
+                <div class="who-we-are__photo who-we-are__photo--tall">
+                    <img src="{% static 'img/who-we-are-2.jpg' %}" alt="NexChemical research team">
+                </div>
+            </div>
+        </div>
+        <div class="who-we-are__arc" aria-hidden="true"></div>
+    </section>
+
+    <section class="services">
+        <div class="container services__grid">
+            <div class="services__list">
+                <span class="eyebrow">Our services</span>
+                <h2>Driving Agri <span class="text-muted">Tech</span> Innovation Forward</h2>
+
+                <div class="service-card">
+                    <div class="service-card__icon">
+                        <img src="{% static 'img/ServicesGenomicResearch.svg' %}" alt="">
                     </div>
                     <div>
                         <h3>Genomic Research</h3>
-                        <p>Deep molecular analysis to develop resilient crop varieties optimized for local soil and climate.</p>
+                        <p>Enhancing crop DNA to develop resilient, high-yield varieties suited for varied conditions.</p>
                     </div>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-item__icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3.3"/><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+                <div class="service-card">
+                    <div class="service-card__icon">
+                        <img src="{% static 'img/ServicesAiFarming.svg' %}" alt="">
                     </div>
                     <div>
-                        <h3>AI Farming Intelligence</h3>
-                        <p>Machine-learning driven insights forecast yields and recommend precise treatment schedules.</p>
+                        <h3>AI Farming</h3>
+                        <p>Using AI insights to monitor crops, resources and improve overall farming efficiency.</p>
                     </div>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-item__icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21c4-2.5 7-6 7-10a7 7 0 10-14 0c0 4 3 7.5 7 10z"/></svg>
+                <div class="service-card">
+                    <div class="service-card__icon">
+                        <img src="{% static 'img/ServicesBioFertilizers.svg' %}" alt="">
                     </div>
                     <div>
                         <h3>Bio Fertilizers</h3>
-                        <p>Naturally derived formulations that improve soil health while reducing environmental impact.</p>
+                        <p>Natural soil enhancers that boost fertility and reduce chemical use in farming.</p>
                     </div>
                 </div>
+            </div>
+            <div class="services__photo">
+                <img src="{% static 'img/services.jpg' %}" alt="NexChemical research specialist at work">
             </div>
         </div>
     </section>
 
-    <section class="product-gallery">
-        <div class="container">
-            <div class="product-gallery__head">
-                <div class="section-heading" style="margin-bottom:0;">
-                    <span class="eyebrow">Our products</span>
-                    <h2>Smart Solutions, Modern Farming</h2>
-                </div>
-                <a href="{% url 'catalogue:product_list' %}" class="btn btn-outline">View full catalog</a>
-            </div>
+    <div class="section-divider" aria-hidden="true">
+        <svg viewBox="0 0 24 28" fill="currentColor"><path d="M12 0C7 8 2 13.5 2 18.5A10 9.5 0 0022 18.5C22 13.5 17 8 12 0z"/></svg>
+    </div>
 
-            <div class="grid-responsive grid-responsive--3">
-                {% for product in featured_products %}
-                    <article class="product-card">
-                        <div class="product-card__media">
-                            {% if product.image %}
-                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
-                            {% else %}
-                                <div class="img-placeholder">{{ product.name }}</div>
-                            {% endif %}
-                        </div>
-                        <div class="product-card__body">
-                            <div class="product-card__meta">
-                                <span class="badge">{{ product.subcategory.category.name }}</span>
-                                {% if product.is_bio_rational %}<span class="badge badge--bio">Bio-Rational</span>{% endif %}
-                            </div>
-                            <h3>{{ product.name }}</h3>
-                            {% if product.subtitle %}<p class="product-card__sub">{{ product.subtitle }}</p>{% endif %}
-                            <p class="product-card__price">{{ product.price }} / {{ product.get_unit_display }}</p>
-                            <a href="{% url 'catalogue:product_detail' product.slug %}" class="btn btn-primary btn-sm">View Details</a>
-                        </div>
-                    </article>
-                {% empty %}
-                    <p>No products yet &mdash; check back soon.</p>
-                {% endfor %}
+    <section class="products-carousel-section">
+        <div class="container">
+            <div class="section-heading" style="margin-bottom:0;">
+                <span class="eyebrow">Our products</span>
+                <h2>Smart <span class="text-muted">Solutions</span><br>Modern Farming</h2>
             </div>
         </div>
+
+        {% if featured_products %}
+            <div class="carousel" id="productCarousel">
+                <div class="carousel__track" id="carouselTrack">
+                    {% for product in featured_products %}
+                        <article class="carousel__card{% if product.is_bio_rational %} carousel__card--bio{% endif %}" data-index="{{ forloop.counter0 }}">
+                            <div class="carousel__media">
+                                {% if product.image %}
+                                    <img src="{{ product.image.url }}" alt="{{ product.name }}" draggable="false">
+                                {% else %}
+                                    <div class="img-placeholder">{{ product.name }}</div>
+                                {% endif %}
+                                {% if product.is_bio_rational %}
+                                    <span class="badge--bio-overlay">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="10" height="10"><path d="M12 21c4-2.5 7-6 7-10a7 7 0 10-14 0c0 4 3 7.5 7 10z"/></svg>
+                                        Bio-Rational
+                                    </span>
+                                {% endif %}
+                                <button type="button" class="carousel__save" aria-label="Save product" tabindex="-1">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4h12a1 1 0 011 1v15l-7-4-7 4V5a1 1 0 011-1z"/></svg>
+                                </button>
+                            </div>
+                            <div class="carousel__body">
+                                <div class="carousel__eyebrow">{{ product.subcategory.category.name }}</div>
+                                <h3>{{ product.name }}</h3>
+                                <p>{% if product.subtitle %}{{ product.subtitle }}{% else %}{{ product.description|truncatewords:10 }}{% endif %}</p>
+                                <span class="carousel__formulation">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3h6M10 3v6l-5.5 9.5A2 2 0 006.2 21h11.6a2 2 0 001.7-2.5L14 9V3"/></svg>
+                                    {{ product.get_formulation_display }}
+                                </span>
+                                <a href="{% url 'catalogue:product_detail' product.slug %}" class="carousel__view">View Details &rarr;</a>
+                            </div>
+                        </article>
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            <p class="carousel__empty">No products yet &mdash; check back soon.</p>
+        {% endif %}
     </section>
 
     <section class="catalog-cta">
@@ -114,4 +151,8 @@
         </div>
         <a href="{% url 'catalogue:product_list' %}" class="btn btn-white">Explore Catalog</a>
     </section>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'js/carousel.js' %}"></script>
 {% endblock %}

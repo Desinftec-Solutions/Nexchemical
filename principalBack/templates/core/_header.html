@@ -2,9 +2,7 @@
 <header class="site-header">
     <div class="site-header__inner">
         <a href="{% url 'core:home' %}" class="brand" aria-label="NexChemical home">
-            <span class="brand__mark" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l3.5 6.5L22 12l-6.5 3.5L12 22l-3.5-6.5L2 12l6.5-3.5L12 2z" fill="currentColor"/></svg>
-            </span>
+            <img src="{% static 'img/logo.png' %}" alt="NexChemical" class="brand__mark">
         </a>
 
         <nav class="main-nav" aria-label="Primary">
