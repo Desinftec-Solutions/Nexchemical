@@ -140,7 +140,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr) 1.2fr 1fr;
   gap: 12px;
-  align-items: stretch;
+  align-items: end;
 }
 
 .stat-card {
@@ -151,7 +151,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  min-height: 220px;
+  height: 220px;
 }
 
 .stat-card strong {
@@ -170,7 +170,11 @@
 .who-we-are__photo {
   border-radius: var(--radius-sm);
   overflow: hidden;
-  min-height: 220px;
+  height: 220px;
+}
+
+.who-we-are__photo--tall {
+  height: 370px;
 }
 
 .who-we-are__photo img {
@@ -183,17 +187,33 @@
 .who-we-are__arc {
   position: absolute;
   left: 50%;
-  bottom: -220px;
+  bottom: -230px;
   width: 900px;
-  height: 440px;
+  height: 460px;
   max-width: 220vw;
   transform: translateX(-50%);
-  border-radius: 50%;
-  border: 18px solid var(--color-accent);
-  border-bottom-color: transparent;
-  opacity: 0.9;
   pointer-events: none;
   z-index: 0;
+}
+
+.who-we-are__arc::before,
+.who-we-are__arc::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border-bottom-color: transparent;
+}
+
+.who-we-are__arc::before {
+  border: 20px solid var(--color-accent);
+  opacity: 0.95;
+}
+
+.who-we-are__arc::after {
+  inset: -14px;
+  border: 2px solid var(--color-accent);
+  opacity: 0.45;
 }
 
 @media (max-width: 699px) {
@@ -292,19 +312,6 @@
   height: 100%;
   object-fit: cover;
   display: block;
-}
-
-.section-divider {
-  display: flex;
-  justify-content: center;
-  padding: 8px 0 32px;
-  background: var(--color-bg-alt);
-  color: var(--color-ink);
-}
-
-.section-divider svg {
-  width: 28px;
-  height: 34px;
 }
 
 /* Products carousel */
