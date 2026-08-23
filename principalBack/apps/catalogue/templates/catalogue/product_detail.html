@@ -1,4 +1,5 @@
 {% load static %}
+{% load catalogue_extras %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,9 +56,7 @@
           </div>
           <div class="detail-hero__media">
             <div class="detail-hero__frame">
-              {% if product.image %}
-                <img src="{{ product.image.url }}" alt="{{ product.name }}">
-              {% endif %}
+              <img src="{{ product|product_detail_image }}" alt="{{ product.name }}">
             </div>
             {% if product.purity_percentage %}
               <div class="purity-card">
@@ -102,8 +101,8 @@
             <div class="regulatory__img">
               {% if product.gallery_images.all %}
                 <img src="{{ product.gallery_images.first.image.url }}" alt="{{ product.gallery_images.first.alt_text|default:product.name }}">
-              {% elif product.image %}
-                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+              {% else %}
+                <img src="{% static 'img/detail-crystal.jpg' %}" alt="{{ product.name }} chemical composition">
               {% endif %}
             </div>
           </div>

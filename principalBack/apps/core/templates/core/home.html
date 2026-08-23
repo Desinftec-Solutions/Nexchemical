@@ -1,4 +1,5 @@
 {% load static %}
+{% load catalogue_extras %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,40 +120,26 @@
       <h2 class="section-head__title section-head__title--lg">Smart <span class="muted">Solutions</span><br>Modern Farming</h2>
     </div>
 
-    <div class="products__fan">
-      {% for product in featured_products|slice:":5" %}
-        <article class="product-card {% cycle 'product-card--pos1' 'product-card--pos2' 'product-card--pos3' 'product-card--pos4' 'product-card--pos5' %}{% if product.is_bio_rational %} product-card--bio{% endif %}">
-          <div class="product-card__media">
-            {% if product.image %}
-              <img class="product-card__img" src="{{ product.image.url }}" alt="{{ product.name }}">
-            {% endif %}
-            {% if product.is_bio_rational %}
-              <span class="product-card__badge">
-                <img src="{% static 'img/icon-leaf.svg' %}" alt="" width="10" height="10">
-                Bio-Rational
-              </span>
-            {% endif %}
-            <button class="product-card__fav" type="button" aria-label="Add to favorites">
-              <img src="{% static 'img/icon-heart.svg' %}" alt="" width="15" height="14">
-            </button>
-          </div>
-          <div class="product-card__body">
-            <p class="product-card__category{% if product.is_bio_rational %} product-card__category--bio{% endif %}">{{ product.subcategory.category.name }}</p>
-            <h3 class="product-card__title">{{ product.name }}</h3>
-            <p class="product-card__text">{% if product.subtitle %}{{ product.subtitle }}{% else %}{{ product.description|truncatewords:8 }}{% endif %}</p>
-            <p class="product-card__meta">
-              {% if product.formulation == 'ec' %}
-                <img src="{% static 'img/icon-flask.svg' %}" alt="" width="11" height="13">
-              {% elif product.formulation == 'wp' %}
-                <img src="{% static 'img/icon-powder.svg' %}" alt="" width="13" height="13">
-              {% else %}
-                <img src="{% static 'img/icon-droplet.svg' %}" alt="" width="12" height="12">
+    <div class="stack-carousel" data-carousel-root>
+      <div class="stack-carousel__stage" data-carousel-stage>
+        <div class="stack-carousel__surface" data-carousel-surface></div>
+        {% for product in featured_products|slice:":5" %}
+          <div class="stack-carousel__card" data-carousel-card data-index="{{ forloop.counter0 }}">
+            {% with img_url=product|product_image %}
+              {% if img_url %}
+                <img class="stack-carousel__img" src="{{ img_url }}" alt="{{ product.name }}">
               {% endif %}
-              {{ product.get_formulation_display }}
-            </p>
+            {% endwith %}
+            <div class="stack-carousel__shade" data-carousel-shade></div>
+            <div class="stack-carousel__gradient"></div>
+            <span class="stack-carousel__badge">{{ product.subcategory.category.name }}</span>
+            <div class="stack-carousel__body">
+              <p class="stack-carousel__title" data-carousel-text>{{ product.name }}</p>
+              <p class="stack-carousel__desc" data-carousel-text>{% if product.subtitle %}{{ product.subtitle }}{% else %}{{ product.description|truncatewords:16 }}{% endif %}</p>
+            </div>
           </div>
-        </article>
-      {% endfor %}
+        {% endfor %}
+      </div>
     </div>
   </section>
 
@@ -219,5 +206,6 @@
     </div>
   </footer>
 
+  <script src="{% static 'js/product-carousel.js' %}"></script>
 </body>
 </html>

@@ -386,12 +386,136 @@ button { border: 0; background: none; padding: 0; cursor: pointer; font: inherit
   padding: 0 calc(var(--page-pad) + 36px);
 }
 
-.products__fan {
-  --fan-shift: 0px;
+/* ---- stacked/fanned product carousel (drag + swipe) ---- */
+.stack-carousel {
+  width: 100%;
+  max-width: 1280px;
+  margin: 24px auto 0;
+  padding: 24px 0;
+  overflow: hidden;
+}
+
+.stack-carousel__stage {
   position: relative;
-  height: 586px;
-  max-width: 1136px;
-  margin: 10px auto 0;
+  width: 100%;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: pan-y;
+}
+
+.stack-carousel__surface {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.stack-carousel__surface:active { cursor: grabbing; }
+
+.stack-carousel__card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 176px;
+  height: 224px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #eef1ee;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.stack-carousel__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.stack-carousel__card:hover .stack-carousel__img { transform: scale(1.1); }
+
+.stack-carousel__shade {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.stack-carousel__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2) 60%, transparent);
+  pointer-events: none;
+}
+
+.stack-carousel__badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #111;
+}
+
+.stack-carousel__body {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 14px;
+  text-align: center;
+  color: #fff;
+}
+
+.stack-carousel__title {
+  font-family: var(--font-nav);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.25;
+  margin-bottom: 2px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.stack-carousel__desc {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .stack-carousel__stage { height: 448px; }
+  .stack-carousel__card { width: 224px; height: 320px; }
+  .stack-carousel__badge { top: 20px; right: 20px; padding: 4px 12px; font-size: 12px; }
+  .stack-carousel__body { left: 20px; right: 20px; bottom: 32px; text-align: left; }
+  .stack-carousel__title { font-size: 18px; margin-bottom: 4px; }
+  .stack-carousel__desc {
+    display: -webkit-box;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 1024px) {
+  .stack-carousel__stage { height: 512px; }
+  .stack-carousel__card { width: 256px; height: 384px; }
+  .stack-carousel__badge { top: 24px; right: 24px; }
+  .stack-carousel__body { bottom: 40px; }
+  .stack-carousel__title { font-size: 20px; }
 }
 
 .product-card {
@@ -406,13 +530,6 @@ button { border: 0; background: none; padding: 0; cursor: pointer; font: inherit
   overflow: hidden;
   position: absolute;
 }
-
-/* fanned positions (270x376 box centered on the rotated bounds from Figma) */
-.product-card--pos1 { left: calc(878px + var(--fan-shift)); top: 171px; transform: rotate(23.34deg); }
-.product-card--pos2 { left: calc(6px + var(--fan-shift));   top: 171px; transform: rotate(-23.91deg); }
-.product-card--pos3 { left: calc(219px + var(--fan-shift)); top: 84px;  transform: rotate(-11.88deg); }
-.product-card--pos4 { left: calc(643px + var(--fan-shift)); top: 84px;  transform: rotate(12.11deg); }
-.product-card--pos5 { left: calc(415px + var(--fan-shift)); top: 25px; }
 
 .product-card--bio {
   border: 2px solid rgba(16, 185, 129, 0.2);
@@ -1462,14 +1579,6 @@ button { border: 0; background: none; padding: 0; cursor: pointer; font: inherit
    RESPONSIVE
    ============================================================ */
 
-/* ≥1440: fan stage widens to 1296 and the card cluster shifts right (Figma 3:79 / 3:1318) */
-@media (min-width: 1440px) {
-  .products__fan {
-    --fan-shift: 72px;
-    max-width: 1296px;
-  }
-}
-
 @media (max-width: 1200px) {
   :root { --page-pad: 40px; }
 
@@ -1482,23 +1591,6 @@ button { border: 0; background: none; padding: 0; cursor: pointer; font: inherit
   .services__left { width: 100%; }
   .services__photo { width: 100%; height: 480px; flex: none; }
 
-  /* fan needs the fixed 1136px stage — switch to a scrollable row */
-  .products__fan {
-    display: flex;
-    gap: 24px;
-    height: auto;
-    max-width: none;
-    margin: 24px 0 0;
-    padding: 16px var(--page-pad);
-    overflow-x: auto;
-  }
-  .product-card,
-  .product-card--pos1, .product-card--pos2, .product-card--pos3,
-  .product-card--pos4, .product-card--pos5 {
-    position: static;
-    transform: none;
-    flex-shrink: 0;
-  }
   .products__head { padding: 0 var(--page-pad); }
 }
 
