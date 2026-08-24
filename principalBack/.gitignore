@@ -9,3 +9,6 @@ staticfiles/
 structure.txt
 *.patch
 .venv/
+nohup.out
+gunicorn.pid
+logs/
