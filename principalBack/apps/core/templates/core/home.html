@@ -20,11 +20,10 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero">
-    {% if company_info.hero_image %}
-      <img class="hero__bg" src="{{ company_info.hero_image.url }}" alt="">
-    {% else %}
-      <img class="hero__bg" src="{% static 'img/hero-beakers.jpg' %}" alt="">
-    {% endif %}
+    <video class="hero__bg" autoplay muted loop playsinline preload="metadata"
+           poster="{% if company_info.hero_image %}{{ company_info.hero_image.url }}{% else %}{% static 'img/hero-beakers.jpg' %}{% endif %}">
+      <source src="{% static 'vid/hero.mp4' %}" type="video/mp4">
+    </video>
 
     <div class="hero__container">
       <div class="hero__content">
