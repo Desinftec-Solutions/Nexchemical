@@ -120,8 +120,8 @@ button { border: 0; background: none; padding: 0; cursor: pointer; font: inherit
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 64px;
-  padding: 39px var(--page-pad);
+  /* top padding clears the fixed navbar (see navbar.css) */
+  padding: 176px var(--page-pad) 39px;
   overflow: clip;
 }
 
@@ -133,62 +133,6 @@ button { border: 0; background: none; padding: 0; cursor: pointer; font: inherit
   object-fit: cover;
   object-position: center 55%;
   z-index: -1;
-}
-
-/* --- nav --- */
-
-.nav-wrap {
-  display: flex;
-  justify-content: center;
-  height: 73px;
-}
-
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 73px;
-  height: 100%;
-  max-width: 1280px;
-  padding: 0 64px;
-  background: rgba(248, 250, 248, 0.9);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border-radius: 500px;
-}
-
-.nav__links {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.nav__link {
-  font-family: var(--font-nav);
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 20px;
-  letter-spacing: 0.7px;
-  color: var(--color-nav-link);
-  padding-bottom: 6px;
-  border-bottom: 2px solid transparent;
-  transition: color .15s ease;
-}
-.nav__link:hover { color: var(--color-primary); }
-
-.nav__link--active {
-  color: var(--color-primary);
-  border-bottom-color: var(--color-primary);
-}
-
-.nav__actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.nav__globe {
-  display: flex;
-  padding: 8px;
 }
 
 /* --- hero content --- */
@@ -814,75 +758,6 @@ button { border: 0; background: none; padding: 0; cursor: pointer; font: inherit
   padding-top: 5px;
 }
 
-/* ============================================================
-   DARK PILL NAVBAR  (catalog / detail / contact pages)
-   ============================================================ */
-
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 127px;
-  padding: 10px;
-}
-
-.navbar-dark {
-  display: flex;
-  align-items: center;
-  gap: 73px;
-  height: 73px;
-  padding: 0 64px;
-  background: #000;
-  border-radius: 46px;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
-
-.navbar-dark--search {
-  gap: 63px;
-  width: 1060px;
-  max-width: 100%;
-}
-
-.navbar-dark .nav__link { color: #fff; }
-.navbar-dark .nav__link:hover { color: #9ec7e8; }
-.navbar-dark .nav__link--active {
-  color: #fff;
-  border-bottom-color: #fff;
-}
-
-.navbar-dark__search {
-  position: relative;
-  width: 577px;
-  max-width: 100%;
-}
-
-.navbar-dark__search input {
-  width: 100%;
-  height: 38px;
-  background: #fff;
-  border: 1px solid rgba(197, 197, 216, 0.5);
-  border-radius: 9999px;
-  padding: 0 16px 0 33px;
-  font: 400 14px/1 var(--font-body);
-  color: #374151;
-}
-.navbar-dark__search input::placeholder { color: #6b7280; }
-
-.navbar-dark__search-icon {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.navbar-dark__group {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex: 1;
-}
-
 /* ---------- square blue buttons (inner pages) ---------- */
 
 .btn-sq {
@@ -1076,7 +951,7 @@ button { border: 0; background: none; padding: 0; cursor: pointer; font: inherit
   flex-shrink: 0;
   background: #f6f3f2;
   border-right: 1px solid #c1c7d3;
-  padding: 112px 24px 32px;
+  padding: 32px 24px;
 }
 
 .back-link {
@@ -1539,9 +1414,6 @@ button { border: 0; background: none; padding: 0; cursor: pointer; font: inherit
 /* ---------- inner pages responsive ---------- */
 
 @media (max-width: 1200px) {
-  .navbar-dark { gap: 32px; padding: 0 32px; }
-  .navbar-dark__search { width: auto; flex: 1; }
-
   .catalog-hero__card { flex-direction: column; align-items: flex-start; }
 
   .detail-sidebar { display: none; }
@@ -1556,10 +1428,6 @@ button { border: 0; background: none; padding: 0; cursor: pointer; font: inherit
 }
 
 @media (max-width: 768px) {
-  .topbar { height: auto; padding: 12px; }
-  .navbar-dark { height: 60px; border-radius: 30px; gap: 16px; }
-  .navbar-dark .nav__links { display: none; }
-
   .catalog-hero__title { font-size: 34px; line-height: 42px; }
   .catalog-hero__img { width: 100%; }
 
@@ -1582,8 +1450,6 @@ button { border: 0; background: none; padding: 0; cursor: pointer; font: inherit
 @media (max-width: 1200px) {
   :root { --page-pad: 40px; }
 
-  .nav { gap: 40px; padding: 0 36px; }
-
   .about { flex-wrap: wrap; }
   .about__photo-lg { flex: 1 1 100%; height: 360px; }
 
@@ -1597,11 +1463,7 @@ button { border: 0; background: none; padding: 0; cursor: pointer; font: inherit
 @media (max-width: 768px) {
   :root { --page-pad: 20px; }
 
-  .nav { gap: 20px; padding: 0 20px; }
-  .nav__links { display: none; }
-  .nav__logo img { width: 46px; height: auto; }
-
-  .hero { gap: 40px; }
+  .hero { padding-top: 128px; }
   .hero__title { font-size: 40px; line-height: 48px; letter-spacing: -0.8px; }
   .hero__content { padding-right: 0; }
 

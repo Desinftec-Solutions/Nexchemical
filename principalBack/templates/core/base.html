@@ -11,10 +11,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     {% block extra_css %}{% endblock %}
 </head>
 <body>
-    {% include "core/_header.html" %}
+    {% include "core/_navbar.html" with variant="dark" %}
 
     {% if messages %}
         <ul class="messages">
@@ -30,7 +31,7 @@
 
     {% include "core/_footer.html" %}
 
-    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/navbar.js' %}"></script>
     {% block extra_js %}{% endblock %}
 </body>
 </html>
