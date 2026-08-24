@@ -1,28 +1,195 @@
-{% extends "core/base.html" %}
+{% load static %}
+{% load catalogue_extras %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexChemical — Pioneering Chemistry for a Sustainable Future</title>
 
-{% block title %}Home | Principal Chemistry{% endblock %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700&family=Plus+Jakarta+Sans:wght@700&family=Playfair+Display:wght@400;500&family=Poppins&display=swap" rel="stylesheet">
 
-{% block content %}
-    <section>
-        {% if company_info.hero_image %}
-            <img src="{{ company_info.hero_image.url }}" alt="{{ company_info.hero_heading }}" width="100%">
-        {% endif %}
-        <h1>{{ company_info.hero_heading|default:"Principal Chemistry" }}</h1>
-        <p>{{ company_info.hero_subheading|default:"Quality chemistry products for industry and research." }}</p>
-        <a href="{% url 'catalogue:product_list' %}">View Product Catalog</a>
-    </section>
+  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="body--nav-overlay">
 
-    <section>
-        <h2>Featured Products</h2>
-        <ul>
-            {% for product in featured_products %}
-                <li>
-                    <a href="{% url 'catalogue:product_detail' product.slug %}">{{ product.name }}</a>
-                    — {{ product.price }} / {{ product.get_unit_display }}
-                </li>
-            {% empty %}
-                <li>No products yet.</li>
-            {% endfor %}
-        </ul>
-    </section>
-{% endblock %}
+  {% include "core/_navbar.html" with variant="light" %}
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    {% if company_info.hero_image %}
+      <img class="hero__bg" src="{{ company_info.hero_image.url }}" alt="">
+    {% else %}
+      <img class="hero__bg" src="{% static 'img/hero-beakers.jpg' %}" alt="">
+    {% endif %}
+
+    <div class="hero__container">
+      <div class="hero__content">
+        <h1 class="hero__title">{{ company_info.hero_heading|default:"Pioneering Chemistry for a&nbsp;Sustainable Future" }}</h1>
+        <p class="hero__text">{{ company_info.hero_subheading|default:"Bridging the gap between laboratory innovation and agricultural excellence with regulatory-compliant chemical solutions." }}</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="{% url 'catalogue:product_list' %}">View Product Catalog</a>
+          <a class="btn btn--light" href="#">Our Sustainability Commitment</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT / WHO WE ARE ============ -->
+  <section class="about">
+    <div class="about__main">
+      <div class="section-head">
+        <p class="section-head__label">Who we are</p>
+        <h2 class="section-head__title">Rooted in innovation, growing smarter and more sustainable <span class="muted">modern agriculture</span></h2>
+      </div>
+      <div class="about__row">
+        <div class="fact-card">
+          <p class="fact-card__number">60+</p>
+          <p class="fact-card__label">Agricultural research&nbsp;projects</p>
+        </div>
+        <div class="fact-card">
+          <p class="fact-card__number">70K</p>
+          <p class="fact-card__label">Smart Farming Hectares</p>
+        </div>
+        <img class="about__photo-sm" src="{% static 'img/about-photo-1.png' %}" alt="Laboratory research team at work">
+      </div>
+    </div>
+    <img class="about__photo-lg" src="{% static 'img/about-photo-2.png' %}" alt="Scientist operating a microscope">
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="services">
+    <div class="services__inner">
+      <div class="services__left">
+        <div class="section-head">
+          <p class="section-head__label">Our services</p>
+          <h2 class="section-head__title">Driving Agri <span class="muted">Tech</span><br>Innovation Forward</h2>
+        </div>
+        <div class="services__cards">
+          <article class="service-card">
+            <img class="service-card__icon" src="{% static 'img/icon-genomic.svg' %}" alt="" width="55" height="55">
+            <div>
+              <h3 class="service-card__title">Genomic Research</h3>
+              <p class="service-card__text">Enhancing crop DNA to develop resilient, high-yield varieties suited for varied conditions.</p>
+            </div>
+          </article>
+          <article class="service-card">
+            <img class="service-card__icon" src="{% static 'img/icon-ai.svg' %}" alt="" width="55" height="55">
+            <div>
+              <h3 class="service-card__title">AI Farming</h3>
+              <p class="service-card__text">Using AI insights to monitor crops, resources and improve overall farming efficiency.</p>
+            </div>
+          </article>
+          <article class="service-card">
+            <img class="service-card__icon" src="{% static 'img/icon-bio.svg' %}" alt="" width="55" height="55">
+            <div>
+              <h3 class="service-card__title">Bio Fertilizers</h3>
+              <p class="service-card__text">Natural soil enhancers that boost fertility and reduce chemical use in farming.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+      <img class="services__photo" src="{% static 'img/services-photo.png' %}" alt="Researcher working with laboratory glassware">
+    </div>
+  </section>
+
+  <!-- ============ PRODUCTS ============ -->
+  <section class="products">
+    <div class="section-head products__head">
+      <p class="section-head__label">Our products</p>
+      <h2 class="section-head__title section-head__title--lg">Smart <span class="muted">Solutions</span><br>Modern Farming</h2>
+    </div>
+
+    <div class="stack-carousel" data-carousel-root>
+      <div class="stack-carousel__stage" data-carousel-stage>
+        <div class="stack-carousel__surface" data-carousel-surface></div>
+        {% for product in featured_products|slice:":5" %}
+          <div class="stack-carousel__card" data-carousel-card data-index="{{ forloop.counter0 }}">
+            {% with img_url=product|product_image %}
+              {% if img_url %}
+                <img class="stack-carousel__img" src="{{ img_url }}" alt="{{ product.name }}">
+              {% endif %}
+            {% endwith %}
+            <div class="stack-carousel__shade" data-carousel-shade></div>
+            <div class="stack-carousel__gradient"></div>
+            <span class="stack-carousel__badge">{{ product.subcategory.category.name }}</span>
+            <div class="stack-carousel__body">
+              <p class="stack-carousel__title" data-carousel-text>{{ product.name }}</p>
+              <p class="stack-carousel__desc" data-carousel-text>{% if product.subtitle %}{{ product.subtitle }}{% else %}{{ product.description|truncatewords:16 }}{% endif %}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta">
+    <div class="cta__box">
+      <div class="cta__content">
+        <h2 class="cta__title">Unlock industrial potential in our catalog</h2>
+        <p class="cta__text">Discover a comprehensive range of chemical products, backed by technical expertise from our regional specialists.</p>
+        <a class="btn btn--outline" href="{% url 'catalogue:product_list' %}">Explore catalog</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__band">
+      <h2 class="footer__slogan">Start Growing<br>Smarter Today</h2>
+      <a class="contact-pill" href="{% url 'contact:contact_page' %}">
+        <span class="contact-pill__label">Contact us today</span>
+        <span class="contact-pill__circle">
+          <span class="contact-pill__circle-inner">
+            <img src="{% static 'img/icon-arrow.svg' %}" alt="" width="16" height="14">
+          </span>
+        </span>
+      </a>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="footer__brand">
+        <img class="footer__logo" src="{% static 'img/footer-logo.svg' %}" alt="" width="86" height="71">
+        <img class="footer__wordmark" src="{% static 'img/footer-wordmark.svg' %}" alt="NexChemical" width="219" height="24">
+        <p class="footer__tagline">
+          <img src="{% static 'img/line-left.svg' %}" alt="" width="17" height="6">
+          <span>Chemistry</span>
+          <img src="{% static 'img/dot.svg' %}" alt="" width="6" height="6">
+          <span>Innovation</span>
+          <img src="{% static 'img/dot.svg' %}" alt="" width="6" height="6">
+          <span>Solutions</span>
+          <img src="{% static 'img/line-right.svg' %}" alt="" width="17" height="6">
+        </p>
+      </div>
+
+      <ul class="footer__socials">
+        <li>
+          <a class="footer__social" href="{{ company_info.facebook_url|default:'#' }}" aria-label="Facebook">
+            <img src="{% static 'img/icon-facebook.svg' %}" alt="" width="31" height="31">
+          </a>
+        </li>
+        <li>
+          <a class="footer__social" href="{{ company_info.instagram_url|default:'#' }}" aria-label="Instagram">
+            <img src="{% static 'img/icon-instagram.svg' %}" alt="" width="27" height="27">
+          </a>
+        </li>
+        <li>
+          <a class="footer__social" href="{{ company_info.linkedin_url|default:'#' }}" aria-label="LinkedIn">
+            <img src="{% static 'img/icon-linkedin.svg' %}" alt="" width="31" height="31">
+          </a>
+        </li>
+      </ul>
+
+      <hr class="footer__divider">
+      <p class="footer__copyright">Copyright ©Default | Designed by Desinftec - 2026</p>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/navbar.js' %}"></script>
+  <script src="{% static 'js/product-carousel.js' %}"></script>
+</body>
+</html>

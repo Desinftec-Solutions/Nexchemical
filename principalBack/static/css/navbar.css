@@ -1,0 +1,250 @@
+/* ============================================================
+   Global navbar component
+   Pairs with templates/core/_navbar.html and js/navbar.js.
+   Self-contained (own tokens) so it can load on any page,
+   regardless of whether style.css or base.css is present.
+   Variants: .nav (light, homepage) / .nav--dark (inner pages).
+   ============================================================ */
+
+/* Clearance for the fixed topbar (27 + 73 + 27 = 127px). */
+body { padding-top: 127px; }
+/* Homepage: the hero flows under the navbar instead. */
+body.body--nav-overlay { padding-top: 0; }
+
+.topbar {
+  --nav-primary: #005ca7;
+  --nav-ink: #414752;
+  --nav-font: "Manrope", "Inter", sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  padding: 27px 10px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 73px;
+  height: 73px;
+  max-width: 1280px;
+  padding: 0 64px;
+  border-radius: 500px;
+  background: rgba(248, 250, 248, 0.9);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--nav-ink);
+}
+
+.nav--dark {
+  background: rgba(0, 0, 0, 0.92);
+  color: #fff;
+}
+
+.nav__logo img { display: block; }
+
+/* --- links --- */
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__link {
+  font-family: var(--nav-font);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0.7px;
+  color: inherit;
+  text-decoration: none;
+  padding-bottom: 6px;
+  border-bottom: 2px solid transparent;
+  transition: color .15s ease;
+}
+
+.nav__link:hover { color: var(--nav-primary); }
+.nav__link--active {
+  color: var(--nav-primary);
+  border-bottom-color: var(--nav-primary);
+}
+
+.nav--dark .nav__link:hover { color: #9ec7e8; }
+.nav--dark .nav__link--active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+/* --- search (hidden until toggled; replaces the links while open) --- */
+
+.nav__search {
+  display: none;
+  position: relative;
+  flex: 1;
+  max-width: 577px;
+}
+
+.nav--search-open .nav__search { display: block; }
+.nav--search-open .nav__links { display: none; }
+
+.nav__search input {
+  width: 100%;
+  height: 38px;
+  background: #fff;
+  border: 1px solid rgba(197, 197, 216, 0.5);
+  border-radius: 9999px;
+  padding: 0 16px 0 33px;
+  font: 400 14px/1 "Inter", system-ui, sans-serif;
+  color: #374151;
+}
+.nav__search input::placeholder { color: #6b7280; }
+
+.nav__search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* --- actions --- */
+
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.nav__icon-btn {
+  display: flex;
+  padding: 8px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+.nav__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--nav-primary);
+  color: #fff;
+  font-family: var(--nav-font);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.14px;
+  padding: 8px 24px;
+  border-radius: 9999px;
+  white-space: nowrap;
+  text-decoration: none;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  transition: filter .15s ease;
+}
+.nav__cta:hover { filter: brightness(1.12); }
+
+/* --- full-screen mobile menu --- */
+/* Lives inside .topbar (NOT .nav — its backdrop-filter would trap
+   position:fixed descendants) so it inherits the component tokens. */
+
+.nav__menu-btn { display: none; }
+
+.nav-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .25s ease, visibility .25s ease;
+}
+
+.nav-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+body.nav-menu-open { overflow: hidden; }
+
+.nav-menu__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 12px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+.nav-menu__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-menu__link {
+  font-family: var(--nav-font);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 1.3px;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  padding-bottom: 8px;
+  border-bottom: 2px solid transparent;
+  transition: color .15s ease;
+}
+
+.nav-menu__link:hover { color: #9ec7e8; }
+.nav-menu__link--active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+/* The overlay CTA can afford to be bigger than the bar one. */
+.nav-menu > .nav__cta {
+  font-size: 16px;
+  padding: 12px 40px;
+}
+
+/* --- responsive --- */
+
+@media (min-width: 769px) {
+  .nav-menu { display: none; }
+}
+
+@media (max-width: 1200px) {
+  .nav { gap: 32px; padding: 0 36px; }
+}
+
+@media (max-width: 768px) {
+  body { padding-top: 84px; }
+  body.body--nav-overlay { padding-top: 0; }
+
+  .topbar { padding: 12px; }
+  .nav { height: 60px; gap: 16px; border-radius: 30px; padding: 0 20px; }
+  .nav__links { display: none; }
+  .nav__logo img { width: 46px; height: auto; }
+
+  /* CTA moves into the full-screen menu; globe is hidden on mobile */
+  .nav__icon-btn--globe,
+  .nav > .nav__actions .nav__cta { display: none; }
+  .nav__menu-btn { display: flex; }
+}

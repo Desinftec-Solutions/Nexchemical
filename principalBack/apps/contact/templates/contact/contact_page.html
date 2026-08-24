@@ -1,48 +1,162 @@
-{% extends "core/base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — NexChemical</title>
 
-{% block title %}Contact | Principal Chemistry{% endblock %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700&family=Playfair+Display:wght@400;500&family=Poppins&display=swap" rel="stylesheet">
 
-{% block content %}
-    <h1>Contact Us</h1>
+  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
 
-    <form method="post">
+  {% include "core/_navbar.html" with variant="dark" %}
+
+  <!-- ============ HERO ============ -->
+  <section class="contact-hero">
+    <img class="contact-hero__bg" src="{% static 'img/contact-hero.png' %}" alt="">
+    <div class="contact-hero__inner">
+      <div class="contact-hero__content">
+        <h1 class="contact-hero__title">Connect with Our Experts</h1>
+        <p class="contact-hero__text">Our global network of technical specialists and regulatory consultants is ready to support your industrial chemical and agricultural solution needs. Precision-driven guidance, anywhere in the world.</p>
+        <a class="btn-sq btn-sq--r4" href="#inquiry">Start a Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INQUIRY FORM ============ -->
+  <section class="inquiry" id="inquiry">
+    <div class="inquiry__card">
+      <h2 class="inquiry__heading">Send an Inquiry</h2>
+      <p class="inquiry__sub">Our representative will respond within 24 business hours.</p>
+
+      <form class="inquiry__form" action="{% url 'contact:contact_page' %}" method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Send</button>
-    </form>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="{{ form.full_name.id_for_label }}">Full Name</label>
+            {{ form.full_name }}
+            {{ form.full_name.errors }}
+          </div>
+          <div class="form-field">
+            <label for="{{ form.email.id_for_label }}">Company Email</label>
+            {{ form.email }}
+            {{ form.email.errors }}
+          </div>
+          <div class="form-field">
+            <label for="{{ form.phone_number.id_for_label }}">Phone number</label>
+            {{ form.phone_number }}
+            {{ form.phone_number.errors }}
+          </div>
+        </div>
 
-    {% if company_info %}
-        <section>
-            <h2>Reach us directly</h2>
-            <p>Phone: {{ company_info.phone_number }}</p>
-            <p>Email: {{ company_info.email }}</p>
-            <p>Address: {{ company_info.address }}</p>
+        <div class="form-field" style="width: 100%;">
+          <label for="{{ form.message.id_for_label }}">Message</label>
+          {{ form.message }}
+          {{ form.message.errors }}
+        </div>
 
-            {% if company_info.google_map_embed_url %}
-                <iframe
-                    src="{{ company_info.google_map_embed_url }}"
-                    width="600"
-                    height="450"
-                    style="border:0;"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            {% endif %}
-        </section>
-    {% endif %}
+        <button class="btn-sq btn-sq--r4" type="submit">
+          Submit Request
+          <img src="{% static 'img/icon-send.svg' %}" alt="" width="19" height="16">
+        </button>
+      </form>
 
-    {% if regional_offices %}
-        <section>
-            <h2>Our Regional Presence</h2>
-            {% for office in regional_offices %}
-                <div>
-                    <h3>{{ office.region_name }}</h3>
-                    <p>{{ office.address }}</p>
-                    <p>{{ office.phone_number }}</p>
-                    <p>{{ office.email }}</p>
-                </div>
-            {% endfor %}
-        </section>
-    {% endif %}
-{% endblock %}
+      {% if messages %}
+        {% for message in messages %}
+          <p class="inquiry__sub">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- ============ GLOBAL OFFICES ============ -->
+  {% if regional_offices %}
+    <section class="offices">
+      <div class="offices__inner">
+        <h2 class="offices__heading">Our Regional Presence</h2>
+        <p class="offices__sub">Strategic hubs positioned to deliver fast, compliant, and localized chemical solutions across the globe.</p>
+
+        <div class="offices__grid">
+          {% for office in regional_offices %}
+            <article class="office-card">
+              <h3 class="office-card__region">{{ office.region_name }}</h3>
+              <p class="office-card__row">
+                <img src="{% static 'img/icon-pin.svg' %}" alt="" width="16" height="20">
+                {{ office.address }}
+              </p>
+              <p class="office-card__row">
+                <img src="{% static 'img/icon-phone.svg' %}" alt="" width="18" height="18">
+                {{ office.phone_number }}
+              </p>
+              <p class="office-card__row">
+                <img src="{% static 'img/icon-mail.svg' %}" alt="" width="20" height="16">
+                {{ office.email }}
+              </p>
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__band">
+      <h2 class="footer__slogan">Start Growing<br>Smarter Today</h2>
+      <a class="contact-pill" href="{% url 'contact:contact_page' %}">
+        <span class="contact-pill__label">Contact us today</span>
+        <span class="contact-pill__circle">
+          <span class="contact-pill__circle-inner">
+            <img src="{% static 'img/icon-arrow.svg' %}" alt="" width="16" height="14">
+          </span>
+        </span>
+      </a>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="footer__brand">
+        <img class="footer__logo" src="{% static 'img/footer-logo.svg' %}" alt="" width="86" height="71">
+        <img class="footer__wordmark" src="{% static 'img/footer-wordmark.svg' %}" alt="NexChemical" width="219" height="24">
+        <p class="footer__tagline">
+          <img src="{% static 'img/line-left.svg' %}" alt="" width="17" height="6">
+          <span>Chemistry</span>
+          <img src="{% static 'img/dot.svg' %}" alt="" width="6" height="6">
+          <span>Innovation</span>
+          <img src="{% static 'img/dot.svg' %}" alt="" width="6" height="6">
+          <span>Solutions</span>
+          <img src="{% static 'img/line-right.svg' %}" alt="" width="17" height="6">
+        </p>
+      </div>
+
+      <ul class="footer__socials">
+        <li>
+          <a class="footer__social" href="{{ company_info.facebook_url|default:'#' }}" aria-label="Facebook">
+            <img src="{% static 'img/icon-facebook.svg' %}" alt="" width="31" height="31">
+          </a>
+        </li>
+        <li>
+          <a class="footer__social" href="{{ company_info.instagram_url|default:'#' }}" aria-label="Instagram">
+            <img src="{% static 'img/icon-instagram.svg' %}" alt="" width="27" height="27">
+          </a>
+        </li>
+        <li>
+          <a class="footer__social" href="{{ company_info.linkedin_url|default:'#' }}" aria-label="LinkedIn">
+            <img src="{% static 'img/icon-linkedin.svg' %}" alt="" width="31" height="31">
+          </a>
+        </li>
+      </ul>
+
+      <hr class="footer__divider">
+      <p class="footer__copyright">Copyright ©Default | Designed by Desinftec - 2026</p>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/navbar.js' %}"></script>
+</body>
+</html>

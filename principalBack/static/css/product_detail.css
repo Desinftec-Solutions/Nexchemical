@@ -1,0 +1,215 @@
+/* ---------------- Product detail page ---------------- */
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-gray-500);
+  margin: 24px 0 8px;
+}
+
+.back-link:hover {
+  color: var(--color-accent);
+}
+
+.product-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  padding: 24px 0 48px;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .product-hero {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 56px;
+  }
+}
+
+.product-hero__title {
+  font-size: 32px;
+  margin-bottom: 4px;
+}
+
+@media (min-width: 700px) {
+  .product-hero__title {
+    font-size: 42px;
+  }
+}
+
+.product-hero__subtitle {
+  color: var(--color-accent);
+  font-size: 20px;
+  font-family: var(--font-heading);
+  margin-bottom: 16px;
+}
+
+.product-hero__desc {
+  color: var(--color-gray-500);
+  font-size: 15px;
+  max-width: 480px;
+}
+
+.spec-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  margin: 20px 0 28px;
+}
+
+.spec-list dt {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-gray-400);
+  margin: 0;
+}
+
+.spec-list dd {
+  margin: 2px 0 0;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.product-hero__media {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.product-hero__media img,
+.product-hero__media .img-placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.purity-badge {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  background: var(--color-white);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  box-shadow: var(--shadow-card);
+  max-width: 220px;
+}
+
+.purity-badge__label {
+  font-size: 11px;
+  color: var(--color-accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.purity-badge strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 22px;
+  margin: 2px 0;
+}
+
+.purity-badge span {
+  font-size: 11px;
+  color: var(--color-gray-500);
+}
+
+.gallery-strip {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 40px;
+}
+
+.gallery-strip img {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+/* Regulatory info tabs */
+
+.regulatory {
+  background: var(--color-white);
+  padding: 48px 0 64px;
+  border-top: 1px solid var(--color-border);
+}
+
+.tab-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 28px;
+}
+
+.tab-btn {
+  border: none;
+  background: none;
+  padding: 10px 4px;
+  margin-right: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-gray-500);
+  border-bottom: 2px solid transparent;
+}
+
+.tab-btn.is-active {
+  color: var(--color-ink);
+  border-color: var(--color-accent);
+}
+
+.tab-panels {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 900px) {
+  .tab-panels {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.is-active {
+  display: block;
+}
+
+.chem-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.chem-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.chem-table td:last-child {
+  text-align: right;
+  color: var(--color-gray-500);
+}
+
+.tab-panel .img-placeholder {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-md);
+}
+
+.sds-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}

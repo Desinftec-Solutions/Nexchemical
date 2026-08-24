@@ -1,66 +1,180 @@
-{% extends "core/base.html" %}
+{% load static %}
+{% load catalogue_extras %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ product.name }} — NexChemical</title>
 
-{% block title %}{{ product.name }} | Principal Chemistry{% endblock %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700&family=Playfair+Display:wght@400;500&family=Poppins&display=swap" rel="stylesheet">
 
-{% block content %}
-    <a href="{% url 'catalogue:product_list' %}">&larr; Back to catalogue</a>
+  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
 
-    <h1>{{ product.name }}</h1>
-    {% if product.subtitle %}<h2>{{ product.subtitle }}</h2>{% endif %}
-    {% if product.image %}<img src="{{ product.image.url }}" alt="{{ product.name }}" width="300">{% endif %}
+  {% include "core/_navbar.html" with variant="dark" %}
 
-    {% if product.purity_percentage %}
-        <p>Purity Level: {{ product.purity_percentage }}% Pure</p>
-        {% if product.certification_note %}<p>{{ product.certification_note }}</p>{% endif %}
-    {% endif %}
+  <div class="detail-layout">
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="detail-sidebar">
+      <a class="back-link" href="{% url 'catalogue:product_list' %}">
+        <img src="{% static 'img/icon-back.svg' %}" alt="" width="18" height="18">
+        Back to Catalog
+      </a>
+    </aside>
 
-    <p>SKU: {{ product.sku }}</p>
-    <p>
-        Category:
-        <a href="{% url 'catalogue:product_list' %}?category={{ product.subcategory.category.slug }}">{{ product.subcategory.category.name }}</a>
-        /
-        <a href="{% url 'catalogue:product_list' %}?subcategory={{ product.subcategory.slug }}">{{ product.subcategory.name }}</a>
-    </p>
-    <p>Formulation: {{ product.get_formulation_display }}</p>
-    {% if product.is_bio_rational %}<p>Bio-Rational</p>{% endif %}
-    <p>Price: {{ product.price }} / {{ product.get_unit_display }}</p>
-    <p>{% if product.in_stock %}In stock ({{ product.stock_quantity }}){% else %}Out of stock{% endif %}</p>
+    <div class="detail-main">
+      <!-- ============ PRODUCT HERO ============ -->
+      <section class="detail-hero">
+        <div class="detail-hero__inner">
+          <div class="detail-hero__info">
+            <h1 class="detail-hero__title">{{ product.name }}{% if product.subtitle %}<br><span class="accent">{{ product.subtitle }}</span>{% endif %}</h1>
+            <p class="detail-hero__text">{{ product.description }}</p>
+            <a class="btn-sq btn-sq--r8" href="#regulatory">View information</a>
+          </div>
+          <div class="detail-hero__media">
+            <div class="detail-hero__frame">
+              <img src="{{ product|product_detail_image }}" alt="{{ product.name }}">
+            </div>
+            {% if product.purity_percentage %}
+              <div class="purity-card">
+                <p class="purity-card__label">Purity Level</p>
+                <p class="purity-card__value">{{ product.purity_percentage }}% Pure</p>
+                {% if product.certification_note %}<p class="purity-card__note">{{ product.certification_note }}</p>{% endif %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </section>
 
-    <div>{{ product.description|linebreaks }}</div>
+      <!-- ============ REGULATORY INFO ============ -->
+      <section class="regulatory" id="regulatory">
+        <div class="regulatory__inner">
+          <h2 class="regulatory__heading">Regulatory Information</h2>
 
-    {% if product.gallery_images.all %}
-        <section>
-            <h3>Gallery</h3>
-            {% for image in product.gallery_images.all %}
-                <img src="{{ image.image.url }}" alt="{{ image.alt_text|default:product.name }}" width="150">
-            {% endfor %}
-        </section>
-    {% endif %}
+          <nav class="tabs">
+            <button type="button" class="tab tab--active" data-tab-target="tab-ingredients">Active Ingredients</button>
+            <button type="button" class="tab" data-tab-target="tab-registration">Registration No</button>
+            <button type="button" class="tab" data-tab-target="tab-dosage">Dosage/Usage</button>
+            <button type="button" class="tab" data-tab-target="tab-sds">SDS Downloads</button>
+          </nav>
 
-    <section>
-        <h3>Regulatory Information</h3>
+          <div class="regulatory__cols" id="tab-ingredients" data-tab-panel>
+            <div class="regulatory__composition">
+              <h3 class="regulatory__subheading">Chemical Composition</h3>
+              {% if product.description %}<p class="regulatory__text">{{ product.description|truncatewords:30 }}</p>{% endif %}
+              {% if product.chemical_components.all %}
+                <dl class="spec-card">
+                  {% for component in product.chemical_components.all %}
+                    <div class="spec-row">
+                      <dt>{{ component.name }}</dt>
+                      <dd>{{ component.amount }}</dd>
+                    </div>
+                  {% endfor %}
+                </dl>
+              {% else %}
+                <p class="regulatory__text">No active ingredient data available for this product.</p>
+              {% endif %}
+            </div>
+            <div class="regulatory__img">
+              {% if product.gallery_images.all %}
+                <img src="{{ product.gallery_images.first.image.url }}" alt="{{ product.gallery_images.first.alt_text|default:product.name }}">
+              {% else %}
+                <img src="{% static 'img/detail-crystal.jpg' %}" alt="{{ product.name }} chemical composition">
+              {% endif %}
+            </div>
+          </div>
 
-        {% if product.chemical_components.all %}
-            <h4>Chemical Composition</h4>
-            <table>
-                {% for component in product.chemical_components.all %}
-                    <tr>
-                        <td>{{ component.name }}</td>
-                        <td>{{ component.amount }}</td>
-                    </tr>
-                {% endfor %}
-            </table>
-        {% endif %}
+          <div class="regulatory__cols" id="tab-registration" data-tab-panel hidden>
+            <div class="regulatory__composition">
+              <h3 class="regulatory__subheading">Registration Number</h3>
+              <p class="regulatory__text">{{ product.registration_number|default:"No registration number on file." }}</p>
+            </div>
+          </div>
 
-        {% if product.registration_number %}<p>Registration No: {{ product.registration_number }}</p>{% endif %}
+          <div class="regulatory__cols" id="tab-dosage" data-tab-panel hidden>
+            <div class="regulatory__composition">
+              <h3 class="regulatory__subheading">Dosage / Usage</h3>
+              {% if product.dosage_usage %}
+                <div class="regulatory__text">{{ product.dosage_usage|linebreaks }}</div>
+              {% else %}
+                <p class="regulatory__text">No dosage or usage instructions provided.</p>
+              {% endif %}
+            </div>
+          </div>
 
-        {% if product.dosage_usage %}
-            <h4>Dosage / Usage</h4>
-            <div>{{ product.dosage_usage|linebreaks }}</div>
-        {% endif %}
+          <div class="regulatory__cols" id="tab-sds" data-tab-panel hidden>
+            <div class="regulatory__composition">
+              <h3 class="regulatory__subheading">Safety Data Sheet</h3>
+              {% if product.sds_file %}
+                <a class="btn-sq btn-sq--r8" href="{{ product.sds_file.url }}">Download SDS</a>
+              {% else %}
+                <p class="regulatory__text">No SDS document has been uploaded for this product yet.</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
 
-        {% if product.sds_file %}
-            <p><a href="{{ product.sds_file.url }}">Download SDS</a></p>
-        {% endif %}
-    </section>
-{% endblock %}
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__band">
+      <h2 class="footer__slogan">Start Growing<br>Smarter Today</h2>
+      <a class="contact-pill" href="{% url 'contact:contact_page' %}">
+        <span class="contact-pill__label">Contact us today</span>
+        <span class="contact-pill__circle">
+          <span class="contact-pill__circle-inner">
+            <img src="{% static 'img/icon-arrow.svg' %}" alt="" width="16" height="14">
+          </span>
+        </span>
+      </a>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="footer__brand">
+        <img class="footer__logo" src="{% static 'img/footer-logo.svg' %}" alt="" width="86" height="71">
+        <img class="footer__wordmark" src="{% static 'img/footer-wordmark.svg' %}" alt="NexChemical" width="219" height="24">
+        <p class="footer__tagline">
+          <img src="{% static 'img/line-left.svg' %}" alt="" width="17" height="6">
+          <span>Chemistry</span>
+          <img src="{% static 'img/dot.svg' %}" alt="" width="6" height="6">
+          <span>Innovation</span>
+          <img src="{% static 'img/dot.svg' %}" alt="" width="6" height="6">
+          <span>Solutions</span>
+          <img src="{% static 'img/line-right.svg' %}" alt="" width="17" height="6">
+        </p>
+      </div>
+
+      <ul class="footer__socials">
+        <li>
+          <a class="footer__social" href="{{ company_info.facebook_url|default:'#' }}" aria-label="Facebook">
+            <img src="{% static 'img/icon-facebook.svg' %}" alt="" width="31" height="31">
+          </a>
+        </li>
+        <li>
+          <a class="footer__social" href="{{ company_info.instagram_url|default:'#' }}" aria-label="Instagram">
+            <img src="{% static 'img/icon-instagram.svg' %}" alt="" width="27" height="27">
+          </a>
+        </li>
+        <li>
+          <a class="footer__social" href="{{ company_info.linkedin_url|default:'#' }}" aria-label="LinkedIn">
+            <img src="{% static 'img/icon-linkedin.svg' %}" alt="" width="31" height="31">
+          </a>
+        </li>
+      </ul>
+
+      <hr class="footer__divider">
+      <p class="footer__copyright">Copyright ©Default | Designed by Desinftec - 2026</p>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/navbar.js' %}"></script>
+  <script src="{% static 'js/product-tabs.js' %}"></script>
+</body>
+</html>

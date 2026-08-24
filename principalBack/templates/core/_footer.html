@@ -1,0 +1,47 @@
+<section class="cta-banner">
+    {% if company_info.hero_image %}
+        <img src="{{ company_info.hero_image.url }}" alt="" class="cta-banner__bg">
+    {% endif %}
+    <div class="container cta-banner__content">
+        <h2>Start Growing Smarter Today</h2>
+        <div class="cta-banner__actions">
+            <a href="{% url 'contact:contact_page' %}" class="btn btn-white">Contact us today</a>
+            <a href="{% url 'contact:contact_page' %}" class="btn-arrow" aria-label="Contact us today">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="site-footer__inner">
+        <div class="footer-brand">
+            <div class="footer-brand__logo"><span>N</span> NexChemical</div>
+            <div class="footer-brand__tagline">Chemistry &bull; Innovation &bull; Solutions</div>
+        </div>
+
+        {% if company_info.facebook_url or company_info.instagram_url or company_info.linkedin_url %}
+            <div class="footer-social">
+                {% if company_info.facebook_url %}
+                    <a href="{{ company_info.facebook_url }}" aria-label="Facebook" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.25-1.5 1.55-1.5H16.7V3.7C16.4 3.65 15.4 3.6 14.25 3.6c-2.4 0-4.05 1.45-4.05 4.15v2.15H7.5V13h2.7v8h3.3z"/></svg>
+                    </a>
+                {% endif %}
+                {% if company_info.instagram_url %}
+                    <a href="{{ company_info.instagram_url }}" aria-label="Instagram" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="3.7"/><circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none"/></svg>
+                    </a>
+                {% endif %}
+                {% if company_info.linkedin_url %}
+                    <a href="{{ company_info.linkedin_url }}" aria-label="LinkedIn" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM3.5 9.5h3v11h-3v-11zM9.5 9.5h2.87v1.5h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.6v6.46h-3v-5.73c0-1.37-.02-3.13-1.9-3.13-1.9 0-2.2 1.49-2.2 3.03v5.83h-3v-11z"/></svg>
+                    </a>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        <div class="footer-divider"></div>
+
+        <p class="footer-copy">Copyright &copy; NexChemical | Designed for a sustainable future &mdash; {% now "Y" %}</p>
+    </div>
+</footer>

@@ -1,8 +1,11 @@
+from django.core.paginator import Paginator
 from django.http import Http404
 from django.shortcuts import render
 
 from . import services
 from .models import Product
+
+PRODUCTS_PER_PAGE = 12
 
 
 def product_list(request):
@@ -16,8 +19,15 @@ def product_list(request):
     categories = services.list_categories()
     subcategories = services.list_subcategories(category_slug=category_slug)
 
+    paginator = Paginator(products, PRODUCTS_PER_PAGE)
+    page_obj = paginator.get_page(request.GET.get("page"))
+
     context = {
-        "products": products,
+        "products": page_obj,
+        "page_obj": page_obj,
+        "elided_page_range": paginator.get_elided_page_range(
+            page_obj.number, on_each_side=1, on_ends=1
+        ),
         "categories": categories,
         "subcategories": subcategories,
         "active_category": category_slug,
