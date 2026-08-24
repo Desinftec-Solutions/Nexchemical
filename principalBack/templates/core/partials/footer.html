@@ -1,0 +1,52 @@
+{% load static %}
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer__band">
+    <h2 class="footer__slogan">Start Growing<br>Smarter Today</h2>
+    <a class="contact-pill" href="{% url 'contact:contact_page' %}">
+      <span class="contact-pill__label">Contact us today</span>
+      <span class="contact-pill__circle">
+        <span class="contact-pill__circle-inner">
+          <img src="{% static 'img/icon-arrow.svg' %}" alt="" width="16" height="14">
+        </span>
+      </span>
+    </a>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="footer__brand">
+      <img class="footer__logo" src="{% static 'img/footer-logo.svg' %}" alt="" width="86" height="71">
+      <img class="footer__wordmark" src="{% static 'img/footer-wordmark.svg' %}" alt="NexChemical" width="219" height="24">
+      <p class="footer__tagline">
+        <img src="{% static 'img/line-left.svg' %}" alt="" width="17" height="6">
+        <span>Chemistry</span>
+        <img src="{% static 'img/dot.svg' %}" alt="" width="6" height="6">
+        <span>Innovation</span>
+        <img src="{% static 'img/dot.svg' %}" alt="" width="6" height="6">
+        <span>Solutions</span>
+        <img src="{% static 'img/line-right.svg' %}" alt="" width="17" height="6">
+      </p>
+    </div>
+
+    <ul class="footer__socials">
+      <li>
+        <a class="footer__social" href="{{ company_info.facebook_url|default:'#' }}" aria-label="Facebook">
+          <img src="{% static 'img/icon-facebook.svg' %}" alt="" width="31" height="31">
+        </a>
+      </li>
+      <li>
+        <a class="footer__social" href="{{ company_info.instagram_url|default:'#' }}" aria-label="Instagram">
+          <img src="{% static 'img/icon-instagram.svg' %}" alt="" width="27" height="27">
+        </a>
+      </li>
+      <li>
+        <a class="footer__social" href="{{ company_info.linkedin_url|default:'#' }}" aria-label="LinkedIn">
+          <img src="{% static 'img/icon-linkedin.svg' %}" alt="" width="31" height="31">
+        </a>
+      </li>
+    </ul>
+
+    <hr class="footer__divider">
+    <p class="footer__copyright">Copyright ©Default | Designed by Desinftec - 2026</p>
+  </div>
+</footer>
