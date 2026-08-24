@@ -5,3 +5,7 @@ db.sqlite3
 media/
 staticfiles/
 .env
+
+structure.txt
+*.patch
+.venv/

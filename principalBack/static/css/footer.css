@@ -1,0 +1,143 @@
+/* ============================================================
+   Shared site footer (core/partials/footer.html)
+   Self-contained: pages that already load style.css (home, catalogue,
+   product detail, contact) get these same rules from there, so this
+   file only needs to be linked on pages using the older base.css
+   layout (About Us), without pulling in style.css's global resets.
+   ============================================================ */
+
+.footer, .footer * { box-sizing: border-box; }
+.footer img { display: block; }
+.footer h2, .footer p, .footer ul { margin: 0; padding: 0; }
+.footer ul { list-style: none; }
+.footer a { text-decoration: none; color: inherit; }
+
+.footer__band {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  min-height: 470px;
+  padding: 170px max(54px, calc((100% - 1296px) / 2)) 165px;
+  background: url("../img/footer-bg.png") center 62% / cover no-repeat;
+}
+
+.footer__slogan {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 55px;
+  color: #222;
+}
+
+.contact-pill {
+  display: flex;
+  align-items: center;
+}
+
+.contact-pill__label {
+  padding: 13px 24px;
+  background: #fff;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #0f0f0f;
+  white-space: nowrap;
+}
+
+.contact-pill__circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.contact-pill__circle-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 43px;
+  height: 43px;
+  background: #000;
+  border-radius: 50%;
+  transition: transform .2s ease;
+}
+
+.contact-pill:hover .contact-pill__circle-inner { transform: scale(1.08); }
+
+.footer__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 19px;
+  padding: 20px 0 30px;
+  background: #161b20;
+}
+
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.footer__tagline {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 4px;
+  font-family: "Poppins", sans-serif;
+  font-size: 6px;
+  letter-spacing: 1.68px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.footer__socials {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer__social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 52px;
+  background: #fff;
+  border-radius: 25.5px;
+  transition: transform .15s ease;
+}
+.footer__social:hover { transform: translateY(-2px); }
+
+.footer__divider {
+  width: 100%;
+  border: 0;
+  border-top: 1px solid #666;
+  margin: 0;
+}
+
+.footer__copyright {
+  font-size: 16px;
+  line-height: 24px;
+  color: #fff;
+  padding-top: 5px;
+}
+
+@media (max-width: 768px) {
+  .footer__band {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 28px;
+    min-height: 380px;
+    padding: 60px 24px;
+  }
+  .footer__slogan { font-size: 38px; line-height: 46px; }
+}
