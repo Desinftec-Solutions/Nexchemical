@@ -1,0 +1,91 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Service | NexChemical{% endblock %}
+
+{% block content %}
+    <section class="svc-hero">
+        <div class="svc-hero__grid">
+            <div>
+                <h1>Engineering the Future of Agriculture &amp; Science</h1>
+                <p class="section-lead">Comprehensive solutions leveraging advanced genomics, artificial intelligence, and sustainable biotechnology to optimize yields, ensure compliance, and drive innovation in modern farming and laboratory research.</p>
+            </div>
+            <div class="svc-hero__media">
+                <img src="{% static 'img/service/hero-lab.png' %}" alt="Laboratory research">
+            </div>
+        </div>
+    </section>
+
+    <section class="svc-feature">
+        <div class="svc-feature__media" style="flex: 1;">
+            <img src="{% static 'img/service/genomic-research.png' %}" alt="Genomic research">
+        </div>
+        <div class="svc-feature__body" style="flex: 1;">
+            <h2>Genomic Research</h2>
+            <p>Our genomic research division provides deep-dive molecular analysis to develop resilient crop varieties and optimize soil health. We translate complex genetic data into actionable agricultural strategies.</p>
+            <div class="svc-steps">
+                <div class="svc-step">
+                    <div class="svc-step__num">01</div>
+                    <div>
+                        <h4>Sample Extraction</h4>
+                        <p>Secure, sterile collection and isolation protocols ensuring sample integrity.</p>
+                    </div>
+                </div>
+                <div class="svc-step">
+                    <div class="svc-step__num">02</div>
+                    <div>
+                        <h4>High-Throughput Analysis</h4>
+                        <p>Next-generation sequencing delivering rapid, comprehensive genetic profiles.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="svc-bento">
+        <div class="svc-bento__intro">
+            <h2>AI-Driven Farming Solutions</h2>
+            <p class="section-lead center">Harnessing machine learning algorithms and satellite imagery to predict crop yields, monitor soil moisture, and automate resource distribution.</p>
+        </div>
+        <div class="bento-grid">
+            <div class="bento-image">
+                <img src="{% static 'img/service/ai-farming-large.png' %}" alt="AI-driven farming aerial view">
+            </div>
+            <div class="bento-stat">
+                <div class="bento-stat__icon"><img src="{% static 'img/service/icon-stat-chart.svg' %}" alt=""></div>
+                <strong>30%</strong>
+                <h4>Resource Reduction</h4>
+                <p>Average decrease in water and fertilizer usage through automated, targeted application systems.</p>
+            </div>
+            <div class="bento-card">
+                <img src="{% static 'img/service/icon-satellite.svg' %}" alt="">
+                <h4>Satellite Integration</h4>
+                <p>Real-time hyperspectral imaging for early disease detection across thousands of hectares.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="svc-feature">
+        <div class="svc-feature__body" style="flex: 1;">
+            <h2>Advanced Bio Fertilizers</h2>
+            <p>Formulated using proprietary microbial consortia, our bio-fertilizers regenerate soil ecosystems while providing sustained nutrient release.</p>
+            <div class="svc-steps" style="border-top: 1px solid rgba(197,197,216,0.3); padding-top: 16px;">
+                <div class="svc-step" style="align-items: center;">
+                    <img src="{% static 'img/site/icon-checkmark.svg' %}" alt="" style="width:20px;height:20px;flex-shrink:0;">
+                    <p style="margin:0;color:var(--color-text);">Zero synthetic runoff into local waterways</p>
+                </div>
+                <div class="svc-step" style="align-items: center;">
+                    <img src="{% static 'img/site/icon-checkmark.svg' %}" alt="" style="width:20px;height:20px;flex-shrink:0;">
+                    <p style="margin:0;color:var(--color-text);">Restores natural nitrogen-fixing bacteria</p>
+                </div>
+                <div class="svc-step" style="align-items: center;">
+                    <img src="{% static 'img/site/icon-checkmark.svg' %}" alt="" style="width:20px;height:20px;flex-shrink:0;">
+                    <p style="margin:0;color:var(--color-text);">Compatible with existing irrigation systems</p>
+                </div>
+            </div>
+        </div>
+        <div class="svc-feature__media" style="flex: 1;">
+            <img src="{% static 'img/service/bio-fertilizer.png' %}" alt="Bio fertilizer">
+        </div>
+    </section>
+{% endblock %}

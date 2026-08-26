@@ -86,4 +86,4 @@ class ProductAdmin(admin.ModelAdmin):
     )
 
 
-admin.site.site_header = "Principal Chemistry Admin"
+admin.site.site_header = "NexChemical Admin"

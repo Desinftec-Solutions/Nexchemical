@@ -7,7 +7,7 @@
 set -euo pipefail
 
 main() {
-    cd "$(dirname "$0")/../principalBack"
+    cd "$(dirname "$0")/../nexchemicalBack"
 
     ./venv/bin/pip install -q -r requirements.txt
     ./venv/bin/python manage.py migrate --noinput

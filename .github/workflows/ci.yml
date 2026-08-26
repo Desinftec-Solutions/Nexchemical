@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: principalBack
+        working-directory: nexchemicalBack
     steps:
       - uses: actions/checkout@v4
 
@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: "3.12"   # matches the server
           cache: pip
-          cache-dependency-path: principalBack/requirements.txt
+          cache-dependency-path: nexchemicalBack/requirements.txt
 
       - name: Install dependencies
         run: pip install -r requirements.txt
