@@ -1,0 +1,31 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{{ article.title }} — NexChemical{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+  <section class="news-detail">
+    <div class="news-detail__inner">
+      <a class="back-link" href="{% url 'news:news_list' %}">
+        <img src="{% static 'img/icon-back.svg' %}" alt="" width="18" height="18">
+        {% trans "Back to News" %}
+      </a>
+
+      <h1 class="news-detail__title">{{ article.title }}</h1>
+      <p class="news-detail__date">{{ article.published_at|date:"d M Y" }}</p>
+
+      <div class="news-detail__media">
+        <img src="{{ article.cover_image.url }}" alt="{{ article.title }}">
+      </div>
+
+      <div class="news-detail__body">
+        {{ article.body|linebreaks }}
+      </div>
+    </div>
+  </section>
+{% endblock %}

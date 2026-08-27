@@ -1,0 +1,489 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: NexChemical 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Home"
+msgstr "Главная"
+
+msgid "Catalog"
+msgstr "Каталог"
+
+msgid "News"
+msgstr "Новости"
+
+msgid "Service"
+msgstr "Услуги"
+
+msgid "About Us"
+msgstr "О нас"
+
+msgid "Search catalog..."
+msgstr "Поиск по каталогу..."
+
+msgid "Toggle search"
+msgstr "Переключить поиск"
+
+msgid "Change language"
+msgstr "Сменить язык"
+
+msgid "Contact Us"
+msgstr "Связаться с нами"
+
+msgid "Open menu"
+msgstr "Открыть меню"
+
+msgid "Close menu"
+msgstr "Закрыть меню"
+
+msgid "Mobile navigation"
+msgstr "Мобильная навигация"
+
+msgid "Start Growing<br>Smarter Today"
+msgstr "Начните расти<br>умнее уже сегодня"
+
+msgid "Contact us today"
+msgstr "Свяжитесь с нами сегодня"
+
+msgid "Chemistry"
+msgstr "Химия"
+
+msgid "Innovation"
+msgstr "Инновации"
+
+msgid "Solutions"
+msgstr "Решения"
+
+msgid "Copyright © %(year)s NexChemical | Designed by Desinftec"
+msgstr "Авторские права © %(year)s NexChemical | Дизайн: Desinftec"
+
+msgid "Chat with us"
+msgstr "Напишите нам"
+
+msgid "Close"
+msgstr "Закрыть"
+
+msgid "Chat on WhatsApp"
+msgstr "Написать в WhatsApp"
+
+msgid "NexChemical — Pioneering Chemistry for a Sustainable Future"
+msgstr "NexChemical — Передовая химия для устойчивого будущего"
+
+msgid "Pioneering Chemistry for a Sustainable Future"
+msgstr "Передовая химия для устойчивого будущего"
+
+msgid "Bridging the gap between laboratory innovation and agricultural excellence with regulatory-compliant chemical solutions."
+msgstr "Мы соединяем лабораторные инновации и передовое сельское хозяйство с помощью химических решений, соответствующих нормативным требованиям."
+
+msgid "View Product Catalog"
+msgstr "Смотреть каталог продукции"
+
+msgid "Our Sustainability Commitment"
+msgstr "Наши обязательства по устойчивому развитию"
+
+msgid "Who we are"
+msgstr "Кто мы"
+
+msgid "Rooted in innovation, growing smarter and more sustainable <span class=\"muted\">modern agriculture</span>"
+msgstr "Опираясь на инновации, выращиваем более разумное и устойчивое <span class=\"muted\">современное сельское хозяйство</span>"
+
+msgid "Agricultural research projects"
+msgstr "Сельскохозяйственных исследовательских проектов"
+
+msgid "Smart Farming Hectares"
+msgstr "Гектаров умного земледелия"
+
+msgid "Our services"
+msgstr "Наши услуги"
+
+msgid "Driving Agri <span class=\"muted\">Tech</span><br>Innovation Forward"
+msgstr "Развиваем <span class=\"muted\">агротех</span><br>инновации вперёд"
+
+msgid "Genomic Research"
+msgstr "Геномные исследования"
+
+msgid "Enhancing crop DNA to develop resilient, high-yield varieties suited for varied conditions."
+msgstr "Совершенствуем ДНК культур для создания устойчивых высокоурожайных сортов, подходящих для разных условий."
+
+msgid "AI Farming"
+msgstr "ИИ в земледелии"
+
+msgid "Using AI insights to monitor crops, resources and improve overall farming efficiency."
+msgstr "Используем аналитику ИИ для мониторинга культур и ресурсов, повышая общую эффективность земледелия."
+
+msgid "Bio Fertilizers"
+msgstr "Биоудобрения"
+
+msgid "Natural soil enhancers that boost fertility and reduce chemical use in farming."
+msgstr "Природные средства, повышающие плодородие почвы и снижающие использование химикатов в земледелии."
+
+msgid "Our products"
+msgstr "Наша продукция"
+
+msgid "Smart <span class=\"muted\">Solutions</span><br>Modern Farming"
+msgstr "Умные <span class=\"muted\">решения</span><br>для современного земледелия"
+
+msgid "Bio-Rational"
+msgstr "Биорациональный"
+
+msgid "Add to favorites"
+msgstr "Добавить в избранное"
+
+msgid "Unlock industrial potential in our catalog"
+msgstr "Раскройте промышленный потенциал в нашем каталоге"
+
+msgid "Discover a comprehensive range of chemical products, backed by technical expertise from our regional specialists."
+msgstr "Откройте для себя широкий ассортимент химической продукции, подкреплённый технической экспертизой наших региональных специалистов."
+
+msgid "Explore catalog"
+msgstr "Смотреть каталог"
+
+msgid "Laboratory research team at work"
+msgstr "Лабораторная исследовательская команда за работой"
+
+msgid "Scientist operating a microscope"
+msgstr "Учёный, работающий с микроскопом"
+
+msgid "Researcher working with laboratory glassware"
+msgstr "Исследователь, работающий с лабораторной посудой"
+
+msgid "About Us | NexChemical"
+msgstr "О нас | NexChemical"
+
+msgid "About NexChemical"
+msgstr "О компании NexChemical"
+
+msgid "Engineering the Future of Agriculture &amp; Science"
+msgstr "Создаём будущее сельского хозяйства и науки"
+
+msgid "NexChemical supplies regulatory-certified chemistry products to industry and research customers, combining advanced genomics, artificial intelligence, and sustainable manufacturing to help growers do more with less."
+msgstr "NexChemical поставляет сертифицированную по нормативным требованиям химическую продукцию промышленным и исследовательским заказчикам, сочетая передовую геномику, искусственный интеллект и устойчивое производство, чтобы аграрии могли добиваться большего меньшими средствами."
+
+msgid "Illustration of a DNA helix and growing crop over a data network, representing NexChemical biotechnology and agricultural innovation"
+msgstr "Иллюстрация спирали ДНК и растущей культуры на фоне сети данных, символизирующая биотехнологии и сельскохозяйственные инновации NexChemical"
+
+msgid "Our genomic research division develops deep molecular analysis to unlock crop variables and optimize yield for local soil and climate conditions."
+msgstr "Наш отдел геномных исследований проводит глубокий молекулярный анализ, раскрывая переменные культур и оптимизируя урожайность под местные почвенно-климатические условия."
+
+msgid "Sample Extraction"
+msgstr "Отбор образцов"
+
+msgid "Secure, sterile collection and isolation of proprietary genomic material."
+msgstr "Безопасный, стерильный сбор и выделение фирменного генетического материала."
+
+msgid "High-Throughput Analysis"
+msgstr "Высокопроизводительный анализ"
+
+msgid "Next-generation sequencing pipelines deliver actionable genomic insight at scale."
+msgstr "Технологии секвенирования нового поколения дают практически применимые геномные данные в промышленном масштабе."
+
+msgid "AI-Driven Farming Solutions"
+msgstr "Решения для земледелия на основе ИИ"
+
+msgid "Harnessing machine learning, satellite imagery, and predictive crop yields to monitor soil moisture and automate resource distribution."
+msgstr "Используем машинное обучение, спутниковые снимки и прогнозирование урожайности для мониторинга влажности почвы и автоматизации распределения ресурсов."
+
+msgid "Average Resource Reduction"
+msgstr "Среднее сокращение ресурсов"
+
+msgid "Satellite Integration"
+msgstr "Спутниковая интеграция"
+
+msgid "Real-time hyperspectral imaging for early disease detection, hundreds of hectares at a time."
+msgstr "Гиперспектральная съёмка в реальном времени для раннего выявления заболеваний — сразу на сотнях гектаров."
+
+msgid "Advanced Bio Fertilizers"
+msgstr "Передовые биоудобрения"
+
+msgid "Formulated using proprietary microbial consortia, our bio-fertilizers regenerate soil ecosystems while providing sustained nutrient release."
+msgstr "Наши биоудобрения, созданные на основе фирменных микробных консорциумов, восстанавливают почвенные экосистемы и обеспечивают постепенное высвобождение питательных веществ."
+
+msgid "Zero synthetic runoff into local waterways."
+msgstr "Нулевой сток синтетических веществ в местные водоёмы."
+
+msgid "Reduces natural nitrogen fixing requirements."
+msgstr "Снижает потребность в естественной фиксации азота."
+
+msgid "Compatible with existing irrigation systems."
+msgstr "Совместимо с существующими системами орошения."
+
+msgid "Browse Catalog"
+msgstr "Просмотреть каталог"
+
+msgid "Certifications"
+msgstr "Сертификаты"
+
+msgid "Certified &amp; Compliant"
+msgstr "Сертифицировано и соответствует нормам"
+
+msgid "Satellite Farmland Mapping"
+msgstr "Спутниковое картографирование полей"
+
+msgid "Bio Fertilizer"
+msgstr "Биоудобрение"
+
+msgid "Service | NexChemical"
+msgstr "Услуги | NexChemical"
+
+msgid "Comprehensive solutions leveraging advanced genomics, artificial intelligence, and sustainable biotechnology to optimize yields, ensure compliance, and drive innovation in modern farming and laboratory research."
+msgstr "Комплексные решения на основе передовой геномики, искусственного интеллекта и устойчивой биотехнологии для оптимизации урожайности, обеспечения соответствия нормам и продвижения инноваций в современном земледелии и лабораторных исследованиях."
+
+msgid "Laboratory research"
+msgstr "Лабораторные исследования"
+
+msgid "Genomic research"
+msgstr "Геномные исследования"
+
+msgid "Our genomic research division provides deep-dive molecular analysis to develop resilient crop varieties and optimize soil health. We translate complex genetic data into actionable agricultural strategies."
+msgstr "Наш отдел геномных исследований проводит углублённый молекулярный анализ для создания устойчивых сортов культур и улучшения здоровья почвы. Мы преобразуем сложные генетические данные в практические агрономические стратегии."
+
+msgid "Secure, sterile collection and isolation protocols ensuring sample integrity."
+msgstr "Безопасные, стерильные протоколы сбора и выделения, обеспечивающие целостность образцов."
+
+msgid "Next-generation sequencing delivering rapid, comprehensive genetic profiles."
+msgstr "Секвенирование нового поколения, обеспечивающее быстрые и полные генетические профили."
+
+msgid "Harnessing machine learning algorithms and satellite imagery to predict crop yields, monitor soil moisture, and automate resource distribution."
+msgstr "Используем алгоритмы машинного обучения и спутниковые снимки для прогнозирования урожайности, мониторинга влажности почвы и автоматизации распределения ресурсов."
+
+msgid "AI-driven farming aerial view"
+msgstr "Вид с воздуха на земледелие с использованием ИИ"
+
+msgid "Resource Reduction"
+msgstr "Сокращение ресурсов"
+
+msgid "Average decrease in water and fertilizer usage through automated, targeted application systems."
+msgstr "Среднее снижение расхода воды и удобрений благодаря автоматизированным системам точечного внесения."
+
+msgid "Real-time hyperspectral imaging for early disease detection across thousands of hectares."
+msgstr "Гиперспектральная съёмка в реальном времени для раннего выявления заболеваний на тысячах гектаров."
+
+msgid "Zero synthetic runoff into local waterways"
+msgstr "Нулевой сток синтетических веществ в местные водоёмы"
+
+msgid "Restores natural nitrogen-fixing bacteria"
+msgstr "Восстанавливает природные азотфиксирующие бактерии"
+
+msgid "Compatible with existing irrigation systems"
+msgstr "Совместимо с существующими системами орошения"
+
+msgid "Bio fertilizer"
+msgstr "Биоудобрение"
+
+msgid "Product Catalog — NexChemical"
+msgstr "Каталог продукции — NexChemical"
+
+msgid "Advanced Crop Protection"
+msgstr "Передовая защита растений"
+
+msgid "NEXCHEMICAL delivers regulatory-certified chemical solutions engineered for sustainable agriculture and industrial precision. Browse our validated SDS catalog."
+msgstr "NEXCHEMICAL предлагает сертифицированные по нормативным требованиям химические решения, разработанные для устойчивого сельского хозяйства и промышленной точности. Ознакомьтесь с нашим проверенным каталогом паспортов безопасности."
+
+msgid "Field researcher inspecting crops"
+msgstr "Полевой исследователь, осматривающий посевы"
+
+msgid "Download Full Index"
+msgstr "Скачать полный список"
+
+msgid "Filter and sorts"
+msgstr "Фильтры и сортировка"
+
+msgid "Category"
+msgstr "Категория"
+
+msgid "All"
+msgstr "Все"
+
+msgid "Subcategory"
+msgstr "Подкатегория"
+
+msgid "Sort by"
+msgstr "Сортировать по"
+
+msgid "Clear all filters"
+msgstr "Сбросить все фильтры"
+
+msgid "View Details"
+msgstr "Подробнее"
+
+msgid "No products found. Try adjusting your search or filters."
+msgstr "Товары не найдены. Попробуйте изменить параметры поиска или фильтры."
+
+msgid "Previous page"
+msgstr "Предыдущая страница"
+
+msgid "Next page"
+msgstr "Следующая страница"
+
+msgid "Catalog pages"
+msgstr "Страницы каталога"
+
+msgid "Back to Catalog"
+msgstr "Назад в каталог"
+
+msgid "View information"
+msgstr "Смотреть информацию"
+
+msgid "Purity Level"
+msgstr "Уровень чистоты"
+
+msgid "Pure"
+msgstr "чистоты"
+
+msgid "Regulatory Information"
+msgstr "Нормативная информация"
+
+msgid "Active Ingredients"
+msgstr "Действующие вещества"
+
+msgid "Registration No"
+msgstr "Рег. номер"
+
+msgid "Dosage/Usage"
+msgstr "Дозировка/Применение"
+
+msgid "SDS Downloads"
+msgstr "Загрузка SDS"
+
+msgid "Chemical Composition"
+msgstr "Химический состав"
+
+msgid "No active ingredient data available for this product."
+msgstr "Данные о действующих веществах для этого товара отсутствуют."
+
+msgid "Registration Number"
+msgstr "Регистрационный номер"
+
+msgid "No registration number on file."
+msgstr "Регистрационный номер не указан."
+
+msgid "Dosage / Usage"
+msgstr "Дозировка / Применение"
+
+msgid "No dosage or usage instructions provided."
+msgstr "Инструкции по дозировке или применению не указаны."
+
+msgid "Safety Data Sheet"
+msgstr "Паспорт безопасности"
+
+msgid "Download SDS"
+msgstr "Скачать SDS"
+
+msgid "No SDS document has been uploaded for this product yet."
+msgstr "Паспорт безопасности для этого товара пока не загружен."
+
+msgid "Contact — NexChemical"
+msgstr "Контакты — NexChemical"
+
+msgid "Connect with Our Experts"
+msgstr "Свяжитесь с нашими экспертами"
+
+msgid "Our global network of technical specialists and regulatory consultants is ready to support your industrial chemical and agricultural solution needs. Precision-driven guidance, anywhere in the world."
+msgstr "Наша глобальная сеть технических специалистов и консультантов по нормативным вопросам готова поддержать ваши потребности в промышленных химических и сельскохозяйственных решениях. Точное экспертное сопровождение в любой точке мира."
+
+msgid "Start a Consultation"
+msgstr "Начать консультацию"
+
+msgid "Send an Inquiry"
+msgstr "Отправить запрос"
+
+msgid "Our representative will respond within 24 business hours."
+msgstr "Наш представитель ответит в течение 24 рабочих часов."
+
+msgid "Full Name"
+msgstr "Полное имя"
+
+msgid "Company Email"
+msgstr "Корпоративная почта"
+
+msgid "Phone number"
+msgstr "Номер телефона"
+
+msgid "Message"
+msgstr "Сообщение"
+
+msgid "Submit Request"
+msgstr "Отправить заявку"
+
+msgid "Our Regional Presence"
+msgstr "Наше региональное присутствие"
+
+msgid "Strategic hubs positioned to deliver fast, compliant, and localized chemical solutions across the globe."
+msgstr "Стратегические центры, обеспечивающие быструю, соответствующую нормам и локализованную поставку химических решений по всему миру."
+
+msgid "Thanks for reaching out — we will get back to you soon."
+msgstr "Спасибо за обращение — мы скоро свяжемся с вами."
+
+msgid "News — NexChemical"
+msgstr "Новости — NexChemical"
+
+msgid "Newsroom"
+msgstr "Пресс-центр"
+
+msgid "Latest News"
+msgstr "Последние новости"
+
+msgid "Updates, announcements, and insights from NexChemical."
+msgstr "Обновления, анонсы и аналитика от NexChemical."
+
+msgid "Read article"
+msgstr "Читать статью"
+
+msgid "No news articles yet."
+msgstr "Пока нет новостей."
+
+msgid "News pages"
+msgstr "Страницы новостей"
+
+msgid "Back to News"
+msgstr "Назад к новостям"
+
+msgid "Liter"
+msgstr "Литр"
+
+msgid "Milliliter"
+msgstr "Миллилитр"
+
+msgid "Kilogram"
+msgstr "Килограмм"
+
+msgid "Gram"
+msgstr "Грамм"
+
+msgid "Piece"
+msgstr "Штука"
+
+msgid "Suspension Concentrate"
+msgstr "Концентрат суспензии"
+
+msgid "Emulsifiable Concentrate"
+msgstr "Концентрат эмульсии"
+
+msgid "Wettable Powder"
+msgstr "Смачивающийся порошок"
+
+msgid "Granule"
+msgstr "Гранула"
+
+msgid "Soluble Liquid"
+msgstr "Растворимая жидкость"
+
+msgid "Other"
+msgstr "Другое"
+
+msgid "Price: Low to High"
+msgstr "Цена: по возрастанию"
+
+msgid "Price: High to Low"
+msgstr "Цена: по убыванию"
+
+msgid "Newest"
+msgstr "Сначала новые"
+
+msgid "Name: A-Z"
+msgstr "Название: А-Я"

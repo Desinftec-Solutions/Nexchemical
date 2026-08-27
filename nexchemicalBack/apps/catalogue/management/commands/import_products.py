@@ -5,6 +5,7 @@ import urllib.request
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 from django.core.management.base import BaseCommand, CommandError
+from django.utils.text import slugify
 
 from catalogue.models import Category, Product, SubCategory
 
@@ -60,7 +61,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         try:
-            with open(options["json_path"]) as f:
+            with open(options["json_path"], encoding="utf-8") as f:
                 rows = json.load(f)
         except (OSError, json.JSONDecodeError) as exc:
             raise CommandError(f"Could not read {options['json_path']}: {exc}")
@@ -68,7 +69,10 @@ class Command(BaseCommand):
         self._image_cache = {}
         created_count = updated_count = image_count = 0
         for row in rows:
-            name = (row.get("name") or "").strip()
+            name_en = (row.get("name_en") or "").strip()
+            name = (row.get("name") or "").strip() or name_en
+            name_az = (row.get("name_az") or "").strip()
+            name_ru = (row.get("name_ru") or "").strip()
             if not name or row.get("id") is None:
                 self.stderr.write(f"skipped row without id/name: {row!r}")
                 continue
@@ -91,10 +95,18 @@ class Command(BaseCommand):
             if cas:
                 description_parts.append(f"CAS No. {cas}.")
 
+            # Slug is set explicitly (rather than left to Product.save()'s
+            # auto-slug-if-blank) because several source names are similar
+            # enough after slugify() to collide (e.g. same compound at
+            # different concentrations); the id suffix guarantees uniqueness.
             product, created = Product.objects.update_or_create(
                 sku=f"XL-{row['id']:03d}",
                 defaults={
                     "name": name,
+                    "name_en": name_en,
+                    "name_az": name_az,
+                    "name_ru": name_ru,
+                    "slug": f"{slugify(name)}-{row['id']}",
                     "subcategory": subcategory,
                     "subtitle": f"CAS {cas}" if cas else spec,
                     "description": " ".join(description_parts),

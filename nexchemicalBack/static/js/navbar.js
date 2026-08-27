@@ -14,6 +14,29 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // --- language dropdown ---
+  var langDropdown = nav.querySelector('[data-lang-dropdown]');
+  var langToggle = nav.querySelector('[data-lang-toggle]');
+  if (langDropdown && langToggle) {
+    var setLangOpen = function (open) {
+      langDropdown.classList.toggle('is-open', open);
+      langToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+
+    langToggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setLangOpen(!langDropdown.classList.contains('is-open'));
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!langDropdown.contains(e.target)) setLangOpen(false);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setLangOpen(false);
+    });
+  }
+
   // --- full-screen mobile menu ---
   var menuBtn = nav.querySelector('[data-menu-toggle]');
   var menu = document.querySelector('[data-nav-menu]');

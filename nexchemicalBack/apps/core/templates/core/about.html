@@ -1,7 +1,8 @@
 {% extends "core/base.html" %}
 {% load static %}
+{% load i18n %}
 
-{% block title %}About Us | NexChemical{% endblock %}
+{% block title %}{% blocktrans %}About Us | NexChemical{% endblocktrans %}{% endblock %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/about.css' %}">
@@ -11,31 +12,31 @@
 <div class="container">
     <section class="about-hero">
         <div>
-            <span class="eyebrow">About NexChemical</span>
-            <h1>Engineering the Future of Agriculture &amp; Science</h1>
-            <p>NexChemical supplies regulatory-certified chemistry products to industry and research customers, combining advanced genomics, artificial intelligence, and sustainable manufacturing to help growers do more with less.</p>
+            <span class="eyebrow">{% trans "About NexChemical" %}</span>
+            <h1>{% blocktrans %}Engineering the Future of Agriculture &amp; Science{% endblocktrans %}</h1>
+            <p>{% trans "NexChemical supplies regulatory-certified chemistry products to industry and research customers, combining advanced genomics, artificial intelligence, and sustainable manufacturing to help growers do more with less." %}</p>
         </div>
         <div class="about-hero__media">
-            <img src="{% static 'img/about-hero-innovation.svg' %}" alt="Illustration of a DNA helix and growing crop over a data network, representing NexChemical's biotechnology and agricultural innovation">
+            <img src="{% static 'img/about-hero-innovation.svg' %}" alt="{% trans 'Illustration of a DNA helix and growing crop over a data network, representing NexChemical biotechnology and agricultural innovation' %}">
         </div>
     </section>
 
     <section class="about-section">
         <div class="about-section__grid">
             <div class="about-section__media">
-                <div class="img-placeholder">Genomic Research</div>
+                <div class="img-placeholder">{% trans "Genomic Research" %}</div>
             </div>
             <div>
-                <h2>Genomic Research</h2>
-                <p>Our genomic research division develops deep molecular analysis to unlock crop variables and optimize yield for local soil and climate conditions.</p>
+                <h2>{% trans "Genomic Research" %}</h2>
+                <p>{% trans "Our genomic research division develops deep molecular analysis to unlock crop variables and optimize yield for local soil and climate conditions." %}</p>
                 <ul class="about-checklist">
                     <li>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-                        <div><strong>Sample Extraction</strong>Secure, sterile collection and isolation of proprietary genomic material.</div>
+                        <div><strong>{% trans "Sample Extraction" %}</strong>{% trans "Secure, sterile collection and isolation of proprietary genomic material." %}</div>
                     </li>
                     <li>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-                        <div><strong>High-Throughput Analysis</strong>Next-generation sequencing pipelines deliver actionable genomic insight at scale.</div>
+                        <div><strong>{% trans "High-Throughput Analysis" %}</strong>{% trans "Next-generation sequencing pipelines deliver actionable genomic insight at scale." %}</div>
                     </li>
                 </ul>
             </div>
@@ -45,19 +46,19 @@
     <section class="about-section">
         <div class="about-section__grid is-reverse">
             <div class="about-section__media">
-                <div class="img-placeholder">Satellite Farmland Mapping</div>
+                <div class="img-placeholder">{% trans "Satellite Farmland Mapping" %}</div>
             </div>
             <div>
-                <h2>AI-Driven Farming Solutions</h2>
-                <p>Harnessing machine learning, satellite imagery, and predictive crop yields to monitor soil moisture and automate resource distribution.</p>
+                <h2>{% trans "AI-Driven Farming Solutions" %}</h2>
+                <p>{% trans "Harnessing machine learning, satellite imagery, and predictive crop yields to monitor soil moisture and automate resource distribution." %}</p>
                 <div class="stat-panel">
                     <div>
                         <strong>30%</strong>
-                        <span>Average Resource Reduction</span>
+                        <span>{% trans "Average Resource Reduction" %}</span>
                     </div>
                     <div>
-                        <strong style="font-size:20px;">Satellite Integration</strong>
-                        <span>Real-time hyperspectral imaging for early disease detection, hundreds of hectares at a time.</span>
+                        <strong style="font-size:20px;">{% trans "Satellite Integration" %}</strong>
+                        <span>{% trans "Real-time hyperspectral imaging for early disease detection, hundreds of hectares at a time." %}</span>
                     </div>
                 </div>
             </div>
@@ -67,28 +68,53 @@
     <section class="about-section">
         <div class="about-section__grid">
             <div class="about-section__media">
-                <div class="img-placeholder">Bio Fertilizer</div>
+                <div class="img-placeholder">{% trans "Bio Fertilizer" %}</div>
             </div>
             <div>
-                <h2>Advanced Bio Fertilizers</h2>
-                <p>Formulated using proprietary microbial consortia, our bio-fertilizers regenerate soil ecosystems while providing sustained nutrient release.</p>
+                <h2>{% trans "Advanced Bio Fertilizers" %}</h2>
+                <p>{% trans "Formulated using proprietary microbial consortia, our bio-fertilizers regenerate soil ecosystems while providing sustained nutrient release." %}</p>
                 <ul class="about-checklist">
                     <li>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-                        <div>Zero synthetic runoff into local waterways.</div>
+                        <div>{% trans "Zero synthetic runoff into local waterways." %}</div>
                     </li>
                     <li>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-                        <div>Reduces natural nitrogen fixing requirements.</div>
+                        <div>{% trans "Reduces natural nitrogen fixing requirements." %}</div>
                     </li>
                     <li>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-                        <div>Compatible with existing irrigation systems.</div>
+                        <div>{% trans "Compatible with existing irrigation systems." %}</div>
                     </li>
                 </ul>
-                <a href="{% url 'catalogue:product_list' %}" class="btn btn-primary" style="margin-top:16px;">Browse Catalog</a>
+                <a href="{% url 'catalogue:product_list' %}" class="btn btn-primary" style="margin-top:16px;">{% trans "Browse Catalog" %}</a>
             </div>
         </div>
     </section>
+
+    {% if certificates %}
+        <section class="certificates">
+            <span class="eyebrow">{% trans "Certifications" %}</span>
+            <h2>{% blocktrans %}Certified &amp; Compliant{% endblocktrans %}</h2>
+            <div class="certificates__grid">
+                {% for certificate in certificates %}
+                    <div class="certificate-item">
+                        <a class="certificate-card" href="{{ certificate.image.url }}" target="_blank" rel="noopener">
+                            <img src="{{ certificate.image.url }}" alt="{{ certificate.name }}">
+                            <span class="certificate-card__overlay">
+                                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <polyline points="9 21 3 21 3 15"></polyline>
+                                    <line x1="21" y1="3" x2="14" y2="10"></line>
+                                    <line x1="3" y1="21" x2="10" y2="14"></line>
+                                </svg>
+                            </span>
+                        </a>
+                        <p class="certificate-card__name">{{ certificate.name }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
 </div>
 {% endblock %}

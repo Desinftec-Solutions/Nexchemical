@@ -9,7 +9,15 @@ class CompanyInfoAdmin(admin.ModelAdmin):
     fieldsets = (
         (
             "Contact details",
-            {"fields": ("phone_number", "email", "address", "google_map_embed_url")},
+            {
+                "fields": (
+                    "phone_number",
+                    "whatsapp_number",
+                    "email",
+                    "address",
+                    "google_map_embed_url",
+                )
+            },
         ),
         ("Social links", {"fields": ("facebook_url", "instagram_url", "linkedin_url")}),
         ("Homepage hero", {"fields": ("hero_heading", "hero_subheading", "hero_image")}),

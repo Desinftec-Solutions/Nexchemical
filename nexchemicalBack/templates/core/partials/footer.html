@@ -1,10 +1,11 @@
 {% load static %}
+{% load i18n %}
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
   <div class="footer__band">
-    <h2 class="footer__slogan">Start Growing<br>Smarter Today</h2>
+    <h2 class="footer__slogan">{% blocktrans %}Start Growing<br>Smarter Today{% endblocktrans %}</h2>
     <a class="contact-pill" href="{% url 'contact:contact_page' %}">
-      <span class="contact-pill__label">Contact us today</span>
+      <span class="contact-pill__label">{% trans "Contact us today" %}</span>
       <span class="contact-pill__circle">
         <span class="contact-pill__circle-inner">
           <img src="{% static 'img/icon-arrow.svg' %}" alt="" width="16" height="14">
@@ -19,11 +20,11 @@
       <img class="footer__wordmark" src="{% static 'img/footer-wordmark.svg' %}" alt="NexChemical" width="219" height="24">
       <p class="footer__tagline">
         <img src="{% static 'img/line-left.svg' %}" alt="" width="17" height="6">
-        <span>Chemistry</span>
+        <span>{% trans "Chemistry" %}</span>
         <img src="{% static 'img/dot.svg' %}" alt="" width="6" height="6">
-        <span>Innovation</span>
+        <span>{% trans "Innovation" %}</span>
         <img src="{% static 'img/dot.svg' %}" alt="" width="6" height="6">
-        <span>Solutions</span>
+        <span>{% trans "Solutions" %}</span>
         <img src="{% static 'img/line-right.svg' %}" alt="" width="17" height="6">
       </p>
     </div>
@@ -47,6 +48,7 @@
     </ul>
 
     <hr class="footer__divider">
-    <p class="footer__copyright">Copyright ©Default | Designed by Desinftec - 2026</p>
+    {% now "Y" as copyright_year %}
+    <p class="footer__copyright">{% blocktrans with year=copyright_year %}Copyright © {{ year }} NexChemical | Designed by Desinftec{% endblocktrans %}</p>
   </div>
 </footer>

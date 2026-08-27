@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import redirect, render
+from django.utils.translation import gettext as _
 
 from . import services
 from .forms import ContactMessageForm
@@ -10,7 +11,7 @@ def contact_page(request):
         form = ContactMessageForm(request.POST)
         if form.is_valid():
             services.create_contact_message(**form.cleaned_data)
-            messages.success(request, "Thanks for reaching out — we will get back to you soon.")
+            messages.success(request, _("Thanks for reaching out — we will get back to you soon."))
             return redirect("contact:contact_page")
     else:
         form = ContactMessageForm()
