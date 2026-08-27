@@ -9,6 +9,30 @@ set -euo pipefail
 main() {
     cd "$(dirname "$0")/../nexchemicalBack"
 
+    # One-time migration: this app directory was renamed from principalBack/
+    # to nexchemicalBack/ in 0563d28 (2026-08-26). Git replays renames for
+    # tracked files, but venv/, .env, media/, db.sqlite3, and logs/ are
+    # gitignored, so they were left behind under the old directory and broke
+    # the first deploy after the rename. Sweep them over once; every deploy
+    # after that is a no-op here since the items already exist.
+    LEGACY_DIR="$(pwd)/../principalBack"
+    if [ -d "$LEGACY_DIR" ]; then
+        for item in venv .env media db.sqlite3 logs; do
+            if [ ! -e "$item" ] && [ -e "$LEGACY_DIR/$item" ]; then
+                echo "Migrating $item from principalBack/ (one-time folder-rename fixup)"
+                mv "$LEGACY_DIR/$item" "$item"
+            fi
+        done
+    fi
+
+    if [ ! -x ./venv/bin/pip ]; then
+        echo "ERROR: ./venv not found (or has no pip). Create it first:" >&2
+        echo "  python3 -m venv venv && ./venv/bin/pip install -r requirements.txt" >&2
+        exit 1
+    fi
+
+    mkdir -p logs
+
     ./venv/bin/pip install -q -r requirements.txt
     ./venv/bin/python manage.py migrate --noinput
     ./venv/bin/python manage.py collectstatic --noinput >/dev/null
