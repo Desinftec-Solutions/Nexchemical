@@ -6,7 +6,7 @@ from .base import config
 DEBUG = True
 
 ALLOWED_HOSTS = config(
-    "ALLOWED_HOSTS", default="localhost,127.0.0.1", cast=Csv()
+    "ALLOWED_HOSTS", default="localhost,127.0.0.1,169.58.161.115", cast=Csv()
 )
 
 STATIC_URL = 'static/'
