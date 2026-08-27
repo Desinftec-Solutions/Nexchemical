@@ -11,13 +11,14 @@ main() {
 
     # One-time migration: this app directory was renamed from principalBack/
     # to nexchemicalBack/ in 0563d28 (2026-08-26). Git replays renames for
-    # tracked files, but venv/, .env, media/, db.sqlite3, and logs/ are
-    # gitignored, so they were left behind under the old directory and broke
-    # the first deploy after the rename. Sweep them over once; every deploy
-    # after that is a no-op here since the items already exist.
+    # tracked files, but .env, media/, db.sqlite3, and logs/ are gitignored,
+    # so they were left behind under the old directory and broke the first
+    # deploy after the rename. Sweep them over once; every deploy after that
+    # is a no-op here since the items already exist. (venv/ is deliberately
+    # NOT swept this way — see below.)
     LEGACY_DIR="$(pwd)/../principalBack"
     if [ -d "$LEGACY_DIR" ]; then
-        for item in venv .env media db.sqlite3 logs; do
+        for item in .env media db.sqlite3 logs; do
             if [ ! -e "$item" ] && [ -e "$LEGACY_DIR/$item" ]; then
                 echo "Migrating $item from principalBack/ (one-time folder-rename fixup)"
                 mv "$LEGACY_DIR/$item" "$item"
@@ -25,15 +26,25 @@ main() {
         done
     fi
 
-    if [ ! -x ./venv/bin/pip ]; then
-        echo "ERROR: ./venv not found (or has no pip). Create it first:" >&2
-        echo "  python3 -m venv venv && ./venv/bin/pip install -r requirements.txt" >&2
-        exit 1
+    # venv/bin/python(3) is a symlink to the system interpreter, so it keeps
+    # working no matter where the venv directory sits — Python resolves its
+    # own prefix from pyvenv.cfg next to it, not from a baked-in path. The
+    # console-script *wrappers* (pip, gunicorn, ...) are different: each has
+    # the venv's absolute path hardcoded in its shebang line, so moving the
+    # directory (e.g. the principalBack/ sweep above, or this migration
+    # itself, previously) leaves them pointing at a path that no longer
+    # exists — pip already broke this way once. Create the venv if it's
+    # missing outright; either way, always go through `python -m <tool>`
+    # below instead of a wrapper script, since a wrapper isn't guaranteed to
+    # get regenerated (pip skips reinstalling an already-satisfied pin).
+    if [ ! -e ./venv ]; then
+        echo "./venv not found — creating a virtualenv."
+        python3 -m venv venv
     fi
 
     mkdir -p logs
 
-    ./venv/bin/pip install -q -r requirements.txt
+    ./venv/bin/python -m pip install -q -r requirements.txt
     ./venv/bin/python manage.py migrate --noinput
     ./venv/bin/python manage.py collectstatic --noinput >/dev/null
     ./venv/bin/python manage.py check --deploy --fail-level ERROR
@@ -44,7 +55,7 @@ main() {
         kill -HUP "$(cat "$PIDFILE")"
         echo "gunicorn reloaded (pid $(cat "$PIDFILE"))"
     else
-        ./venv/bin/gunicorn config.wsgi:application \
+        ./venv/bin/python -m gunicorn config.wsgi:application \
             --bind 0.0.0.0:5000 --workers 3 \
             --daemon --pid "$PIDFILE" \
             --access-logfile logs/access.log --error-logfile logs/error.log
