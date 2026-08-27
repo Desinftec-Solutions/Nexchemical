@@ -6,6 +6,12 @@ class CompanyInfo(models.Model):
     """Singleton: only one row should ever exist. Also drives the homepage hero and footer."""
 
     phone_number = models.CharField(max_length=30)
+    whatsapp_number = models.CharField(
+        max_length=20,
+        blank=True,
+        help_text='Digits only, with country code, no "+" or spaces, e.g. "994501234567". '
+        "Leave blank to hide the WhatsApp button.",
+    )
     email = models.EmailField()
     address = models.CharField(max_length=255)
     google_map_embed_url = models.URLField(
@@ -28,6 +34,12 @@ class CompanyInfo(models.Model):
 
     def __str__(self):
         return "Company Info"
+
+    @property
+    def whatsapp_link(self):
+        if not self.whatsapp_number:
+            return ""
+        return f"https://wa.me/{self.whatsapp_number}"
 
     def clean(self):
         if not self.pk and CompanyInfo.objects.exists():

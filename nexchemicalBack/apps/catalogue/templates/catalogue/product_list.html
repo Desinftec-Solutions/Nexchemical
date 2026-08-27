@@ -1,33 +1,25 @@
+{% extends "core/base.html" %}
 {% load static %}
+{% load i18n %}
 {% load catalogue_extras %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Catalog — NexChemical</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700&family=Playfair+Display:wght@400;500&family=Poppins&display=swap" rel="stylesheet">
+{% block title %}{% blocktrans %}Product Catalog — NexChemical{% endblocktrans %}{% endblock %}
 
-  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+{% block extra_css %}
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
+{% endblock %}
 
-  {% include "core/_navbar.html" with variant="dark" %}
-
+{% block content %}
   <!-- ============ HERO CARD ============ -->
   <section class="catalog-hero">
     <div class="catalog-hero__card">
       <div>
-        <h1 class="catalog-hero__title">Advanced Crop Protection</h1>
-        <p class="catalog-hero__text">NEXCHEMICAL delivers regulatory-certified chemical solutions engineered for sustainable agriculture and industrial precision. Browse our validated SDS catalog.</p>
-        <a class="btn-sq" href="#">Download Full Index</a>
+        <h1 class="catalog-hero__title">{% trans "Advanced Crop Protection" %}</h1>
+        <p class="catalog-hero__text">{% trans "NEXCHEMICAL delivers regulatory-certified chemical solutions engineered for sustainable agriculture and industrial precision. Browse our validated SDS catalog." %}</p>
+        <a class="btn-sq" href="#">{% trans "Download Full Index" %}</a>
       </div>
       <div class="catalog-hero__img">
-        <img src="{% static 'img/products-hero.jpg' %}" alt="Field researcher inspecting crops">
+        <img src="{% static 'img/products-hero.jpg' %}" alt="{% trans 'Field researcher inspecting crops' %}">
       </div>
     </div>
   </section>
@@ -35,10 +27,60 @@
   <!-- ============ PRODUCT GRID ============ -->
   <section class="catalog">
     <div class="catalog__inner">
-      <button class="filterbar" type="button">
-        <img src="{% static 'img/icon-filter.svg' %}" alt="" width="15" height="15">
-        Filter and sorts
-      </button>
+      <div class="catalog__filterbar">
+        <button class="filterbar" type="button" id="filterToggle" aria-expanded="false" aria-controls="filterPanel">
+          <img src="{% static 'img/icon-filter.svg' %}" alt="" width="15" height="15">
+          {% trans "Filter and sorts" %}
+        </button>
+
+        <div class="filter-panel{% if active_category or active_subcategory or active_sort %} filter-panel--has-active{% endif %}" id="filterPanel">
+          <div class="filter-panel__grid">
+            <div class="filter-panel__section">
+              <h3 class="filter-panel__heading">{% trans "Category" %}</h3>
+              <div class="filter-pills">
+                <a class="filter-pill{% if not active_category %} filter-pill--active{% endif %}"
+                   href="{% querystring category=None subcategory=None page=None %}">{% trans "All" %}</a>
+                {% for category in categories %}
+                  <a class="filter-pill{% if active_category == category.slug %} filter-pill--active{% endif %}"
+                     href="{% querystring category=category.slug subcategory=None page=None %}">{{ category.name }}</a>
+                {% endfor %}
+              </div>
+            </div>
+
+            {% if active_category and subcategories %}
+              <div class="filter-panel__section">
+                <h3 class="filter-panel__heading">{% trans "Subcategory" %}</h3>
+                <ul class="filter-list">
+                  {% for sub in subcategories %}
+                    <li>
+                      <a class="filter-list__item{% if active_subcategory == sub.slug %} filter-list__item--active{% endif %}"
+                         href="{% querystring subcategory=sub.slug page=None %}">{{ sub.name }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+
+            <div class="filter-panel__section">
+              <h3 class="filter-panel__heading">{% trans "Sort by" %}</h3>
+              <ul class="filter-list">
+                {% for key, option in sort_options.items %}
+                  <li>
+                    <a class="filter-list__item{% if active_sort == key %} filter-list__item--active{% endif %}"
+                       href="{% querystring sort=key page=None %}">{{ option.1 }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+
+          {% if active_category or active_subcategory or active_sort %}
+            <div class="filter-panel__footer">
+              <a class="filter-panel__clear" href="{% querystring category=None subcategory=None sort=None page=None %}">{% trans "Clear all filters" %}</a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
 
       <div class="catalog__grid">
         {% for product in products %}
@@ -46,22 +88,22 @@
             <div class="product-card__media">
               {% with img_url=product|product_image %}
                 {% if img_url %}
-                  <img class="product-card__img" src="{{ img_url }}" alt="{{ product.name }}">
+                  <img class="product-card__img" src="{{ img_url }}" alt="{{ product.localized_name }}">
                 {% endif %}
               {% endwith %}
               {% if product.is_bio_rational %}
                 <span class="product-card__badge">
                   <img src="{% static 'img/icon-leaf.svg' %}" alt="" width="10" height="10">
-                  Bio-Rational
+                  {% trans "Bio-Rational" %}
                 </span>
               {% endif %}
-              <button class="product-card__fav" type="button" aria-label="Add to favorites">
+              <button class="product-card__fav" type="button" aria-label="{% trans 'Add to favorites' %}">
                 <img src="{% static 'img/icon-heart.svg' %}" alt="" width="15" height="14">
               </button>
             </div>
             <div class="product-card__body">
               <p class="product-card__category{% if product.is_bio_rational %} product-card__category--bio{% endif %}">{{ product.subcategory.category.name }}</p>
-              <h3 class="product-card__title">{{ product.name }}</h3>
+              <h3 class="product-card__title">{{ product.localized_name }}</h3>
               <p class="product-card__text">{% if product.subtitle %}{{ product.subtitle }}{% else %}{{ product.description|truncatewords:8 }}{% endif %}</p>
               <p class="product-card__meta">
                 {% if product.formulation == 'ec' %}
@@ -74,7 +116,7 @@
                 {{ product.get_formulation_display }}
               </p>
               <a class="product-card__cta{% if product.is_bio_rational %} product-card__cta--muted{% endif %}" href="{% url 'catalogue:product_detail' product.slug %}">
-                View Details
+                {% trans "View Details" %}
                 {% if product.is_bio_rational %}
                   <img src="{% static 'img/icon-arrow-dark.svg' %}" alt="" width="9" height="9">
                 {% else %}
@@ -84,19 +126,19 @@
             </div>
           </article>
         {% empty %}
-          <p>No products found. Try adjusting your search or filters.</p>
+          <p>{% trans "No products found. Try adjusting your search or filters." %}</p>
         {% endfor %}
       </div>
 
       {% if page_obj.paginator.num_pages > 1 %}
-        <nav class="pagination" aria-label="Catalog pages">
+        <nav class="pagination" aria-label="{% trans 'Catalog pages' %}">
           {% if page_obj.has_previous %}
             <a class="pagination__nav" href="{% querystring page=page_obj.previous_page_number %}">
-              <img src="{% static 'img/icon-chev-left.svg' %}" alt="Previous page" width="7" height="12">
+              <img src="{% static 'img/icon-chev-left.svg' %}" alt="{% trans 'Previous page' %}" width="7" height="12">
             </a>
           {% else %}
             <span class="pagination__nav pagination__nav--disabled">
-              <img src="{% static 'img/icon-chev-left.svg' %}" alt="Previous page" width="7" height="12">
+              <img src="{% static 'img/icon-chev-left.svg' %}" alt="{% trans 'Previous page' %}" width="7" height="12">
             </span>
           {% endif %}
 
@@ -112,20 +154,19 @@
 
           {% if page_obj.has_next %}
             <a class="pagination__nav" href="{% querystring page=page_obj.next_page_number %}">
-              <img src="{% static 'img/icon-chev-right.svg' %}" alt="Next page" width="7" height="12">
+              <img src="{% static 'img/icon-chev-right.svg' %}" alt="{% trans 'Next page' %}" width="7" height="12">
             </a>
           {% else %}
             <span class="pagination__nav pagination__nav--disabled">
-              <img src="{% static 'img/icon-chev-right.svg' %}" alt="Next page" width="7" height="12">
+              <img src="{% static 'img/icon-chev-right.svg' %}" alt="{% trans 'Next page' %}" width="7" height="12">
             </span>
           {% endif %}
         </nav>
       {% endif %}
     </div>
   </section>
+{% endblock %}
 
-  {% include "core/partials/footer.html" %}
-
-  <script src="{% static 'js/navbar.js' %}"></script>
-</body>
-</html>
+{% block extra_js %}
+  <script src="{% static 'js/catalogue.js' %}"></script>
+{% endblock %}

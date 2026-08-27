@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
+from django.utils.translation import get_language
+from django.utils.translation import gettext_lazy as _
 
 
 class Category(models.Model):
@@ -40,22 +42,25 @@ class SubCategory(models.Model):
 
 class Product(models.Model):
     class Unit(models.TextChoices):
-        LITER = "l", "Liter"
-        MILLILITER = "ml", "Milliliter"
-        KILOGRAM = "kg", "Kilogram"
-        GRAM = "g", "Gram"
-        PIECE = "pc", "Piece"
+        LITER = "l", _("Liter")
+        MILLILITER = "ml", _("Milliliter")
+        KILOGRAM = "kg", _("Kilogram")
+        GRAM = "g", _("Gram")
+        PIECE = "pc", _("Piece")
 
     class Formulation(models.TextChoices):
-        SUSPENSION_CONCENTRATE = "sc", "Suspension Concentrate"
-        EMULSIFIABLE_CONCENTRATE = "ec", "Emulsifiable Concentrate"
-        WETTABLE_POWDER = "wp", "Wettable Powder"
-        GRANULE = "gr", "Granule"
-        SOLUBLE_LIQUID = "sl", "Soluble Liquid"
-        OTHER = "other", "Other"
+        SUSPENSION_CONCENTRATE = "sc", _("Suspension Concentrate")
+        EMULSIFIABLE_CONCENTRATE = "ec", _("Emulsifiable Concentrate")
+        WETTABLE_POWDER = "wp", _("Wettable Powder")
+        GRANULE = "gr", _("Granule")
+        SOLUBLE_LIQUID = "sl", _("Soluble Liquid")
+        OTHER = "other", _("Other")
 
     subcategory = models.ForeignKey(SubCategory, on_delete=models.PROTECT, related_name="products")
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, help_text="Canonical name, used for the slug and admin.")
+    name_en = models.CharField("Name (English)", max_length=200, blank=True)
+    name_az = models.CharField("Name (Azerbaijani)", max_length=200, blank=True)
+    name_ru = models.CharField("Name (Russian)", max_length=200, blank=True)
     subtitle = models.CharField(
         max_length=200, blank=True, help_text='Short tagline, e.g. "Advanced Fungicide".'
     )
@@ -105,6 +110,11 @@ class Product(models.Model):
         if not self.slug:
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
+
+    @property
+    def localized_name(self):
+        by_language = {"en": self.name_en, "az": self.name_az, "ru": self.name_ru}
+        return by_language.get(get_language()) or self.name
 
     @property
     def in_stock(self):

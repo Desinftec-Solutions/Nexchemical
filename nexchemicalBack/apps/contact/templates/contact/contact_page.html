@@ -1,30 +1,24 @@
+{% extends "core/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact — NexChemical</title>
+{% load i18n %}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700&family=Playfair+Display:wght@400;500&family=Poppins&display=swap" rel="stylesheet">
+{% block title %}{% blocktrans %}Contact — NexChemical{% endblocktrans %}{% endblock %}
 
-  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+{% block extra_css %}
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
+{% endblock %}
 
-  {% include "core/_navbar.html" with variant="dark" %}
+{% block messages %}{% endblock %}
 
+{% block content %}
   <!-- ============ HERO ============ -->
   <section class="contact-hero">
     <img class="contact-hero__bg" src="{% static 'img/contact-hero.png' %}" alt="">
     <div class="contact-hero__inner">
       <div class="contact-hero__content">
-        <h1 class="contact-hero__title">Connect with Our Experts</h1>
-        <p class="contact-hero__text">Our global network of technical specialists and regulatory consultants is ready to support your industrial chemical and agricultural solution needs. Precision-driven guidance, anywhere in the world.</p>
-        <a class="btn-sq btn-sq--r4" href="#inquiry">Start a Consultation</a>
+        <h1 class="contact-hero__title">{% trans "Connect with Our Experts" %}</h1>
+        <p class="contact-hero__text">{% trans "Our global network of technical specialists and regulatory consultants is ready to support your industrial chemical and agricultural solution needs. Precision-driven guidance, anywhere in the world." %}</p>
+        <a class="btn-sq btn-sq--r4" href="#inquiry">{% trans "Start a Consultation" %}</a>
       </div>
     </div>
   </section>
@@ -32,37 +26,37 @@
   <!-- ============ INQUIRY FORM ============ -->
   <section class="inquiry" id="inquiry">
     <div class="inquiry__card">
-      <h2 class="inquiry__heading">Send an Inquiry</h2>
-      <p class="inquiry__sub">Our representative will respond within 24 business hours.</p>
+      <h2 class="inquiry__heading">{% trans "Send an Inquiry" %}</h2>
+      <p class="inquiry__sub">{% trans "Our representative will respond within 24 business hours." %}</p>
 
       <form class="inquiry__form" action="{% url 'contact:contact_page' %}" method="post">
         {% csrf_token %}
         <div class="form-row">
           <div class="form-field">
-            <label for="{{ form.full_name.id_for_label }}">Full Name</label>
+            <label for="{{ form.full_name.id_for_label }}">{% trans "Full Name" %}</label>
             {{ form.full_name }}
             {{ form.full_name.errors }}
           </div>
           <div class="form-field">
-            <label for="{{ form.email.id_for_label }}">Company Email</label>
+            <label for="{{ form.email.id_for_label }}">{% trans "Company Email" %}</label>
             {{ form.email }}
             {{ form.email.errors }}
           </div>
           <div class="form-field">
-            <label for="{{ form.phone_number.id_for_label }}">Phone number</label>
+            <label for="{{ form.phone_number.id_for_label }}">{% trans "Phone number" %}</label>
             {{ form.phone_number }}
             {{ form.phone_number.errors }}
           </div>
         </div>
 
         <div class="form-field" style="width: 100%;">
-          <label for="{{ form.message.id_for_label }}">Message</label>
+          <label for="{{ form.message.id_for_label }}">{% trans "Message" %}</label>
           {{ form.message }}
           {{ form.message.errors }}
         </div>
 
         <button class="btn-sq btn-sq--r4" type="submit">
-          Submit Request
+          {% trans "Submit Request" %}
           <img src="{% static 'img/icon-send.svg' %}" alt="" width="19" height="16">
         </button>
       </form>
@@ -79,8 +73,8 @@
   {% if regional_offices %}
     <section class="offices">
       <div class="offices__inner">
-        <h2 class="offices__heading">Our Regional Presence</h2>
-        <p class="offices__sub">Strategic hubs positioned to deliver fast, compliant, and localized chemical solutions across the globe.</p>
+        <h2 class="offices__heading">{% trans "Our Regional Presence" %}</h2>
+        <p class="offices__sub">{% trans "Strategic hubs positioned to deliver fast, compliant, and localized chemical solutions across the globe." %}</p>
 
         <div class="offices__grid">
           {% for office in regional_offices %}
@@ -104,9 +98,4 @@
       </div>
     </section>
   {% endif %}
-
-  {% include "core/partials/footer.html" %}
-
-  <script src="{% static 'js/navbar.js' %}"></script>
-</body>
-</html>
+{% endblock %}

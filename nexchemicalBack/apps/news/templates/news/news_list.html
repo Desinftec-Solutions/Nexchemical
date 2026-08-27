@@ -1,0 +1,97 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% blocktrans %}News — NexChemical{% endblocktrans %}{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+  <!-- ============ HERO ============ -->
+  <section class="news-hero">
+    <div class="news-hero__inner">
+      <p class="news-hero__eyebrow">{% trans "Newsroom" %}</p>
+      <h1 class="news-hero__title">{% trans "Latest News" %}</h1>
+      <p class="news-hero__text">{% trans "Updates, announcements, and insights from NexChemical." %}</p>
+    </div>
+  </section>
+
+  <!-- ============ NEWS GRID ============ -->
+  <section class="news">
+    <div class="news__inner">
+      {% if articles %}
+        {% for article in articles %}
+          {% if forloop.first and page_obj.number == 1 %}
+            <a class="news-feature" href="{% url 'news:news_detail' article.slug %}">
+              <div class="news-feature__media">
+                <img src="{{ article.cover_image.url }}" alt="{{ article.title }}">
+              </div>
+              <div class="news-feature__body">
+                <p class="news-card__date">{{ article.published_at|date:"d M Y" }}</p>
+                <h2 class="news-feature__title">{{ article.title }}</h2>
+                <p class="news-feature__excerpt">{% if article.excerpt %}{{ article.excerpt }}{% else %}{{ article.body|truncatewords:30 }}{% endif %}</p>
+                <span class="news-card__cta">{% trans "Read article" %} <img src="{% static 'img/icon-arrow-blue.svg' %}" alt="" width="9" height="9"></span>
+              </div>
+            </a>
+          {% endif %}
+        {% endfor %}
+
+        <div class="news__grid">
+          {% for article in articles %}
+            {% if not forloop.first or page_obj.number > 1 %}
+              <a class="news-card" href="{% url 'news:news_detail' article.slug %}">
+                <div class="news-card__media">
+                  <img src="{{ article.cover_image.url }}" alt="{{ article.title }}">
+                </div>
+                <div class="news-card__body">
+                  <p class="news-card__date">{{ article.published_at|date:"d M Y" }}</p>
+                  <h3 class="news-card__title">{{ article.title }}</h3>
+                  <p class="news-card__excerpt">{% if article.excerpt %}{{ article.excerpt }}{% else %}{{ article.body|truncatewords:20 }}{% endif %}</p>
+                  <span class="news-card__cta">{% trans "Read article" %} <img src="{% static 'img/icon-arrow-blue.svg' %}" alt="" width="9" height="9"></span>
+                </div>
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="news-empty">{% trans "No news articles yet." %}</p>
+      {% endif %}
+
+      {% if page_obj.paginator.num_pages > 1 %}
+        <nav class="pagination" aria-label="{% trans 'News pages' %}">
+          {% if page_obj.has_previous %}
+            <a class="pagination__nav" href="{% querystring page=page_obj.previous_page_number %}">
+              <img src="{% static 'img/icon-chev-left.svg' %}" alt="{% trans 'Previous page' %}" width="7" height="12">
+            </a>
+          {% else %}
+            <span class="pagination__nav pagination__nav--disabled">
+              <img src="{% static 'img/icon-chev-left.svg' %}" alt="{% trans 'Previous page' %}" width="7" height="12">
+            </span>
+          {% endif %}
+
+          {% for num in elided_page_range %}
+            {% if num == page_obj.paginator.ELLIPSIS %}
+              <span class="pagination__ellipsis">{{ num }}</span>
+            {% elif num == page_obj.number %}
+              <a class="pagination__page pagination__page--active" href="{% querystring page=num %}" aria-current="page">{{ num }}</a>
+            {% else %}
+              <a class="pagination__page" href="{% querystring page=num %}">{{ num }}</a>
+            {% endif %}
+          {% endfor %}
+
+          {% if page_obj.has_next %}
+            <a class="pagination__nav" href="{% querystring page=page_obj.next_page_number %}">
+              <img src="{% static 'img/icon-chev-right.svg' %}" alt="{% trans 'Next page' %}" width="7" height="12">
+            </a>
+          {% else %}
+            <span class="pagination__nav pagination__nav--disabled">
+              <img src="{% static 'img/icon-chev-right.svg' %}" alt="{% trans 'Next page' %}" width="7" height="12">
+            </span>
+          {% endif %}
+        </nav>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}

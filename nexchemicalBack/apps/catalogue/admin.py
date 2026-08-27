@@ -67,6 +67,13 @@ class ProductAdmin(admin.ModelAdmin):
             {"fields": ("subcategory", "name", "subtitle", "slug", "sku", "description", "image")},
         ),
         (
+            "Translations",
+            {
+                "fields": ("name_en", "name_az", "name_ru"),
+                "description": "Optional per-language names shown on the site. Falls back to Name above when blank.",
+            },
+        ),
+        (
             "Pricing & stock",
             {"fields": ("price", "unit", "formulation", "stock_quantity", "is_active")},
         ),

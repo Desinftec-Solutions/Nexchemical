@@ -1,62 +1,96 @@
+{% extends "core/base.html" %}
 {% load static %}
+{% load i18n %}
 {% load catalogue_extras %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NexChemical — Pioneering Chemistry for a Sustainable Future</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700&family=Plus+Jakarta+Sans:wght@700&family=Playfair+Display:wght@400;500&family=Poppins&display=swap" rel="stylesheet">
+{% block title %}{% blocktrans %}NexChemical — Pioneering Chemistry for a Sustainable Future{% endblocktrans %}{% endblock %}
 
-  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+{% block body_class %}body--nav-overlay{% endblock %}
+
+{% block navbar %}{% include "core/_navbar.html" with variant="light" %}{% endblock %}
+
+{% block extra_css %}
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body class="body--nav-overlay">
+{% endblock %}
 
-  {% include "core/_navbar.html" with variant="light" %}
-
+{% block content %}
   <!-- ============ HERO ============ -->
   <section class="hero">
-    <video class="hero__bg" autoplay muted loop playsinline preload="metadata"
-           poster="{% if company_info.hero_image %}{{ company_info.hero_image.url }}{% else %}{% static 'img/hero-beakers.jpg' %}{% endif %}">
+    <video class="hero__bg" autoplay muted loop playsinline preload="auto">
       <source src="{% static 'vid/hero.mp4' %}" type="video/mp4">
     </video>
 
     <div class="hero__container">
       <div class="hero__content">
-        <h1 class="hero__title">{{ company_info.hero_heading|default:"Pioneering Chemistry for a&nbsp;Sustainable Future" }}</h1>
-        <p class="hero__text">{{ company_info.hero_subheading|default:"Bridging the gap between laboratory innovation and agricultural excellence with regulatory-compliant chemical solutions." }}</p>
+        {% get_current_language as LANGUAGE_CODE %}
+        <h1 class="hero__title">{% if company_info.hero_heading and LANGUAGE_CODE == "en" %}{{ company_info.hero_heading }}{% else %}{% trans "Pioneering Chemistry for a Sustainable Future" %}{% endif %}</h1>
+        <p class="hero__text">{% if company_info.hero_subheading and LANGUAGE_CODE == "en" %}{{ company_info.hero_subheading }}{% else %}{% trans "Bridging the gap between laboratory innovation and agricultural excellence with regulatory-compliant chemical solutions." %}{% endif %}</p>
         <div class="hero__cta">
-          <a class="btn btn--primary" href="{% url 'catalogue:product_list' %}">View Product Catalog</a>
-          <a class="btn btn--light" href="#">Our Sustainability Commitment</a>
+          <a class="btn btn--primary" href="{% url 'catalogue:product_list' %}">{% trans "View Product Catalog" %}</a>
+          <a class="btn btn--light" href="#">{% trans "Our Sustainability Commitment" %}</a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ============ PARTNERS ============ -->
+  {% if partners %}
+    <section class="partners">
+      <div class="partners__track" data-partners-track>
+        <div class="partners__group">
+          {% for _ in partner_repeat %}
+            {% for partner in partners %}
+              {% if partner.website_url %}
+                <a class="partners__logo" href="{{ partner.website_url }}" target="_blank" rel="noopener">
+                  <img src="{{ partner.logo.url }}" alt="{{ partner.name }}">
+                </a>
+              {% else %}
+                <span class="partners__logo">
+                  <img src="{{ partner.logo.url }}" alt="{{ partner.name }}">
+                </span>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+        <div class="partners__group" aria-hidden="true">
+          {% for _ in partner_repeat %}
+            {% for partner in partners %}
+              {% if partner.website_url %}
+                <a class="partners__logo" href="{{ partner.website_url }}" tabindex="-1">
+                  <img src="{{ partner.logo.url }}" alt="">
+                </a>
+              {% else %}
+                <span class="partners__logo">
+                  <img src="{{ partner.logo.url }}" alt="">
+                </span>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
   <!-- ============ ABOUT / WHO WE ARE ============ -->
   <section class="about">
     <div class="about__main">
       <div class="section-head">
-        <p class="section-head__label">Who we are</p>
-        <h2 class="section-head__title">Rooted in innovation, growing smarter and more sustainable <span class="muted">modern agriculture</span></h2>
+        <p class="section-head__label">{% trans "Who we are" %}</p>
+        <h2 class="section-head__title">{% blocktrans %}Rooted in innovation, growing smarter and more sustainable <span class="muted">modern agriculture</span>{% endblocktrans %}</h2>
       </div>
       <div class="about__row">
         <div class="fact-card">
           <p class="fact-card__number">60+</p>
-          <p class="fact-card__label">Agricultural research&nbsp;projects</p>
+          <p class="fact-card__label">{% trans "Agricultural research projects" %}</p>
         </div>
         <div class="fact-card">
           <p class="fact-card__number">70K</p>
-          <p class="fact-card__label">Smart Farming Hectares</p>
+          <p class="fact-card__label">{% trans "Smart Farming Hectares" %}</p>
         </div>
-        <img class="about__photo-sm" src="{% static 'img/about-photo-1.png' %}" alt="Laboratory research team at work">
+        <img class="about__photo-sm" src="{% static 'img/about-photo-1.png' %}" alt="{% trans 'Laboratory research team at work' %}">
       </div>
     </div>
-    <img class="about__photo-lg" src="{% static 'img/about-photo-2.png' %}" alt="Scientist operating a microscope">
+    <img class="about__photo-lg" src="{% static 'img/about-photo-2.png' %}" alt="{% trans 'Scientist operating a microscope' %}">
   </section>
 
   <!-- ============ SERVICES ============ -->
@@ -64,61 +98,82 @@
     <div class="services__inner">
       <div class="services__left">
         <div class="section-head">
-          <p class="section-head__label">Our services</p>
-          <h2 class="section-head__title">Driving Agri <span class="muted">Tech</span><br>Innovation Forward</h2>
+          <p class="section-head__label">{% trans "Our services" %}</p>
+          <h2 class="section-head__title">{% blocktrans %}Driving Agri <span class="muted">Tech</span><br>Innovation Forward{% endblocktrans %}</h2>
         </div>
         <div class="services__cards">
           <article class="service-card">
             <img class="service-card__icon" src="{% static 'img/icon-genomic.svg' %}" alt="" width="55" height="55">
             <div>
-              <h3 class="service-card__title">Genomic Research</h3>
-              <p class="service-card__text">Enhancing crop DNA to develop resilient, high-yield varieties suited for varied conditions.</p>
+              <h3 class="service-card__title">{% trans "Genomic Research" %}</h3>
+              <p class="service-card__text">{% trans "Enhancing crop DNA to develop resilient, high-yield varieties suited for varied conditions." %}</p>
             </div>
           </article>
           <article class="service-card">
             <img class="service-card__icon" src="{% static 'img/icon-ai.svg' %}" alt="" width="55" height="55">
             <div>
-              <h3 class="service-card__title">AI Farming</h3>
-              <p class="service-card__text">Using AI insights to monitor crops, resources and improve overall farming efficiency.</p>
+              <h3 class="service-card__title">{% trans "AI Farming" %}</h3>
+              <p class="service-card__text">{% trans "Using AI insights to monitor crops, resources and improve overall farming efficiency." %}</p>
             </div>
           </article>
           <article class="service-card">
             <img class="service-card__icon" src="{% static 'img/icon-bio.svg' %}" alt="" width="55" height="55">
             <div>
-              <h3 class="service-card__title">Bio Fertilizers</h3>
-              <p class="service-card__text">Natural soil enhancers that boost fertility and reduce chemical use in farming.</p>
+              <h3 class="service-card__title">{% trans "Bio Fertilizers" %}</h3>
+              <p class="service-card__text">{% trans "Natural soil enhancers that boost fertility and reduce chemical use in farming." %}</p>
             </div>
           </article>
         </div>
       </div>
-      <img class="services__photo" src="{% static 'img/services-photo.png' %}" alt="Researcher working with laboratory glassware">
+      <img class="services__photo" src="{% static 'img/services-photo.png' %}" alt="{% trans 'Researcher working with laboratory glassware' %}">
     </div>
   </section>
 
   <!-- ============ PRODUCTS ============ -->
   <section class="products">
     <div class="section-head products__head">
-      <p class="section-head__label">Our products</p>
-      <h2 class="section-head__title section-head__title--lg">Smart <span class="muted">Solutions</span><br>Modern Farming</h2>
+      <p class="section-head__label">{% trans "Our products" %}</p>
+      <h2 class="section-head__title section-head__title--lg">{% blocktrans %}Smart <span class="muted">Solutions</span><br>Modern Farming{% endblocktrans %}</h2>
     </div>
 
     <div class="stack-carousel" data-carousel-root>
       <div class="stack-carousel__stage" data-carousel-stage>
         <div class="stack-carousel__surface" data-carousel-surface></div>
-        {% for product in featured_products|slice:":5" %}
+        {% for product in featured_products|slice:":6" %}
           <div class="stack-carousel__card" data-carousel-card data-index="{{ forloop.counter0 }}">
-            {% with img_url=product|product_image %}
-              {% if img_url %}
-                <img class="stack-carousel__img" src="{{ img_url }}" alt="{{ product.name }}">
-              {% endif %}
-            {% endwith %}
-            <div class="stack-carousel__shade" data-carousel-shade></div>
-            <div class="stack-carousel__gradient"></div>
-            <span class="stack-carousel__badge">{{ product.subcategory.category.name }}</span>
-            <div class="stack-carousel__body">
-              <p class="stack-carousel__title" data-carousel-text>{{ product.name }}</p>
-              <p class="stack-carousel__desc" data-carousel-text>{% if product.subtitle %}{{ product.subtitle }}{% else %}{{ product.description|truncatewords:16 }}{% endif %}</p>
-            </div>
+            <article class="product-card{% if product.is_bio_rational %} product-card--bio{% endif %}">
+              <div class="product-card__media">
+                {% with img_url=product|product_image %}
+                  {% if img_url %}
+                    <img class="product-card__img" src="{{ img_url }}" alt="{{ product.localized_name }}">
+                  {% endif %}
+                {% endwith %}
+                {% if product.is_bio_rational %}
+                  <span class="product-card__badge">
+                    <img src="{% static 'img/icon-leaf.svg' %}" alt="" width="10" height="10">
+                    {% trans "Bio-Rational" %}
+                  </span>
+                {% endif %}
+                <button class="product-card__fav" type="button" aria-label="{% trans 'Add to favorites' %}" tabindex="-1">
+                  <img src="{% static 'img/icon-heart.svg' %}" alt="" width="15" height="14">
+                </button>
+              </div>
+              <div class="product-card__body">
+                <p class="product-card__category{% if product.is_bio_rational %} product-card__category--bio{% endif %}">{{ product.subcategory.category.name }}</p>
+                <h3 class="product-card__title">{{ product.localized_name }}</h3>
+                <p class="product-card__text">{% if product.subtitle %}{{ product.subtitle }}{% else %}{{ product.description|truncatewords:8 }}{% endif %}</p>
+                <p class="product-card__meta">
+                  {% if product.formulation == 'ec' %}
+                    <img src="{% static 'img/icon-flask.svg' %}" alt="" width="11" height="13">
+                  {% elif product.formulation == 'wp' %}
+                    <img src="{% static 'img/icon-powder.svg' %}" alt="" width="13" height="13">
+                  {% else %}
+                    <img src="{% static 'img/icon-droplet.svg' %}" alt="" width="12" height="12">
+                  {% endif %}
+                  {{ product.get_formulation_display }}
+                </p>
+              </div>
+            </article>
           </div>
         {% endfor %}
       </div>
@@ -129,16 +184,15 @@
   <section class="cta">
     <div class="cta__box">
       <div class="cta__content">
-        <h2 class="cta__title">Unlock industrial potential in our catalog</h2>
-        <p class="cta__text">Discover a comprehensive range of chemical products, backed by technical expertise from our regional specialists.</p>
-        <a class="btn btn--outline" href="{% url 'catalogue:product_list' %}">Explore catalog</a>
+        <h2 class="cta__title">{% trans "Unlock industrial potential in our catalog" %}</h2>
+        <p class="cta__text">{% trans "Discover a comprehensive range of chemical products, backed by technical expertise from our regional specialists." %}</p>
+        <a class="btn btn--outline" href="{% url 'catalogue:product_list' %}">{% trans "Explore catalog" %}</a>
       </div>
     </div>
   </section>
+{% endblock %}
 
-  {% include "core/partials/footer.html" %}
-
-  <script src="{% static 'js/navbar.js' %}"></script>
+{% block extra_js %}
   <script src="{% static 'js/product-carousel.js' %}"></script>
-</body>
-</html>
+  <script src="{% static 'js/partners-marquee.js' %}"></script>
+{% endblock %}

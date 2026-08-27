@@ -6,42 +6,43 @@
    Variants: .nav (light, homepage) / .nav--dark (inner pages).
    ============================================================ */
 
-/* Clearance for the fixed topbar (27 + 73 + 27 = 127px). */
-body { padding-top: 127px; }
+/* Clearance for the fixed, full-width topbar. */
+body { padding-top: 88px; }
 /* Homepage: the hero flows under the navbar instead. */
 body.body--nav-overlay { padding-top: 0; }
 
 .topbar {
-  --nav-primary: #005ca7;
-  --nav-ink: #414752;
-  --nav-font: "Manrope", "Inter", sans-serif;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  display: flex;
-  justify-content: center;
-  padding: 27px 10px;
 }
 
 .nav {
-  display: flex;
-  align-items: center;
-  gap: 73px;
-  height: 73px;
-  max-width: 1280px;
-  padding: 0 64px;
-  border-radius: 500px;
-  background: rgba(248, 250, 248, 0.9);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  --nav-primary: #005ca7;
+  --nav-ink: #414752;
+  --nav-font: "Manrope", "Inter", sans-serif;
+  width: 100%;
+  background: #f8faf8;
   color: var(--nav-ink);
+  box-shadow: 0 1px 0 rgba(15, 15, 15, 0.08);
 }
 
 .nav--dark {
-  background: rgba(0, 0, 0, 0.92);
+  background: #0f1216;
   color: #fff;
+  box-shadow: none;
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  height: 88px;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding: 0 40px;
 }
 
 .nav__logo img { display: block; }
@@ -129,6 +130,101 @@ body.body--nav-overlay { padding-top: 0; }
   background: none;
   cursor: pointer;
   color: inherit;
+}
+
+/* --- language dropdown --- */
+
+.nav__lang {
+  position: relative;
+}
+
+.nav__icon-btn--globe {
+  align-items: center;
+  gap: 4px;
+}
+
+.nav__lang-current {
+  font-family: var(--nav-font);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.nav__lang-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  min-width: 160px;
+  background: #fff;
+  color: var(--nav-ink);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(15, 15, 15, 0.16);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity .15s ease, transform .15s ease, visibility .15s ease;
+  z-index: 1200;
+}
+
+.nav__lang.is-open .nav__lang-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav__lang-form { margin: 0; }
+
+.nav__lang-option {
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  cursor: pointer;
+  font-family: var(--nav-font);
+  font-size: 14px;
+  font-weight: 500;
+  color: inherit;
+}
+
+.nav__lang-option:hover { background: rgba(0, 92, 167, 0.08); }
+.nav__lang-option--active {
+  background: rgba(0, 92, 167, 0.1);
+  color: var(--nav-primary);
+  font-weight: 700;
+}
+
+.nav-menu__lang {
+  display: none;
+  gap: 10px;
+}
+
+.nav-menu__lang-form { margin: 0; }
+
+.nav-menu__lang-option {
+  padding: 6px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 9999px;
+  background: none;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: var(--nav-font);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.nav-menu__lang-option--active {
+  color: #0f1216;
+  background: #fff;
+  border-color: #fff;
 }
 
 .nav__cta {
@@ -231,20 +327,21 @@ body.nav-menu-open { overflow: hidden; }
 }
 
 @media (max-width: 1200px) {
-  .nav { gap: 32px; padding: 0 36px; }
+  .nav__inner { gap: 28px; padding: 0 24px; }
 }
 
 @media (max-width: 768px) {
-  body { padding-top: 84px; }
+  body { padding-top: 64px; }
   body.body--nav-overlay { padding-top: 0; }
 
-  .topbar { padding: 12px; }
-  .nav { height: 60px; gap: 16px; border-radius: 30px; padding: 0 20px; }
+  .nav__inner { height: 64px; gap: 16px; padding: 0 20px; }
   .nav__links { display: none; }
-  .nav__logo img { width: 46px; height: auto; }
+  .nav__logo img { width: 40px; height: auto; }
 
-  /* CTA moves into the full-screen menu; globe is hidden on mobile */
-  .nav__icon-btn--globe,
+  /* CTA moves into the full-screen menu; globe is hidden on mobile
+     (its language options move into .nav-menu__lang instead) */
+  .nav__lang,
   .nav > .nav__actions .nav__cta { display: none; }
   .nav__menu-btn { display: flex; }
+  .nav-menu__lang { display: flex; }
 }

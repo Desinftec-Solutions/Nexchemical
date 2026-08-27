@@ -1,54 +1,89 @@
 {% load static %}
+{% load i18n %}
 {# Global site navbar — fixed to the top of every page.                          #}
 {# Usage: {% include "core/_navbar.html" with variant="light|dark" %}            #}
 {#   light — translucent pill over the homepage hero                             #}
 {#   dark  — black pill on all inner pages (default)                             #}
 {# Pair with css/navbar.css and js/navbar.js. The search icon toggles the        #}
-{# catalog search form; it starts open when a search query is active.            #}
+{# catalog search form; it starts open when a search query is active. The        #}
+{# globe icon opens a language dropdown that posts to Django's set_language      #}
+{# view (js/navbar.js) — see js/navbar-lang.js for the toggle behavior.          #}
+{% get_current_language as CURRENT_LANGUAGE %}
+{% get_available_languages as AVAILABLE_LANGUAGES %}
+{% get_language_info_list for AVAILABLE_LANGUAGES as available_languages %}
 <header class="topbar">
   <nav class="nav{% if variant != 'light' %} nav--dark{% endif %}{% if search_query %} nav--search-open{% endif %}" data-navbar>
-    <a class="nav__logo" href="{% url 'core:home' %}">
-      <img src="{% static 'img/logo.svg' %}" alt="NexChemical" width="62" height="51">
-    </a>
+    <div class="nav__inner">
+      <a class="nav__logo" href="{% url 'core:home' %}">
+        <img src="{% static 'img/logo.svg' %}" alt="NexChemical" width="62" height="51">
+      </a>
 
-    <ul class="nav__links">
-      <li><a class="nav__link{% if request.resolver_match.view_name == 'core:home' %} nav__link--active{% endif %}" href="{% url 'core:home' %}">Home</a></li>
-      <li><a class="nav__link{% if 'catalogue' in request.resolver_match.namespace %} nav__link--active{% endif %}" href="{% url 'catalogue:product_list' %}">Catalog</a></li>
-      <li><a class="nav__link" href="#">Service</a></li>
-      <li><a class="nav__link{% if request.resolver_match.view_name == 'core:about' %} nav__link--active{% endif %}" href="{% url 'core:about' %}">About Us</a></li>
-    </ul>
+      <ul class="nav__links">
+        <li><a class="nav__link{% if request.resolver_match.view_name == 'core:home' %} nav__link--active{% endif %}" href="{% url 'core:home' %}">{% trans "Home" %}</a></li>
+        <li><a class="nav__link{% if 'catalogue' in request.resolver_match.namespace %} nav__link--active{% endif %}" href="{% url 'catalogue:product_list' %}">{% trans "Catalog" %}</a></li>
+        <li><a class="nav__link{% if 'news' in request.resolver_match.namespace %} nav__link--active{% endif %}" href="{% url 'news:news_list' %}">{% trans "News" %}</a></li>
+        <li><a class="nav__link{% if request.resolver_match.view_name == 'core:service' %} nav__link--active{% endif %}" href="{% url 'core:service' %}">{% trans "Service" %}</a></li>
+        <li><a class="nav__link{% if request.resolver_match.view_name == 'core:about' %} nav__link--active{% endif %}" href="{% url 'core:about' %}">{% trans "About Us" %}</a></li>
+      </ul>
 
-    <form class="nav__search" role="search" method="get" action="{% url 'catalogue:product_list' %}">
-      <img class="nav__search-icon" src="{% static 'img/icon-search.svg' %}" alt="" width="11" height="11">
-      <input type="search" name="q" value="{{ search_query }}" placeholder="Search catalog...">
-      {% if active_category %}<input type="hidden" name="category" value="{{ active_category }}">{% endif %}
-      {% if active_subcategory %}<input type="hidden" name="subcategory" value="{{ active_subcategory }}">{% endif %}
-    </form>
+      <form class="nav__search" role="search" method="get" action="{% url 'catalogue:product_list' %}">
+        <img class="nav__search-icon" src="{% static 'img/icon-search.svg' %}" alt="" width="11" height="11">
+        <input type="search" name="q" value="{{ search_query }}" placeholder="{% trans 'Search by name or CAS number...' %}">
+        {% if active_category %}<input type="hidden" name="category" value="{{ active_category }}">{% endif %}
+        {% if active_subcategory %}<input type="hidden" name="subcategory" value="{{ active_subcategory }}">{% endif %}
+      </form>
 
-    <div class="nav__actions">
-      <button class="nav__icon-btn" type="button" data-search-toggle aria-expanded="{% if search_query %}true{% else %}false{% endif %}" aria-label="Toggle search">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
-      </button>
-      <button class="nav__icon-btn nav__icon-btn--globe" type="button" aria-label="Language">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9z"/></svg>
-      </button>
-      <a class="nav__cta" href="{% url 'contact:contact_page' %}">Contact Us</a>
-      <button class="nav__icon-btn nav__menu-btn" type="button" data-menu-toggle aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
+      <div class="nav__actions">
+        <button class="nav__icon-btn" type="button" data-search-toggle aria-expanded="{% if search_query %}true{% else %}false{% endif %}" aria-label="{% trans 'Toggle search' %}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        </button>
+
+        <div class="nav__lang" data-lang-dropdown>
+          <button class="nav__icon-btn nav__icon-btn--globe" type="button" data-lang-toggle aria-haspopup="true" aria-expanded="false" aria-label="{% trans 'Change language' %}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9z"/></svg>
+            <span class="nav__lang-current">{{ CURRENT_LANGUAGE }}</span>
+          </button>
+          <div class="nav__lang-menu" data-lang-menu role="menu">
+            {% for lang in available_languages %}
+              <form class="nav__lang-form" action="{% url 'set_language' %}" method="post" role="none">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                <input type="hidden" name="language" value="{{ lang.code }}">
+                <button type="submit" class="nav__lang-option{% if lang.code == CURRENT_LANGUAGE %} nav__lang-option--active{% endif %}" role="menuitem">{{ lang.name_local }}</button>
+              </form>
+            {% endfor %}
+          </div>
+        </div>
+
+        <a class="nav__cta" href="{% url 'contact:contact_page' %}">{% trans "Contact Us" %}</a>
+        <button class="nav__icon-btn nav__menu-btn" type="button" data-menu-toggle aria-expanded="false" aria-controls="navMenu" aria-label="{% trans 'Open menu' %}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
     </div>
   </nav>
 
   <div class="nav-menu" id="navMenu" data-nav-menu>
-    <button class="nav-menu__close" type="button" data-menu-close aria-label="Close menu">
+    <button class="nav-menu__close" type="button" data-menu-close aria-label="{% trans 'Close menu' %}">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
-    <nav class="nav-menu__links" aria-label="Mobile">
-      <a class="nav-menu__link{% if request.resolver_match.view_name == 'core:home' %} nav-menu__link--active{% endif %}" href="{% url 'core:home' %}">Home</a>
-      <a class="nav-menu__link{% if 'catalogue' in request.resolver_match.namespace %} nav-menu__link--active{% endif %}" href="{% url 'catalogue:product_list' %}">Catalog</a>
-      <a class="nav-menu__link" href="#">Service</a>
-      <a class="nav-menu__link{% if request.resolver_match.view_name == 'core:about' %} nav-menu__link--active{% endif %}" href="{% url 'core:about' %}">About Us</a>
+    <nav class="nav-menu__links" aria-label="{% trans 'Mobile navigation' %}">
+      <a class="nav-menu__link{% if request.resolver_match.view_name == 'core:home' %} nav-menu__link--active{% endif %}" href="{% url 'core:home' %}">{% trans "Home" %}</a>
+      <a class="nav-menu__link{% if 'catalogue' in request.resolver_match.namespace %} nav-menu__link--active{% endif %}" href="{% url 'catalogue:product_list' %}">{% trans "Catalog" %}</a>
+      <a class="nav-menu__link{% if 'news' in request.resolver_match.namespace %} nav-menu__link--active{% endif %}" href="{% url 'news:news_list' %}">{% trans "News" %}</a>
+      <a class="nav-menu__link{% if request.resolver_match.view_name == 'core:service' %} nav-menu__link--active{% endif %}" href="{% url 'core:service' %}">{% trans "Service" %}</a>
+      <a class="nav-menu__link{% if request.resolver_match.view_name == 'core:about' %} nav-menu__link--active{% endif %}" href="{% url 'core:about' %}">{% trans "About Us" %}</a>
     </nav>
-    <a class="nav__cta" href="{% url 'contact:contact_page' %}">Contact Us</a>
+    <div class="nav-menu__lang">
+      {% for lang in available_languages %}
+        <form class="nav-menu__lang-form" action="{% url 'set_language' %}" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ request.get_full_path }}">
+          <input type="hidden" name="language" value="{{ lang.code }}">
+          <button type="submit" class="nav-menu__lang-option{% if lang.code == CURRENT_LANGUAGE %} nav-menu__lang-option--active{% endif %}">{{ lang.name_local }}</button>
+        </form>
+      {% endfor %}
+    </div>
+    <a class="nav__cta" href="{% url 'contact:contact_page' %}">{% trans "Contact Us" %}</a>
   </div>
 </header>

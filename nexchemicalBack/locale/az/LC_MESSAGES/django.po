@@ -1,0 +1,489 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: NexChemical 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: az\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Home"
+msgstr "Ana səhifə"
+
+msgid "Catalog"
+msgstr "Kataloq"
+
+msgid "News"
+msgstr "Xəbərlər"
+
+msgid "Service"
+msgstr "Xidmət"
+
+msgid "About Us"
+msgstr "Haqqımızda"
+
+msgid "Search catalog..."
+msgstr "Kataloqda axtar..."
+
+msgid "Toggle search"
+msgstr "Axtarışı aç/bağla"
+
+msgid "Change language"
+msgstr "Dili dəyiş"
+
+msgid "Contact Us"
+msgstr "Bizimlə əlaqə"
+
+msgid "Open menu"
+msgstr "Menyunu aç"
+
+msgid "Close menu"
+msgstr "Menyunu bağla"
+
+msgid "Mobile navigation"
+msgstr "Mobil naviqasiya"
+
+msgid "Start Growing<br>Smarter Today"
+msgstr "Daha Ağıllı<br>Böyüməyə Başlayın"
+
+msgid "Contact us today"
+msgstr "Bu gün bizimlə əlaqə saxlayın"
+
+msgid "Chemistry"
+msgstr "Kimya"
+
+msgid "Innovation"
+msgstr "İnnovasiya"
+
+msgid "Solutions"
+msgstr "Həllər"
+
+msgid "Copyright © %(year)s NexChemical | Designed by Desinftec"
+msgstr "Müəllif hüququ © %(year)s NexChemical | Dizayn: Desinftec"
+
+msgid "Chat with us"
+msgstr "Bizimlə söhbət edin"
+
+msgid "Close"
+msgstr "Bağla"
+
+msgid "Chat on WhatsApp"
+msgstr "WhatsApp-da yazın"
+
+msgid "NexChemical — Pioneering Chemistry for a Sustainable Future"
+msgstr "NexChemical — Davamlı Gələcək üçün Öncül Kimya"
+
+msgid "Pioneering Chemistry for a Sustainable Future"
+msgstr "Davamlı Gələcək üçün Öncül Kimya"
+
+msgid "Bridging the gap between laboratory innovation and agricultural excellence with regulatory-compliant chemical solutions."
+msgstr "Normativ tələblərə uyğun kimyəvi həllərlə laboratoriya innovasiyası ilə kənd təsərrüfatı mükəmməlliyi arasında körpü qururuq."
+
+msgid "View Product Catalog"
+msgstr "Məhsul Kataloquna Bax"
+
+msgid "Our Sustainability Commitment"
+msgstr "Davamlılıq Öhdəliyimiz"
+
+msgid "Who we are"
+msgstr "Biz kimik"
+
+msgid "Rooted in innovation, growing smarter and more sustainable <span class=\"muted\">modern agriculture</span>"
+msgstr "İnnovasiyaya kök salmış, daha ağıllı və davamlı <span class=\"muted\">müasir kənd təsərrüfatı</span>"
+
+msgid "Agricultural research projects"
+msgstr "Kənd təsərrüfatı tədqiqat layihəsi"
+
+msgid "Smart Farming Hectares"
+msgstr "Ağıllı Fermer Hektarı"
+
+msgid "Our services"
+msgstr "Xidmətlərimiz"
+
+msgid "Driving Agri <span class=\"muted\">Tech</span><br>Innovation Forward"
+msgstr "Aqrar <span class=\"muted\">Texnologiyada</span><br>İnnovasiyanı İrəli Aparırıq"
+
+msgid "Genomic Research"
+msgstr "Genomik Tədqiqat"
+
+msgid "Enhancing crop DNA to develop resilient, high-yield varieties suited for varied conditions."
+msgstr "Müxtəlif şəraitlərə uyğun, davamlı və yüksək məhsuldar sortlar yaratmaq üçün bitki DNT-sini təkmilləşdiririk."
+
+msgid "AI Farming"
+msgstr "Süni İntellektlə Əkinçilik"
+
+msgid "Using AI insights to monitor crops, resources and improve overall farming efficiency."
+msgstr "Bitkiləri və resursları izləmək, ümumi əkinçilik səmərəliliyini artırmaq üçün süni intellekt təhlillərindən istifadə edirik."
+
+msgid "Bio Fertilizers"
+msgstr "Bio Gübrələr"
+
+msgid "Natural soil enhancers that boost fertility and reduce chemical use in farming."
+msgstr "Torpağın münbitliyini artıran və əkinçilikdə kimyəvi maddə istifadəsini azaldan təbii gücləndiricilər."
+
+msgid "Our products"
+msgstr "Məhsullarımız"
+
+msgid "Smart <span class=\"muted\">Solutions</span><br>Modern Farming"
+msgstr "Müasir Əkinçilik üçün<br>Ağıllı <span class=\"muted\">Həllər</span>"
+
+msgid "Bio-Rational"
+msgstr "Bio-Rasional"
+
+msgid "Add to favorites"
+msgstr "Sevimlilərə əlavə et"
+
+msgid "Unlock industrial potential in our catalog"
+msgstr "Kataloqumuzda sənaye potensialını üzə çıxarın"
+
+msgid "Discover a comprehensive range of chemical products, backed by technical expertise from our regional specialists."
+msgstr "Regional mütəxəssislərimizin texniki təcrübəsi ilə dəstəklənən geniş kimyəvi məhsul çeşidini kəşf edin."
+
+msgid "Explore catalog"
+msgstr "Kataloqa bax"
+
+msgid "Laboratory research team at work"
+msgstr "İş başında laboratoriya tədqiqat komandası"
+
+msgid "Scientist operating a microscope"
+msgstr "Mikroskopla işləyən alim"
+
+msgid "Researcher working with laboratory glassware"
+msgstr "Laboratoriya şüşə qablarıyla işləyən tədqiqatçı"
+
+msgid "About Us | NexChemical"
+msgstr "Haqqımızda | NexChemical"
+
+msgid "About NexChemical"
+msgstr "NexChemical Haqqında"
+
+msgid "Engineering the Future of Agriculture &amp; Science"
+msgstr "Kənd Təsərrüfatı və Elmin Gələcəyini Qururuq"
+
+msgid "NexChemical supplies regulatory-certified chemistry products to industry and research customers, combining advanced genomics, artificial intelligence, and sustainable manufacturing to help growers do more with less."
+msgstr "NexChemical sənaye və tədqiqat müştərilərinə normativ sertifikatlı kimya məhsulları təqdim edir, qabaqcıl genomika, süni intellekt və davamlı istehsalı birləşdirərək fermerlərə daha az resursla daha çox nailiyyət qazandırır."
+
+msgid "Illustration of a DNA helix and growing crop over a data network, representing NexChemical biotechnology and agricultural innovation"
+msgstr "Verilənlər şəbəkəsi üzərində DNT spiralı və böyüyən bitkinin təsviri, NexChemical-in biotexnologiya və kənd təsərrüfatı innovasiyasını təmsil edir"
+
+msgid "Our genomic research division develops deep molecular analysis to unlock crop variables and optimize yield for local soil and climate conditions."
+msgstr "Genomik tədqiqat bölməmiz bitki dəyişənlərini üzə çıxarmaq və yerli torpaq-iqlim şəraitinə uyğun məhsuldarlığı optimallaşdırmaq üçün dərin molekulyar təhlil aparır."
+
+msgid "Sample Extraction"
+msgstr "Nümunə Çıxarılması"
+
+msgid "Secure, sterile collection and isolation of proprietary genomic material."
+msgstr "Xüsusi genomik materialın təhlükəsiz, steril toplanması və izolyasiyası."
+
+msgid "High-Throughput Analysis"
+msgstr "Yüksək Məhsuldarlıqlı Analiz"
+
+msgid "Next-generation sequencing pipelines deliver actionable genomic insight at scale."
+msgstr "Yeni nəsil ardıcıllıq təyini sistemləri geniş miqyasda əməli genomik məlumat təqdim edir."
+
+msgid "AI-Driven Farming Solutions"
+msgstr "Süni İntellekt Əsaslı Əkinçilik Həlləri"
+
+msgid "Harnessing machine learning, satellite imagery, and predictive crop yields to monitor soil moisture and automate resource distribution."
+msgstr "Torpaq rütubətini izləmək və resurs bölgüsünü avtomatlaşdırmaq üçün maşın öyrənməsindən, peyk görüntülərindən və proqnozlaşdırıcı məhsuldarlıqdan istifadə edirik."
+
+msgid "Average Resource Reduction"
+msgstr "Orta Resurs Azalması"
+
+msgid "Satellite Integration"
+msgstr "Peyk İnteqrasiyası"
+
+msgid "Real-time hyperspectral imaging for early disease detection, hundreds of hectares at a time."
+msgstr "Xəstəliklərin erkən aşkarlanması üçün real vaxt rejimində hiperspektral görüntüləmə, eyni anda yüzlərlə hektar əhatə edir."
+
+msgid "Advanced Bio Fertilizers"
+msgstr "Qabaqcıl Bio Gübrələr"
+
+msgid "Formulated using proprietary microbial consortia, our bio-fertilizers regenerate soil ecosystems while providing sustained nutrient release."
+msgstr "Xüsusi mikrob birləşmələri ilə formalaşdırılan bio-gübrələrimiz torpaq ekosistemlərini bərpa edir və davamlı qida maddəsi buraxılışı təmin edir."
+
+msgid "Zero synthetic runoff into local waterways."
+msgstr "Yerli su hövzələrinə sintetik axıntı sıfırdır."
+
+msgid "Reduces natural nitrogen fixing requirements."
+msgstr "Təbii azot fiksasiyası tələbatını azaldır."
+
+msgid "Compatible with existing irrigation systems."
+msgstr "Mövcud suvarma sistemləri ilə uyğundur."
+
+msgid "Browse Catalog"
+msgstr "Kataloqa Bax"
+
+msgid "Certifications"
+msgstr "Sertifikatlar"
+
+msgid "Certified &amp; Compliant"
+msgstr "Sertifikatlaşdırılmış və Uyğun"
+
+msgid "Satellite Farmland Mapping"
+msgstr "Peyklə Torpaq Xəritələşdirilməsi"
+
+msgid "Bio Fertilizer"
+msgstr "Bio Gübrə"
+
+msgid "Service | NexChemical"
+msgstr "Xidmət | NexChemical"
+
+msgid "Comprehensive solutions leveraging advanced genomics, artificial intelligence, and sustainable biotechnology to optimize yields, ensure compliance, and drive innovation in modern farming and laboratory research."
+msgstr "Məhsuldarlığı optimallaşdırmaq, uyğunluğu təmin etmək və müasir əkinçilik və laboratoriya tədqiqatlarında innovasiyanı irəli aparmaq üçün qabaqcıl genomika, süni intellekt və davamlı biotexnologiyadan istifadə edən hərtərəfli həllər."
+
+msgid "Laboratory research"
+msgstr "Laboratoriya tədqiqatı"
+
+msgid "Genomic research"
+msgstr "Genomik tədqiqat"
+
+msgid "Our genomic research division provides deep-dive molecular analysis to develop resilient crop varieties and optimize soil health. We translate complex genetic data into actionable agricultural strategies."
+msgstr "Genomik tədqiqat bölməmiz davamlı bitki sortları yaratmaq və torpaq sağlamlığını optimallaşdırmaq üçün dərinləşdirilmiş molekulyar təhlil təqdim edir. Mürəkkəb genetik məlumatları əməli kənd təsərrüfatı strategiyalarına çeviririk."
+
+msgid "Secure, sterile collection and isolation protocols ensuring sample integrity."
+msgstr "Nümunənin bütövlüyünü təmin edən təhlükəsiz, steril toplama və izolyasiya protokolları."
+
+msgid "Next-generation sequencing delivering rapid, comprehensive genetic profiles."
+msgstr "Sürətli və hərtərəfli genetik profillər təqdim edən yeni nəsil ardıcıllıq təyini."
+
+msgid "Harnessing machine learning algorithms and satellite imagery to predict crop yields, monitor soil moisture, and automate resource distribution."
+msgstr "Məhsuldarlığı proqnozlaşdırmaq, torpaq rütubətini izləmək və resurs bölgüsünü avtomatlaşdırmaq üçün maşın öyrənməsi alqoritmlərindən və peyk görüntülərindən istifadə edirik."
+
+msgid "AI-driven farming aerial view"
+msgstr "Süni intellekt əsaslı əkinçiliyin hava görünüşü"
+
+msgid "Resource Reduction"
+msgstr "Resurs Azalması"
+
+msgid "Average decrease in water and fertilizer usage through automated, targeted application systems."
+msgstr "Avtomatlaşdırılmış, hədəflənmiş tətbiq sistemləri vasitəsilə su və gübrə istifadəsində orta azalma."
+
+msgid "Real-time hyperspectral imaging for early disease detection across thousands of hectares."
+msgstr "Minlərlə hektarda xəstəliklərin erkən aşkarlanması üçün real vaxt rejimində hiperspektral görüntüləmə."
+
+msgid "Zero synthetic runoff into local waterways"
+msgstr "Yerli su hövzələrinə sintetik axıntı sıfırdır"
+
+msgid "Restores natural nitrogen-fixing bacteria"
+msgstr "Təbii azot fiksasiya edən bakteriyaları bərpa edir"
+
+msgid "Compatible with existing irrigation systems"
+msgstr "Mövcud suvarma sistemləri ilə uyğundur"
+
+msgid "Bio fertilizer"
+msgstr "Bio gübrə"
+
+msgid "Product Catalog — NexChemical"
+msgstr "Məhsul Kataloqu — NexChemical"
+
+msgid "Advanced Crop Protection"
+msgstr "Qabaqcıl Bitki Mühafizəsi"
+
+msgid "NEXCHEMICAL delivers regulatory-certified chemical solutions engineered for sustainable agriculture and industrial precision. Browse our validated SDS catalog."
+msgstr "NEXCHEMICAL davamlı kənd təsərrüfatı və sənaye dəqiqliyi üçün hazırlanmış, normativ sertifikatlı kimyəvi həllər təqdim edir. Təsdiqlənmiş TVX kataloqumuza baxın."
+
+msgid "Field researcher inspecting crops"
+msgstr "Sahədə bitkiləri yoxlayan tədqiqatçı"
+
+msgid "Download Full Index"
+msgstr "Tam Siyahını Yüklə"
+
+msgid "Filter and sorts"
+msgstr "Filtr və sıralama"
+
+msgid "Category"
+msgstr "Kateqoriya"
+
+msgid "All"
+msgstr "Hamısı"
+
+msgid "Subcategory"
+msgstr "Alt kateqoriya"
+
+msgid "Sort by"
+msgstr "Sırala"
+
+msgid "Clear all filters"
+msgstr "Bütün filtrləri təmizlə"
+
+msgid "View Details"
+msgstr "Ətraflı bax"
+
+msgid "No products found. Try adjusting your search or filters."
+msgstr "Məhsul tapılmadı. Axtarışınızı və ya filtrlərinizi dəyişməyə cəhd edin."
+
+msgid "Previous page"
+msgstr "Əvvəlki səhifə"
+
+msgid "Next page"
+msgstr "Növbəti səhifə"
+
+msgid "Catalog pages"
+msgstr "Kataloq səhifələri"
+
+msgid "Back to Catalog"
+msgstr "Kataloqa qayıt"
+
+msgid "View information"
+msgstr "Məlumata bax"
+
+msgid "Purity Level"
+msgstr "Təmizlik Səviyyəsi"
+
+msgid "Pure"
+msgstr "təmiz"
+
+msgid "Regulatory Information"
+msgstr "Normativ Məlumat"
+
+msgid "Active Ingredients"
+msgstr "Fəal Maddələr"
+
+msgid "Registration No"
+msgstr "Qeydiyyat No"
+
+msgid "Dosage/Usage"
+msgstr "Dozaj/İstifadə"
+
+msgid "SDS Downloads"
+msgstr "TVX Yükləmələri"
+
+msgid "Chemical Composition"
+msgstr "Kimyəvi Tərkib"
+
+msgid "No active ingredient data available for this product."
+msgstr "Bu məhsul üçün fəal maddə məlumatı mövcud deyil."
+
+msgid "Registration Number"
+msgstr "Qeydiyyat Nömrəsi"
+
+msgid "No registration number on file."
+msgstr "Qeydiyyat nömrəsi qeydə alınmayıb."
+
+msgid "Dosage / Usage"
+msgstr "Dozaj / İstifadə"
+
+msgid "No dosage or usage instructions provided."
+msgstr "Dozaj və ya istifadə təlimatı təqdim edilməyib."
+
+msgid "Safety Data Sheet"
+msgstr "Təhlükəsizlik Verilənlər Vərəqi"
+
+msgid "Download SDS"
+msgstr "TVX-i Yüklə"
+
+msgid "No SDS document has been uploaded for this product yet."
+msgstr "Bu məhsul üçün hələ TVX sənədi yüklənməyib."
+
+msgid "Contact — NexChemical"
+msgstr "Əlaqə — NexChemical"
+
+msgid "Connect with Our Experts"
+msgstr "Ekspertlərimizlə Əlaqə Saxlayın"
+
+msgid "Our global network of technical specialists and regulatory consultants is ready to support your industrial chemical and agricultural solution needs. Precision-driven guidance, anywhere in the world."
+msgstr "Texniki mütəxəssislər və normativ məsləhətçilərdən ibarət qlobal şəbəkəmiz sənaye kimyası və kənd təsərrüfatı həlləri üzrə ehtiyaclarınızı dəstəkləməyə hazırdır. Dünyanın istənilən yerində dəqiqliyə əsaslanan rəhbərlik."
+
+msgid "Start a Consultation"
+msgstr "Məsləhətləşməyə Başlayın"
+
+msgid "Send an Inquiry"
+msgstr "Sorğu Göndərin"
+
+msgid "Our representative will respond within 24 business hours."
+msgstr "Nümayəndəmiz 24 iş saatı ərzində cavab verəcək."
+
+msgid "Full Name"
+msgstr "Ad və Soyad"
+
+msgid "Company Email"
+msgstr "Şirkət Email-i"
+
+msgid "Phone number"
+msgstr "Telefon nömrəsi"
+
+msgid "Message"
+msgstr "Mesaj"
+
+msgid "Submit Request"
+msgstr "Sorğunu Göndər"
+
+msgid "Our Regional Presence"
+msgstr "Regional Mövcudluğumuz"
+
+msgid "Strategic hubs positioned to deliver fast, compliant, and localized chemical solutions across the globe."
+msgstr "Dünya üzrə sürətli, normativlərə uyğun və lokallaşdırılmış kimyəvi həllər təqdim etmək üçün strateji mərkəzlər."
+
+msgid "Thanks for reaching out — we will get back to you soon."
+msgstr "Bizimlə əlaqə saxladığınız üçün təşəkkür edirik — tezliklə sizinlə əlaqə saxlayacağıq."
+
+msgid "News — NexChemical"
+msgstr "Xəbərlər — NexChemical"
+
+msgid "Newsroom"
+msgstr "Mətbuat mərkəzi"
+
+msgid "Latest News"
+msgstr "Son Xəbərlər"
+
+msgid "Updates, announcements, and insights from NexChemical."
+msgstr "NexChemical-dən yeniliklər, elanlar və təhlillər."
+
+msgid "Read article"
+msgstr "Məqaləni oxu"
+
+msgid "No news articles yet."
+msgstr "Hələ xəbər yoxdur."
+
+msgid "News pages"
+msgstr "Xəbər səhifələri"
+
+msgid "Back to News"
+msgstr "Xəbərlərə qayıt"
+
+msgid "Liter"
+msgstr "Litr"
+
+msgid "Milliliter"
+msgstr "Millilitr"
+
+msgid "Kilogram"
+msgstr "Kiloqram"
+
+msgid "Gram"
+msgstr "Qram"
+
+msgid "Piece"
+msgstr "Ədəd"
+
+msgid "Suspension Concentrate"
+msgstr "Suspenziya Konsentratı"
+
+msgid "Emulsifiable Concentrate"
+msgstr "Emulsiyalaşan Konsentrat"
+
+msgid "Wettable Powder"
+msgstr "Islana Bilən Toz"
+
+msgid "Granule"
+msgstr "Qranul"
+
+msgid "Soluble Liquid"
+msgstr "Həll Olunan Maye"
+
+msgid "Other"
+msgstr "Digər"
+
+msgid "Price: Low to High"
+msgstr "Qiymət: Aşağıdan Yuxarı"
+
+msgid "Price: High to Low"
+msgstr "Qiymət: Yuxarıdan Aşağı"
+
+msgid "Newest"
+msgstr "Ən yeni"
+
+msgid "Name: A-Z"
+msgstr "Ad: A-Z"

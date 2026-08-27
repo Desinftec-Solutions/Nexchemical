@@ -12,9 +12,12 @@ def product_list(request):
     category_slug = request.GET.get("category") or None
     subcategory_slug = request.GET.get("subcategory") or None
     search = request.GET.get("q") or None
+    sort = request.GET.get("sort") or None
+    if sort not in services.SORT_OPTIONS:
+        sort = None
 
     products = services.list_active_products(
-        category_slug=category_slug, subcategory_slug=subcategory_slug, search=search
+        category_slug=category_slug, subcategory_slug=subcategory_slug, search=search, sort=sort
     )
     categories = services.list_categories()
     subcategories = services.list_subcategories(category_slug=category_slug)
@@ -32,6 +35,8 @@ def product_list(request):
         "subcategories": subcategories,
         "active_category": category_slug,
         "active_subcategory": subcategory_slug,
+        "active_sort": sort or "",
+        "sort_options": services.SORT_OPTIONS,
         "search_query": search or "",
     }
     return render(request, "catalogue/product_list.html", context)

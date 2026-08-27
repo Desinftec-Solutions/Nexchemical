@@ -11,18 +11,18 @@ document.addEventListener('DOMContentLoaded', function () {
     if (width < 640) {
       return {
         distanceDivisor: 120, velocityDivisor: 500, sensitivity: 180,
-        xMultiplier: 90, yMultiplier: 20, rotationMultiplier: 8, scaleReduction: 0.06
+        xMultiplier: 130, yMultiplier: 26, rotationMultiplier: 8, scaleReduction: 0.06
       };
     }
     if (width < 1024) {
       return {
         distanceDivisor: 160, velocityDivisor: 650, sensitivity: 220,
-        xMultiplier: 130, yMultiplier: 30, rotationMultiplier: 10, scaleReduction: 0.09
+        xMultiplier: 190, yMultiplier: 38, rotationMultiplier: 10, scaleReduction: 0.09
       };
     }
     return {
       distanceDivisor: 200, velocityDivisor: 800, sensitivity: 250,
-      xMultiplier: 170, yMultiplier: 40, rotationMultiplier: 12, scaleReduction: 0.12
+      xMultiplier: 250, yMultiplier: 48, rotationMultiplier: 12, scaleReduction: 0.12
     };
   }
 
@@ -42,6 +42,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var lastT = 0;
   var pointerVelocity = 0;
   var animFrame = null;
+  var hoveredCard = null;
+  var HOVER_LIFT = 14;
 
   function clamp(value, lo, hi) { return Math.min(hi, Math.max(lo, value)); }
 
@@ -77,28 +79,40 @@ document.addEventListener('DOMContentLoaded', function () {
       var x = diff * config.xMultiplier;
       var rotate = absDiff < 0.05 ? 0 : diff * config.rotationMultiplier;
       var y = absDiff < 0.05 ? 0 : absDiff * config.yMultiplier;
+      if (card === hoveredCard) y -= HOVER_LIFT;
       var scale = 1 - absDiff * config.scaleReduction;
       var opacity = piecewise(
         diff,
         [-total / 2, -total / 2 + 0.5, 0, total / 2 - 0.5, total / 2],
         [0, 1, 1, 1, 0]
       );
-      var zIndex = Math.round(100 - absDiff * 10);
-      var shadeOpacity = piecewise(diff, [-2, -0.5, 0, 0.5, 2], [0.5, 0.2, 0, 0.2, 0.5]);
-      var textOpacity = piecewise(diff, [-0.5, 0, 0.5], [0, 1, 0]);
+      var zIndex = Math.round(100 - absDiff * 10) + (card === hoveredCard ? 20 : 0);
 
       card.style.transform =
         'translate(-50%, -50%) translateX(' + x + 'px) translateY(' + y + 'px) ' +
         'rotate(' + rotate + 'deg) scale(' + scale + ')';
       card.style.opacity = String(opacity);
       card.style.zIndex = String(zIndex);
-
-      var shade = card.querySelector('[data-carousel-shade]');
-      if (shade) shade.style.opacity = String(shadeOpacity);
-
-      var texts = card.querySelectorAll('[data-carousel-text]');
-      for (var j = 0; j < texts.length; j++) texts[j].style.opacity = String(textOpacity);
     }
+  }
+
+  function findCardAtPoint(clientX, clientY) {
+    var best = null;
+    var bestZ = -Infinity;
+    for (var i = 0; i < cards.length; i++) {
+      var rect = cards[i].getBoundingClientRect();
+      if (clientX >= rect.left && clientX <= rect.right && clientY >= rect.top && clientY <= rect.bottom) {
+        var z = parseInt(cards[i].style.zIndex || '0', 10);
+        if (z > bestZ) { bestZ = z; best = cards[i]; }
+      }
+    }
+    return best;
+  }
+
+  function setHoveredCard(card) {
+    if (card === hoveredCard) return;
+    hoveredCard = card;
+    render();
   }
 
   function stepSpring() {
@@ -127,6 +141,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function onPointerDown(e) {
     dragging = true;
+    setHoveredCard(null);
     if (animFrame) { cancelAnimationFrame(animFrame); animFrame = null; }
     dragStartProgress = progress;
     pointerStartX = e.clientX;
@@ -139,7 +154,10 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function onPointerMove(e) {
-    if (!dragging) return;
+    if (!dragging) {
+      setHoveredCard(findCardAtPoint(e.clientX, e.clientY));
+      return;
+    }
     var now = performance.now();
     var dx = e.clientX - lastX;
     var dt = Math.max(1, now - lastT);
@@ -165,6 +183,7 @@ document.addEventListener('DOMContentLoaded', function () {
   surface.addEventListener('pointermove', onPointerMove);
   surface.addEventListener('pointerup', onPointerUp);
   surface.addEventListener('pointercancel', onPointerUp);
+  surface.addEventListener('pointerleave', function () { setHoveredCard(null); });
 
   render();
 });
