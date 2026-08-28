@@ -72,25 +72,58 @@
   {% endif %}
 
   <!-- ============ ABOUT / WHO WE ARE ============ -->
+  {# TODO: highlight cards are placeholder copy/images for now (dev-stage) — #}
+  {# will switch to real entries from the news app once that's wired up. #}
   <section class="about">
-    <div class="about__main">
-      <div class="section-head">
-        <p class="section-head__label">{% trans "Who we are" %}</p>
-        <h2 class="section-head__title">{% blocktrans %}Rooted in innovation, growing smarter and more sustainable <span class="muted">modern agriculture</span>{% endblocktrans %}</h2>
+    <div class="about__inner" data-slider data-slider-feature-last>
+      <div class="about__highlights" data-slider-track>
+        <article class="highlight-card">
+          <h3 class="highlight-card__title">{% trans "Inspiring Podcast Episode with engaging storyline" %}</h3>
+          <div class="highlight-card__media">
+            <img src="{% static 'img/about-photo-1.png' %}" alt="">
+          </div>
+        </article>
+        <article class="highlight-card">
+          <h3 class="highlight-card__title">{% trans "Breaking News Headline capturing urgent updates" %}</h3>
+          <div class="highlight-card__media">
+            <img src="{% static 'img/about-photo-2.png' %}" alt="">
+          </div>
+        </article>
+        <article class="highlight-card">
+          <h3 class="highlight-card__title">{% trans "Dastoynu Media Title that covers two lines of text" %}</h3>
+          <div class="highlight-card__media">
+            <img src="{% static 'img/hero-beakers.jpg' %}" alt="">
+          </div>
+        </article>
+        <article class="highlight-card">
+          <h3 class="highlight-card__title">{% trans "Sustainability Report Highlights Our Latest Progress" %}</h3>
+          <div class="highlight-card__media">
+            <img src="{% static 'img/services-photo.png' %}" alt="">
+          </div>
+        </article>
+        <article class="highlight-card">
+          <h3 class="highlight-card__title">{% trans "Industry Conference Recap From Our Research Team" %}</h3>
+          <div class="highlight-card__media">
+            <img src="{% static 'img/hero-flasks.jpg' %}" alt="">
+          </div>
+        </article>
       </div>
-      <div class="about__row">
-        <div class="fact-card">
-          <p class="fact-card__number">60+</p>
-          <p class="fact-card__label">{% trans "Agricultural research projects" %}</p>
+
+      <div class="about__foot">
+        <div class="section-head">
+          <p class="section-head__label">{% trans "Who we are" %}</p>
+          <h2 class="section-head__title">{% blocktrans %}Rooted in innovation, growing smarter and more sustainable <span class="muted">modern agriculture</span>{% endblocktrans %}</h2>
         </div>
-        <div class="fact-card">
-          <p class="fact-card__number">70K</p>
-          <p class="fact-card__label">{% trans "Smart Farming Hectares" %}</p>
+        <div class="about__nav">
+          <button type="button" class="about__nav-btn" data-slider-prev aria-label="{% trans 'Previous' %}">
+            <img src="{% static 'img/icon-chev-left.svg' %}" alt="" width="11" height="18">
+          </button>
+          <button type="button" class="about__nav-btn" data-slider-next aria-label="{% trans 'Next' %}">
+            <img src="{% static 'img/icon-chev-right.svg' %}" alt="" width="11" height="18">
+          </button>
         </div>
-        <img class="about__photo-sm" src="{% static 'img/about-photo-1.png' %}" alt="{% trans 'Laboratory research team at work' %}">
       </div>
     </div>
-    <img class="about__photo-lg" src="{% static 'img/about-photo-2.png' %}" alt="{% trans 'Scientist operating a microscope' %}">
   </section>
 
   <!-- ============ SERVICES ============ -->
@@ -134,8 +167,8 @@
     <section class="categories">
       <p class="section-head__label categories__head">{% trans "Product categories" %}</p>
 
-      <div class="category-slider">
-        <div class="categories__strip{% if not category_strip_is_slider %} categories__strip--center{% endif %}" data-category-track>
+      <div class="category-slider" data-slider>
+        <div class="categories__strip{% if not category_strip_is_slider %} categories__strip--center{% endif %}" data-slider-track>
           {% for chip in category_chips %}
             <a class="category-chip" href="{% url 'catalogue:product_list' %}?category={{ chip.category.slug }}">
               <span class="category-chip__icon" style="--chip-hue: {{ chip.hue }}">
@@ -152,10 +185,10 @@
 
         {% if category_strip_is_slider %}
           <div class="category-slider__nav">
-            <button type="button" class="category-slider__btn" data-category-prev aria-label="{% trans 'Previous categories' %}">
+            <button type="button" class="category-slider__btn" data-slider-prev aria-label="{% trans 'Previous categories' %}">
               <img src="{% static 'img/icon-chev-left.svg' %}" alt="" width="7" height="12">
             </button>
-            <button type="button" class="category-slider__btn" data-category-next aria-label="{% trans 'Next categories' %}">
+            <button type="button" class="category-slider__btn" data-slider-next aria-label="{% trans 'Next categories' %}">
               <img src="{% static 'img/icon-chev-right.svg' %}" alt="" width="7" height="12">
             </button>
           </div>
@@ -230,5 +263,5 @@
 {% block extra_js %}
   <script src="{% static 'js/product-carousel.js' %}"></script>
   <script src="{% static 'js/partners-marquee.js' %}"></script>
-  <script src="{% static 'js/categories-slider.js' %}"></script>
+  <script src="{% static 'js/scroll-slider.js' %}"></script>
 {% endblock %}

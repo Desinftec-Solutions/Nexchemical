@@ -112,6 +112,13 @@ button { border: 0; background: none; padding: 0; cursor: pointer; font: inherit
 }
 .btn--outline:hover { background: rgba(255, 255, 255, 0.08); }
 
+/* ---------- shared: slider prev/next buttons ---------- */
+/* Toggled by scroll-slider.js on any [data-slider-prev]/[data-slider-next]
+   button once its track is scrolled all the way in that direction. Each
+   component (.category-slider__btn, .about__nav-btn, ...) styles its own
+   button appearance; this is just the shared disabled look. */
+.slider-btn--disabled { opacity: 0.35; pointer-events: none; }
+
 /* ============================================================
    HERO
    ============================================================ */
@@ -120,8 +127,10 @@ button { border: 0; background: none; padding: 0; cursor: pointer; font: inherit
   position: relative;
   display: flex;
   flex-direction: column;
-  /* top padding clears the fixed navbar (see navbar.css) */
-  padding: 176px var(--page-pad) 39px;
+  /* top padding clears the fixed navbar (see navbar.css); bottom padding
+     matches the section's height in the Figma reference (measured 827px
+     rendered vs. 885px in Figma — this closes that gap). */
+  padding: 176px var(--page-pad) 97px;
   overflow: clip;
 }
 
@@ -237,69 +246,109 @@ button { border: 0; background: none; padding: 0; cursor: pointer; font: inherit
 
 .about {
   display: flex;
-  gap: 24px;
-  align-items: flex-start;
+  align-items: flex-end;
+  justify-content: center;
   max-width: 1440px;
   margin-inline: auto;
-  padding: 72px var(--page-pad) 36px;
+  padding: 36px var(--page-pad);
 }
 
-.about__main {
+.about__inner {
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 24px;
+  width: 100%;
+  max-width: 1296px;
 }
 
 .about .section-head__title { max-width: 680px; }
 
-.about__row {
-  display: flex;
-  align-items: flex-end;
-  gap: 24px;
-}
+/* ---- highlight cards ---- */
 
-.fact-card {
+.about__highlights {
+  --highlight-gap: 72px;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--highlight-gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.about__highlights::-webkit-scrollbar { display: none; }
+
+.highlight-card {
+  flex: 0 0 calc((100% - 2 * var(--highlight-gap)) / 3);
+  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 182px;
-  height: 216px;
-  padding: 22px 26px 24px;
-  background: #000;
-  border: 1px solid #d4d4d4;
-  border-radius: var(--radius-card);
-  flex-shrink: 0;
+  gap: 8px;
+  background: #fff;
+  border: 8px solid var(--color-page);
 }
 
-.fact-card__number {
+.highlight-card__title {
   font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 52.8px;
-  line-height: 1.12;
-  color: #fff;
+  font-size: 22px;
+  line-height: 1.25;
+  color: var(--color-ink);
+  padding: 8px 8px 0;
+  /* Always 2 lines — every card is the same width, so what actually varies
+     is font-size (below), not line count. Only the card in the rightmost
+     visible slot (.is-featured, toggled by scroll-slider.js) gets the
+     larger size, which is what makes it taller than the rest. */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.fact-card__label {
-  font-size: 14.1px;
-  line-height: 21px;
-  color: #fff;
-  max-width: 8em;
+.highlight-card.is-featured .highlight-card__title { font-size: 26px; }
+
+.highlight-card__media {
+  height: 181px;
+  margin: 0 8px 8px;
 }
 
-.about__photo-sm {
-  width: 357px;
-  height: 238px;
+.highlight-card__media img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 22px;
+  display: block;
 }
 
-.about__photo-lg {
-  flex: 1 1 343px;
-  min-width: 0;
-  height: 475px;
-  object-fit: cover;
-  border-radius: 24px;
+/* ---- heading + slider nav ---- */
+
+.about__foot {
+  display: flex;
+  gap: 10px;
+  width: 100%;
 }
+
+.about__nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 60px;
+  /* Grows/shrinks with the row instead of a fixed width — a fixed width
+     here is exactly what caused the arrows to collide with the heading at
+     in-between viewport widths (fixed around 1260px, in Figma). */
+  flex: 1 0 0;
+  align-self: stretch;
+}
+
+.about__nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 74px;
+  height: 74px;
+  border-radius: 9999px;
+  background: #fff;
+  border: 1px solid var(--color-primary);
+  flex-shrink: 0;
+  transition: background-color .15s ease, opacity .15s ease;
+}
+.about__nav-btn:hover { background: var(--color-surface); }
 
 /* ============================================================
    SERVICES
@@ -462,7 +511,6 @@ button { border: 0; background: none; padding: 0; cursor: pointer; font: inherit
   transition: background-color .15s ease, opacity .15s ease;
 }
 .category-slider__btn:hover { background: var(--color-surface); }
-.category-slider__btn--disabled { opacity: 0.35; pointer-events: none; }
 
 /* ============================================================
    PRODUCTS
@@ -1859,8 +1907,7 @@ a:hover .news-card__cta { text-decoration: underline; }
 @media (max-width: 1200px) {
   :root { --page-pad: 40px; }
 
-  .about { flex-wrap: wrap; }
-  .about__photo-lg { flex: 1 1 100%; height: 360px; }
+  .highlight-card { flex-basis: calc((100% - var(--highlight-gap)) / 2); }
 
   .services__inner { flex-direction: column; align-items: flex-start; }
   .services__left { width: 100%; }
@@ -1881,9 +1928,17 @@ a:hover .news-card__cta { text-decoration: underline; }
   .section-head__title { font-size: 34px; }
   .section-head__title--lg { font-size: 38px; }
 
-  .about { padding-top: 48px; }
-  .about__row { flex-wrap: wrap; }
-  .about__photo-sm { width: 100%; height: auto; }
+  .about__highlights { --highlight-gap: 12px; }
+  /* Fractional basis (like the categories strip below) leaves the next
+     card peeking in from the edge as a hint that the strip scrolls. */
+  .highlight-card { flex-basis: calc((100% - 0.2 * var(--highlight-gap)) / 1.2); }
+  .highlight-card__title { font-size: 18px; padding: 6px 6px 0; }
+  .highlight-card.is-featured .highlight-card__title { font-size: 21px; }
+  .highlight-card__media { height: 140px; margin: 0 6px 6px; }
+
+  .about__foot { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .about__nav { flex: none; align-self: flex-start; gap: 16px; }
+  .about__nav-btn { width: 48px; height: 48px; }
 
   .service-card { gap: 24px; }
   .services__photo { height: 340px; }
