@@ -1,4 +1,4 @@
-from catalogue.services import list_active_products
+from catalogue.services import list_active_products, list_categories
 from django.shortcuts import render
 
 from . import services
@@ -9,6 +9,7 @@ def home(request):
         "featured_products": list_active_products()[:6],
         "partners": services.list_partners(),
         "partner_repeat": range(8),
+        "categories": list_categories(),
     }
     return render(request, "core/home.html", context)
 

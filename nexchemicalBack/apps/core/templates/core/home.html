@@ -129,6 +129,21 @@
     </div>
   </section>
 
+  <!-- ============ CATEGORIES ============ -->
+  {% if categories %}
+    <section class="categories">
+      <div class="section-head categories__head">
+        <p class="section-head__label">{% trans "Product categories" %}</p>
+        <h2 class="section-head__title">{% blocktrans %}Explore Our<br>Product <span class="muted">Categories</span>{% endblocktrans %}</h2>
+      </div>
+      <div class="categories__strip">
+        {% for category in categories %}
+          <a class="category-chip" href="{% url 'catalogue:product_list' %}?category={{ category.slug }}">{{ category.name }}</a>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
   <!-- ============ PRODUCTS ============ -->
   <section class="products">
     <div class="section-head products__head">
