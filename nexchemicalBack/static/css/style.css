@@ -128,9 +128,12 @@ button { border: 0; background: none; padding: 0; cursor: pointer; font: inherit
   display: flex;
   flex-direction: column;
   /* top padding clears the fixed navbar (see navbar.css); bottom padding
-     matches the section's height in the Figma reference (measured 827px
-     rendered vs. 885px in Figma — this closes that gap). */
-  padding: 176px var(--page-pad) 97px;
+     is taller than the 58px Figma-reference gap alone (827px rendered vs.
+     885px in Figma) would need — the extra room is deliberate clearance
+     for .about's negative margin-top, which pulls the highlight cards up
+     to overlap this section. Measured: without the extra room the
+     leftmost card cleared the CTA button by only ~13px. */
+  padding: 176px var(--page-pad) 127px;
   overflow: clip;
 }
 
@@ -245,9 +248,14 @@ button { border: 0; background: none; padding: 0; cursor: pointer; font: inherit
    ============================================================ */
 
 .about {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  /* Pulls the whole section up so the highlight cards overlap the hero
+     above (Figma: the content block sits taller than its own section box,
+     which bottom-aligns it — negative margin is the more robust way to get
+     the same overlap here, since it doesn't depend on knowing the content's
+     exact height up front). Tuned to clear the hero CTA buttons — see
+     hero-about-overlap-check in the responsive block for how that's kept
+     true at other widths. */
+  margin-top: -160px;
   max-width: 1440px;
   margin-inline: auto;
   padding: 36px var(--page-pad);
@@ -259,6 +267,7 @@ button { border: 0; background: none; padding: 0; cursor: pointer; font: inherit
   gap: 24px;
   width: 100%;
   max-width: 1296px;
+  margin-inline: auto;
 }
 
 .about .section-head__title { max-width: 680px; }

@@ -33,45 +33,9 @@
     </div>
   </section>
 
-  <!-- ============ PARTNERS ============ -->
-  {% if partners %}
-    <section class="partners">
-      <div class="partners__track" data-partners-track>
-        <div class="partners__group">
-          {% for _ in partner_repeat %}
-            {% for partner in partners %}
-              {% if partner.website_url %}
-                <a class="partners__logo" href="{{ partner.website_url }}" target="_blank" rel="noopener">
-                  <img src="{{ partner.logo.url }}" alt="{{ partner.name }}">
-                </a>
-              {% else %}
-                <span class="partners__logo">
-                  <img src="{{ partner.logo.url }}" alt="{{ partner.name }}">
-                </span>
-              {% endif %}
-            {% endfor %}
-          {% endfor %}
-        </div>
-        <div class="partners__group" aria-hidden="true">
-          {% for _ in partner_repeat %}
-            {% for partner in partners %}
-              {% if partner.website_url %}
-                <a class="partners__logo" href="{{ partner.website_url }}" tabindex="-1">
-                  <img src="{{ partner.logo.url }}" alt="">
-                </a>
-              {% else %}
-                <span class="partners__logo">
-                  <img src="{{ partner.logo.url }}" alt="">
-                </span>
-              {% endif %}
-            {% endfor %}
-          {% endfor %}
-        </div>
-      </div>
-    </section>
-  {% endif %}
-
   <!-- ============ ABOUT / WHO WE ARE ============ -->
+  {# The highlights row deliberately overlaps the hero above it — see #}
+  {# .about's negative margin-top in style.css, matching the Figma reference. #}
   {# TODO: highlight cards are placeholder copy/images for now (dev-stage) — #}
   {# will switch to real entries from the news app once that's wired up. #}
   <section class="about">
@@ -125,6 +89,44 @@
       </div>
     </div>
   </section>
+
+  <!-- ============ PARTNERS ============ -->
+  {% if partners %}
+    <section class="partners">
+      <div class="partners__track" data-partners-track>
+        <div class="partners__group">
+          {% for _ in partner_repeat %}
+            {% for partner in partners %}
+              {% if partner.website_url %}
+                <a class="partners__logo" href="{{ partner.website_url }}" target="_blank" rel="noopener">
+                  <img src="{{ partner.logo.url }}" alt="{{ partner.name }}">
+                </a>
+              {% else %}
+                <span class="partners__logo">
+                  <img src="{{ partner.logo.url }}" alt="{{ partner.name }}">
+                </span>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+        <div class="partners__group" aria-hidden="true">
+          {% for _ in partner_repeat %}
+            {% for partner in partners %}
+              {% if partner.website_url %}
+                <a class="partners__logo" href="{{ partner.website_url }}" tabindex="-1">
+                  <img src="{{ partner.logo.url }}" alt="">
+                </a>
+              {% else %}
+                <span class="partners__logo">
+                  <img src="{{ partner.logo.url }}" alt="">
+                </span>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  {% endif %}
 
   <!-- ============ SERVICES ============ -->
   <section class="services">
