@@ -378,7 +378,7 @@ button { border: 0; background: none; padding: 0; cursor: pointer; font: inherit
   padding: 56px var(--page-pad) 24px;
 }
 
-.categories__head { margin-bottom: 32px; }
+.categories__head { margin-bottom: 20px; }
 
 .category-slider { position: relative; }
 
@@ -396,6 +396,11 @@ button { border: 0; background: none; padding: 0; cursor: pointer; font: inherit
   scrollbar-width: none;
 }
 .categories__strip::-webkit-scrollbar { display: none; }
+
+/* Only applied when category_strip_is_slider is false (<= 6 categories,
+   core.views.home) — centering a track that actually overflows would clip
+   its start behind the initial (unscrolled) edge. */
+.categories__strip--center { justify-content: center; }
 
 .category-chip {
   display: flex;
