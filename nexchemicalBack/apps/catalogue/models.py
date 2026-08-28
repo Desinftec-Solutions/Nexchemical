@@ -7,6 +7,17 @@ from django.utils.translation import gettext_lazy as _
 class Category(models.Model):
     name = models.CharField(max_length=120, unique=True)
     slug = models.SlugField(max_length=140, unique=True, blank=True)
+    icon = models.ImageField(
+        upload_to="categories/",
+        blank=True,
+        null=True,
+        help_text=(
+            "Shown on the homepage category strip. Use a simple, mostly-transparent "
+            "icon (like the site's other icon-*.svg assets) — it's recolored white "
+            "over an automatically colored badge, so a busy or full-color image won't "
+            "read well."
+        ),
+    )
 
     class Meta:
         verbose_name_plural = "categories"

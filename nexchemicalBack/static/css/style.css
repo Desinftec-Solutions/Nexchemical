@@ -369,6 +369,97 @@ button { border: 0; background: none; padding: 0; cursor: pointer; font: inherit
 }
 
 /* ============================================================
+   CATEGORIES STRIP
+   ============================================================ */
+
+.categories {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: 56px var(--page-pad) 24px;
+}
+
+.categories__head { margin-bottom: 32px; }
+
+.category-slider { position: relative; }
+
+/* The strip is a native horizontally-scrollable/swipeable track (works with
+   no JS at all); categories-slider.js's prev/next buttons are a page-by-
+   one-viewport shortcut on top of that, shown only past CATEGORY_STRIP_VISIBLE
+   categories (core.views.home). Six chips fit exactly one row at a time —
+   see the flex-basis math below and its responsive overrides. */
+.categories__strip {
+  --chip-gap: 20px;
+  display: flex;
+  gap: var(--chip-gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.categories__strip::-webkit-scrollbar { display: none; }
+
+.category-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 calc((100% - 5 * var(--chip-gap)) / 6);
+  scroll-snap-align: start;
+  text-align: center;
+}
+
+.category-chip__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: hsl(var(--chip-hue) 70% 50%);
+  transition: transform .15s ease;
+}
+
+.category-chip__icon img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  /* The icon is expected to be a simple, mostly-transparent glyph (see the
+     model field's help_text) — flatten it to a white silhouette so it stays
+     legible against whatever hue this chip landed on. */
+  filter: brightness(0) invert(1);
+}
+
+.category-chip__name {
+  font-family: var(--font-nav);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.category-chip:hover .category-chip__icon { transform: translateY(-4px); }
+.category-chip:hover .category-chip__name { color: var(--color-primary); }
+
+.category-slider__nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.category-slider__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background: #fff;
+  border: 1px solid var(--color-card-border);
+  transition: background-color .15s ease, opacity .15s ease;
+}
+.category-slider__btn:hover { background: var(--color-surface); }
+.category-slider__btn--disabled { opacity: 0.35; pointer-events: none; }
+
+/* ============================================================
    PRODUCTS
    ============================================================ */
 
@@ -1770,6 +1861,8 @@ a:hover .news-card__cta { text-decoration: underline; }
   .services__left { width: 100%; }
   .services__photo { width: 100%; height: 480px; flex: none; }
 
+  .category-chip { flex-basis: calc((100% - 3 * var(--chip-gap)) / 4); }
+
   .products__head { padding: 0 var(--page-pad); }
 }
 
@@ -1789,6 +1882,17 @@ a:hover .news-card__cta { text-decoration: underline; }
 
   .service-card { gap: 24px; }
   .services__photo { height: 340px; }
+
+  .categories { padding: 40px var(--page-pad) 8px; }
+  .categories__head { margin-bottom: 24px; }
+  .categories__strip { --chip-gap: 12px; }
+  /* Fractional basis (2.3, not 2) deliberately leaves the next chip peeking
+     in from the edge as a hint that the strip scrolls. */
+  .category-chip { flex-basis: calc((100% - 1.3 * var(--chip-gap)) / 2.3); gap: 8px; }
+  .category-chip__icon { width: 56px; height: 56px; }
+  .category-chip__icon img { width: 24px; height: 24px; }
+  .category-chip__name { font-size: 12px; }
+  .category-slider__btn { width: 36px; height: 36px; }
 
   .cta__box { padding: 48px 28px; border-radius: 28px; }
   .cta__title { font-size: 38px; line-height: 46px; letter-spacing: -0.6px; }

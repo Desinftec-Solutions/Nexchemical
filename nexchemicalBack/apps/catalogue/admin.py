@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.html import format_html
 
 from .models import Category, ChemicalComponent, Product, ProductImage, SubCategory
 
@@ -21,10 +22,18 @@ class ChemicalComponentInline(admin.TabularInline):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ["name", "slug"]
+    list_display = ["name", "slug", "icon_preview"]
     prepopulated_fields = {"slug": ("name",)}
     search_fields = ["name"]
     inlines = [SubCategoryInline]
+
+    @admin.display(description="Icon")
+    def icon_preview(self, obj):
+        if not obj.icon:
+            return "—"
+        return format_html(
+            '<img src="{}" style="height:28px;width:28px;object-fit:contain;">', obj.icon.url
+        )
 
 
 @admin.register(SubCategory)

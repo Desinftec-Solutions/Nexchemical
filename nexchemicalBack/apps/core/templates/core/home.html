@@ -129,6 +129,44 @@
     </div>
   </section>
 
+  <!-- ============ CATEGORIES ============ -->
+  {% if category_chips %}
+    <section class="categories">
+      <div class="section-head categories__head">
+        <p class="section-head__label">{% trans "Product categories" %}</p>
+        <h2 class="section-head__title">{% blocktrans %}Explore Our<br>Product <span class="muted">Categories</span>{% endblocktrans %}</h2>
+      </div>
+
+      <div class="category-slider">
+        <div class="categories__strip" data-category-track>
+          {% for chip in category_chips %}
+            <a class="category-chip" href="{% url 'catalogue:product_list' %}?category={{ chip.category.slug }}">
+              <span class="category-chip__icon" style="--chip-hue: {{ chip.hue }}">
+                {% if chip.category.icon %}
+                  <img src="{{ chip.category.icon.url }}" alt="" width="28" height="28">
+                {% else %}
+                  <img src="{% static 'img/icon-flask.svg' %}" alt="" width="28" height="28">
+                {% endif %}
+              </span>
+              <span class="category-chip__name">{{ chip.category.name }}</span>
+            </a>
+          {% endfor %}
+        </div>
+
+        {% if category_strip_is_slider %}
+          <div class="category-slider__nav">
+            <button type="button" class="category-slider__btn" data-category-prev aria-label="{% trans 'Previous categories' %}">
+              <img src="{% static 'img/icon-chev-left.svg' %}" alt="" width="7" height="12">
+            </button>
+            <button type="button" class="category-slider__btn" data-category-next aria-label="{% trans 'Next categories' %}">
+              <img src="{% static 'img/icon-chev-right.svg' %}" alt="" width="7" height="12">
+            </button>
+          </div>
+        {% endif %}
+      </div>
+    </section>
+  {% endif %}
+
   <!-- ============ PRODUCTS ============ -->
   <section class="products">
     <div class="section-head products__head">
@@ -195,4 +233,5 @@
 {% block extra_js %}
   <script src="{% static 'js/product-carousel.js' %}"></script>
   <script src="{% static 'js/partners-marquee.js' %}"></script>
+  <script src="{% static 'js/categories-slider.js' %}"></script>
 {% endblock %}
