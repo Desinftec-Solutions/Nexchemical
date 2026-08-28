@@ -127,12 +127,20 @@ button { border: 0; background: none; padding: 0; cursor: pointer; font: inherit
   position: relative;
   display: flex;
   flex-direction: column;
+  /* min-height (not height): fills the viewport on typical/tall screens
+     without ever shrinking below what the content + padding below already
+     need — a hard height:100vh would clip the CTA buttons (or the video)
+     on a short viewport instead. */
+  min-height: 100vh;
   /* top padding clears the fixed navbar (see navbar.css); bottom padding
      is taller than the 58px Figma-reference gap alone (827px rendered vs.
      885px in Figma) would need — the extra room is deliberate clearance
      for .about's negative margin-top, which pulls the highlight cards up
      to overlap this section. Measured: without the extra room the
-     leftmost card cleared the CTA button by only ~13px. */
+     leftmost card cleared the CTA button by only ~13px. Extra viewport
+     height beyond that (from min-height above) only adds more clearance,
+     since the content itself stays pinned to the top padding — verified
+     in the PR that added this rule. */
   padding: 176px var(--page-pad) 127px;
   overflow: clip;
 }
