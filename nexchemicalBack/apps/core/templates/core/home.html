@@ -132,13 +132,10 @@
   <!-- ============ CATEGORIES ============ -->
   {% if category_chips %}
     <section class="categories">
-      <div class="section-head categories__head">
-        <p class="section-head__label">{% trans "Product categories" %}</p>
-        <h2 class="section-head__title">{% blocktrans %}Explore Our<br>Product <span class="muted">Categories</span>{% endblocktrans %}</h2>
-      </div>
+      <p class="section-head__label categories__head">{% trans "Product categories" %}</p>
 
       <div class="category-slider">
-        <div class="categories__strip" data-category-track>
+        <div class="categories__strip{% if not category_strip_is_slider %} categories__strip--center{% endif %}" data-category-track>
           {% for chip in category_chips %}
             <a class="category-chip" href="{% url 'catalogue:product_list' %}?category={{ chip.category.slug }}">
               <span class="category-chip__icon" style="--chip-hue: {{ chip.hue }}">
