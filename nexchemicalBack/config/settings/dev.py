@@ -6,8 +6,18 @@ from .base import config
 DEBUG = True
 
 ALLOWED_HOSTS = config(
-    "ALLOWED_HOSTS", default="localhost,127.0.0.1,169.58.161.115", cast=Csv()
+    "ALLOWED_HOSTS",
+    default="localhost,127.0.0.1,169.58.161.115,dev.nexchemical.az",
+    cast=Csv(),
 )
+
+CSRF_TRUSTED_ORIGINS = config(
+    "CSRF_TRUSTED_ORIGINS", default="https://dev.nexchemical.az", cast=Csv()
+)
+
+# gunicorn sits behind nginx; trust its X-Forwarded-Proto so request.is_secure()
+# (and CSRF origin checks) work over HTTPS.
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 STATIC_URL = 'static/'
 
