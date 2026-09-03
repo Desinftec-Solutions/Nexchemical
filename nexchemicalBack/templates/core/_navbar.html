@@ -22,7 +22,7 @@
         <li><a class="nav__link{% if request.resolver_match.view_name == 'core:home' %} nav__link--active{% endif %}" href="{% url 'core:home' %}">{% trans "Home" %}</a></li>
         <li><a class="nav__link{% if 'catalogue' in request.resolver_match.namespace %} nav__link--active{% endif %}" href="{% url 'catalogue:product_list' %}">{% trans "Catalog" %}</a></li>
         <li><a class="nav__link{% if 'news' in request.resolver_match.namespace %} nav__link--active{% endif %}" href="{% url 'news:news_list' %}">{% trans "News" %}</a></li>
-        <li><a class="nav__link{% if request.resolver_match.view_name == 'core:service' %} nav__link--active{% endif %}" href="{% url 'core:service' %}">{% trans "Service" %}</a></li>
+        {# Service nav link hidden pending accurate service copy — see core/urls.py #}
         <li><a class="nav__link{% if request.resolver_match.view_name == 'core:about' %} nav__link--active{% endif %}" href="{% url 'core:about' %}">{% trans "About Us" %}</a></li>
       </ul>
 
@@ -71,7 +71,7 @@
       <a class="nav-menu__link{% if request.resolver_match.view_name == 'core:home' %} nav-menu__link--active{% endif %}" href="{% url 'core:home' %}">{% trans "Home" %}</a>
       <a class="nav-menu__link{% if 'catalogue' in request.resolver_match.namespace %} nav-menu__link--active{% endif %}" href="{% url 'catalogue:product_list' %}">{% trans "Catalog" %}</a>
       <a class="nav-menu__link{% if 'news' in request.resolver_match.namespace %} nav-menu__link--active{% endif %}" href="{% url 'news:news_list' %}">{% trans "News" %}</a>
-      <a class="nav-menu__link{% if request.resolver_match.view_name == 'core:service' %} nav-menu__link--active{% endif %}" href="{% url 'core:service' %}">{% trans "Service" %}</a>
+      {# Service nav link hidden pending accurate service copy — see core/urls.py #}
       <a class="nav-menu__link{% if request.resolver_match.view_name == 'core:about' %} nav-menu__link--active{% endif %}" href="{% url 'core:about' %}">{% trans "About Us" %}</a>
     </nav>
     <div class="nav-menu__lang">

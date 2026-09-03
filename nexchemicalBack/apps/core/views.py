@@ -40,4 +40,5 @@ def about(request):
 
 
 def service(request):
+    # Unrouted for now — see apps/core/urls.py.
     return render(request, "core/service.html")
