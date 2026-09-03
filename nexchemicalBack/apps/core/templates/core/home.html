@@ -24,7 +24,7 @@
       <div class="hero__content">
         {% get_current_language as LANGUAGE_CODE %}
         <h1 class="hero__title">{% if company_info.hero_heading and LANGUAGE_CODE == "en" %}{{ company_info.hero_heading }}{% else %}{% trans "Pioneering Chemistry for a Sustainable Future" %}{% endif %}</h1>
-        <p class="hero__text">{% if company_info.hero_subheading and LANGUAGE_CODE == "en" %}{{ company_info.hero_subheading }}{% else %}{% trans "Bridging the gap between laboratory innovation and agricultural excellence with regulatory-compliant chemical solutions." %}{% endif %}</p>
+        <p class="hero__text">{% if company_info.hero_subheading and LANGUAGE_CODE == "en" %}{{ company_info.hero_subheading }}{% else %}{% trans "Bridging the gap between laboratory innovation and industrial application with regulatory-compliant chemical solutions." %}{% endif %}</p>
         <div class="hero__cta">
           <a class="btn btn--primary" href="{% url 'catalogue:product_list' %}">{% trans "View Product Catalog" %}</a>
           <a class="btn btn--light" href="#">{% trans "Our Sustainability Commitment" %}</a>
@@ -76,7 +76,7 @@
       <div class="about__foot">
         <div class="section-head">
           <p class="section-head__label">{% trans "Who we are" %}</p>
-          <h2 class="section-head__title">{% blocktrans %}Rooted in innovation, growing smarter and more sustainable <span class="muted">modern agriculture</span>{% endblocktrans %}</h2>
+          <h2 class="section-head__title">{% blocktrans %}Grounded in innovation, building smarter and more sustainable <span class="muted">modern chemistry</span>{% endblocktrans %}</h2>
         </div>
         <div class="about__nav">
           <button type="button" class="about__nav-btn" data-slider-prev aria-label="{% trans 'Previous' %}">
@@ -203,7 +203,7 @@
   <section class="products">
     <div class="section-head products__head">
       <p class="section-head__label">{% trans "Our products" %}</p>
-      <h2 class="section-head__title section-head__title--lg">{% blocktrans %}Smart <span class="muted">Solutions</span><br>Modern Farming{% endblocktrans %}</h2>
+      <h2 class="section-head__title section-head__title--lg">{% blocktrans %}Smart <span class="muted">Solutions</span><br>Modern Industry{% endblocktrans %}</h2>
     </div>
 
     <div class="stack-carousel" data-carousel-root>
@@ -221,7 +221,7 @@
                 {% if product.is_bio_rational %}
                   <span class="product-card__badge">
                     <img src="{% static 'img/icon-leaf.svg' %}" alt="" width="10" height="10">
-                    {% trans "Bio-Rational" %}
+                    {% trans "Bio-Based" %}
                   </span>
                 {% endif %}
                 <button class="product-card__fav" type="button" aria-label="{% trans 'Add to favorites' %}" tabindex="-1">
