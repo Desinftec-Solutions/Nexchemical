@@ -1,0 +1,571 @@
+[
+  {
+    "id": 1,
+    "name": "Alkyl Dimethyl Amine Oxide",
+    "category_breadcrumb": "Products > Manufactured > Personal care > Amphoteric > Home care > Surfactant",
+    "specifications": {
+      "Active matter (Mw 235 g/mol)": "28-31%",
+      "Free amine (Mw 220 g/mol)": "1% max",
+      "pH": "6-8",
+      "Appearance (25°C)": "Clear; yellow liquid"
+    },
+    "description": "A multipurpose amphoteric surfactant used as a foam booster and viscosity builder in shampoos, conditioners, body washes, facial cleansers and hand soaps; mild with low skin irritation potential.",
+    "product_url": "https://hexakimya.com/product/alkyl-dimethyl-amine-oxide/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/41-700x700.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Ammonium Lauryl Ether Sulfate (2EO)70%",
+    "category_breadcrumb": "Products > Manufactured > Anionic",
+    "specifications": {
+      "Appearance (25°C)": "White/light yellow paste",
+      "Active substance": "70±1%",
+      "Molecular mass": "381 g/mol",
+      "C12 (wt.%)": "65-75",
+      "C14 (wt.%)": "20-30",
+      "pH": "5-7",
+      "Dioxane (ppm)": "Max. 50"
+    },
+    "description": "Mild anionic surfactant used in liquid detergents, shampoos and body care products for its gentle nature and strong foaming; also used in hard-surface and car-wash cleaners.",
+    "product_url": "https://hexakimya.com/product/ammonium-lauryl-ether-sulfate-2eo70/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/11-1-700x700.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Ammonium Lauryl Sulfate (1EO) 30%",
+    "category_breadcrumb": "Products > Manufactured > Anionic",
+    "specifications": {
+      "Appearance": "Colorless/Light yellow liquid",
+      "Molecular mass": "297 g/mol",
+      "Active substance": "25±1%",
+      "C12 content": "20-30 wt.%",
+      "C14 content": "65-75 wt.%",
+      "pH": "5-7"
+    },
+    "description": "Anionic surfactant used as a cleansing agent in shampoos and facial cleansers, and in laundry/home-care applications for its foaming and emulsifying properties.",
+    "product_url": "https://hexakimya.com/product/ammonium-lauryl-sulfate-1eo-30/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/12-700x700.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Cocamido Propyl Betaine",
+    "category_breadcrumb": "Products > Manufactured > Amphoteric",
+    "specifications": {
+      "Appearance (25°C)": "Light yellow transparent liquid",
+      "Active substance": "28-32%",
+      "pH": "5-6",
+      "Salt": "Max 6%",
+      "Dry residue": "Max 38%",
+      "MCA": "Max 5 ppm",
+      "DCA": "Max 10 ppm",
+      "Free amide/amine": "Max 1.5%"
+    },
+    "description": "Mild amphoteric surfactant used in shampoos and cleansers; enhances foam and regulates viscosity, compatible with various surfactant types in home care and cosmetic formulations.",
+    "product_url": "https://hexakimya.com/product/cocamido-propyl-betaine/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/44-700x700.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Cocamidopropyl Dimethyl Amine Oxide",
+    "category_breadcrumb": "Products > Manufactured > Amphoteric",
+    "specifications": {
+      "Appearance (25°C)": "Clear Liquid",
+      "Active Matter (%)": "Min. 30.0",
+      "pH (100%)": "6.0-8.0",
+      "Molecular Weight": "315 g/mol"
+    },
+    "description": "Amphoteric surfactant that cleans dirt and oils from skin/hair while providing conditioning; used in shampoos, hand cleansers and household cleaning formulations.",
+    "product_url": "https://hexakimya.com/product/cocamidopropyl-dimethylaminoxide/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/40-700x700.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Cocamidopropyl Hydroxysultaine",
+    "category_breadcrumb": "Products > Manufactured > Amphoteric",
+    "specifications": {
+      "Appearance (25°C)": "Light to yellow liquid",
+      "pH (10% solution)": "7-9",
+      "Solids content": "48-51%",
+      "Salt": "8% max"
+    },
+    "description": "Mild coconut-derived surfactant used in shampoos, body washes, dishwashing liquids and laundry detergents for foam stability and conditioning properties.",
+    "product_url": "https://hexakimya.com/product/cocamidopropyl-hydroxysultaine/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/35-700x700.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Coconut Fatty Acid Diethanolamide",
+    "category_breadcrumb": "Products > Manufactured > Non-ionic > Surfactant > Emulsifier",
+    "specifications": {
+      "Appearance at 25°C": "Yellow and viscous liquid",
+      "Active substance": "Max 82%",
+      "Free amines": "Max 4%",
+      "pH (1% solution)": "8-11",
+      "Freezing temperature": "45°C"
+    },
+    "description": "Non-ionic surfactant that boosts foam and viscosity in detergent formulations; used as thickening agent and emulsifier in shampoos, bath products and hand-washing liquids.",
+    "product_url": "https://hexakimya.com/product/coconut-fatty-acid-diethanolamide/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/33-700x700.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Coconut Fatty Acid Monoethanol Amide",
+    "category_breadcrumb": "Products > Manufactured > Non-ionic > Surfactant > Emulsifier",
+    "specifications": {
+      "Appearance (25°C)": "Yellowish white solid",
+      "Active matter (MW=260)": "84% Min",
+      "Free amine (MW=61)": "3% Max",
+      "pH (1% in water)": "11 Max"
+    },
+    "description": "Non-ionic surfactant that boosts foam and viscosity; used in shampoos, bath cleansers, hand-washing liquids and liquid detergents for improved cleaning performance.",
+    "product_url": "https://hexakimya.com/product/coconut-fatty-acid-monoethanol-amide/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/34-700x700.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Diethylene Triamine Penta (Methylene Phosphonic Acid) Sodium Salt",
+    "category_breadcrumb": "Products > Corrosion Inhibitor / Scale Inhibitor / Water Treatment",
+    "specifications": {
+      "Appearance": "Clear to pale yellow liquid or crystalline solid",
+      "Chemical Formula": "C9H28N3O15P5",
+      "pH": "Acidic",
+      "Molecular Weight": "573.2 g/mol"
+    },
+    "description": "Chelating agent that prevents scale and corrosion in water systems and industrial applications; functions as stabilizer and dispersant in cleaning, personal care and oilfield products.",
+    "product_url": "https://hexakimya.com/product/diethylene-triamine-penta-methylene-phosphonic-acid-sodium-salt/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/48-700x700.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Disodium Laureth Sulfosuccinate",
+    "category_breadcrumb": "Products > Manufactured > Anionic > Surfactant",
+    "specifications": {
+      "Appearance at 25°C": "Transparent liquid",
+      "Active substance (Mw=500 g/mol)": "Min. 32.0%",
+      "pH (5% Solution)": "5.5-6.5",
+      "Dry residual": "37.0-40.0%"
+    },
+    "description": "Mild anionic surfactant used in baby shampoos, bubble baths, washing liquids and multipurpose household cleaners.",
+    "product_url": "https://hexakimya.com/product/disodium-laureth-sulfosuccinate/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/45-700x700.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Disodium Oleamido MEA-Sulfosuccinate",
+    "category_breadcrumb": "Products > Anionic > Surfactant > Personal Care & Home Care",
+    "specifications": {
+      "Appearance (25°C)": "Clear; yellow liquid",
+      "Active Matter": "28-32%",
+      "pH (5%)": "5-7",
+      "Solid Content": "34-36%"
+    },
+    "description": "Anionic surfactant that produces high-foaming, high-cleansing products while remaining mild on skin and hair; used in personal care and household cleaning.",
+    "product_url": "https://hexakimya.com/product/disodium-oleamido-mea-sulfosuccinate/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/36-700x700.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Esterquat",
+    "category_breadcrumb": "Products > Manufactured > Cationic > Surfactant",
+    "specifications": {
+      "Appearance (25°C)": "Paste",
+      "Appearance (45°C)": "Liquid",
+      "Active matter": "0.95-1.15 meq/g",
+      "pH (5% in 50/50 water+2-propanol)": "2-3.5",
+      "Solid content": "89-91%",
+      "Solvent": "Ethanol-Isopropanol"
+    },
+    "description": "Cationic surfactant derived from vegetable fatty acids; primary component in fabric and towel conditioners, giving antistatic properties and improved wearability.",
+    "product_url": "https://hexakimya.com/product/esterquat/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/43-700x700.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Ethoxylated Laureth (C12C14) Alcohol (2EO)",
+    "category_breadcrumb": "Products > Non-ionic > Surfactant",
+    "specifications": {
+      "Appearance at 25°C": "Transparent/cloudy liquid",
+      "Cloud point": "50-52°C",
+      "pH (5%)": "5-7",
+      "Density (50°C)": "0.87-0.89 kg/L",
+      "Moisture": "≤0.1%",
+      "Hydroxyl No.": "193-199 mg KOH/g",
+      "HLB": "5.9-6.2"
+    },
+    "description": "Non-ionic surfactant from coconut-derived lauryl alcohol; emulsifier and dispersing agent for detergent, cosmetic, paint and paper industries.",
+    "product_url": "https://hexakimya.com/product/ethoxylated-laureth-c12c14-alcohol-2eo/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/18-700x700.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Ethoxylated Laureth (C12C14) Alcohol (7EO)",
+    "category_breadcrumb": "Products > Non-ionic > Surfactant / Emulsifier",
+    "specifications": {
+      "Appearance": "Transparent/Colorless or cloudy liquid",
+      "Cloudy point": "52-56°C",
+      "pH (5%)": "5-7",
+      "Color (APHA)": "Max 50",
+      "Molecular mass": "488-540 g/mol",
+      "Hydroxyl number": "104-115 mgKOH/g",
+      "HLB": "12.1-12.5",
+      "Water content": "Max 0.5%"
+    },
+    "description": "Non-ionic surfactant used as a base raw material in detergent, cosmetic and industrial formulations, incl. shampoos, skin cleaners and pesticide emulsifiers.",
+    "product_url": "https://hexakimya.com/product/ethoxylated-laureth-c12c14-alcohol-7eo/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/17-700x700.jpg"
+  },
+  {
+    "id": 15,
+    "name": "Ethylene Glycol Distearate",
+    "category_breadcrumb": "",
+    "specifications": {
+      "Appearance (25°C)": "White flake",
+      "Acid value": "5 mg KOH/g max",
+      "Saponification value": "192-200 mg KOH/g",
+      "Iodine value": "1 mg I2/g max"
+    },
+    "description": "Pearlising, softening and viscosity-enhancing agent used in shampoos, body washes, moisturizers and hair conditioners to improve product aesthetics and performance.",
+    "product_url": "https://hexakimya.com/product/ethylene-glycol-distearate/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/38-700x700.jpg"
+  },
+  {
+    "id": 16,
+    "name": "Ethylene Glycol Monostearate",
+    "category_breadcrumb": "",
+    "specifications": {
+      "Appearance (25°C)": "White flake",
+      "Acid value": "5 max",
+      "Mono ester": "25% max",
+      "Total ester": "99% max"
+    },
+    "description": "Fatty acid ester used as an emulsifying and thickening agent in cosmetics and personal care; also a lubricant in plastics and metalworking.",
+    "product_url": "https://hexakimya.com/product/ethylene-glycol-monostearate/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/37-700x700.jpg"
+  },
+  {
+    "id": 17,
+    "name": "Fatty Acid Diethanol Amide",
+    "category_breadcrumb": "Products > Manufactured goods > Non-ionic > Surfactant > Emulsifier",
+    "specifications": {
+      "Appearance at 25°C": "Yellow viscous liquid",
+      "Active substance": "Min 82%",
+      "Free amine": "Max 4%",
+      "pH (1% W/W)": "9-11",
+      "Density at 25°C": "0.994-0.996 g/ml"
+    },
+    "description": "Non-ionic surfactant derived from soybean with foam-boosting and viscosity-enhancing capability; used in dishwashing liquids, laundry detergents and personal care.",
+    "product_url": "https://hexakimya.com/product/fatty-acid-diethanol-amide/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/32-700x700.jpg"
+  },
+  {
+    "id": 18,
+    "name": "Linear Alkyl Benzene Sulfonic Acid 97%",
+    "category_breadcrumb": "Chemicals > Surfactants > Anionic Surfactants",
+    "specifications": {
+      "Appearance": "Light brown liquid",
+      "Molecular mass": "322 g/mol",
+      "Active substance": "Min 96%",
+      "Color (Hazen)": "Max 20"
+    },
+    "description": "Anionic surfactant that is a very strong degreaser, reducing overall surfactant consumption while enhancing cleaning; used in detergent manufacturing and water treatment.",
+    "product_url": "https://hexakimya.com/product/yogun-sodyum-bikarbonat/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/1-1-700x700.jpg"
+  },
+  {
+    "id": 19,
+    "name": "Linear Alkyl Benzene Sulfonic Triethanolamine salt 50%",
+    "category_breadcrumb": "Products > Manufactured > Anionic > Surfactant",
+    "specifications": {
+      "Molecular mass": "470 g/mol",
+      "Anionic active substance": "30-32%",
+      "pH (5% w/w solution)": "5-7",
+      "Color (Hazen, 5% solution)": "Max 20",
+      "Free amine": "Max 1%",
+      "Triethanolamine sulfate": "Max 3%"
+    },
+    "description": "Anionic surfactant used as a mild component in washing, cleaning and degreasing; also used in agriculture and oilfield applications as emulsifier/moisturizer.",
+    "product_url": "https://hexakimya.com/product/linear-alkyl-benzene-sulfonic-triethanolamine-salt-50/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/4-700x700.jpg"
+  },
+  {
+    "id": 20,
+    "name": "Maleic Acrylic Copolymer",
+    "category_breadcrumb": "",
+    "specifications": {
+      "Appearance (25°C)": "Clear solution to slightly yellow",
+      "Solid content": "40% min",
+      "Calcium carbonate dispersing capacity": "300 mg CaCO3/g min"
+    },
+    "description": "Copolymer resin used as a hair fixative, styling agent, film-former, viscosity enhancer, dispersant, thickener and stabilizer in personal care and household products.",
+    "product_url": "https://hexakimya.com/product/maleic-acrylic-copolymer/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/42-700x700.jpg"
+  },
+  {
+    "id": 21,
+    "name": "n-Alkyl Dimethyl Benzyl Ammonium Chloride",
+    "category_breadcrumb": "Personal Care & Household Products > Surfactants & Disinfectants",
+    "specifications": {
+      "Appearance (25°C)": "Clear liquid",
+      "Active matter (Mw=346)": "49% Min",
+      "Solid content": "50% Min"
+    },
+    "description": "Cationic surfactant used as disinfectant/antimicrobial in personal care and cleaning formulations; effective against a wide range of bacteria, viruses and fungi, with preservative benefits.",
+    "product_url": "https://hexakimya.com/product/n-alkyl-dimethyl-benzyl-ammonium-chloride/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/46-700x700.jpg"
+  },
+  {
+    "id": 22,
+    "name": "Nonionic Surfactant With Weak Cationic Property",
+    "category_breadcrumb": "",
+    "specifications": {
+      "Dry Residue": "95-99%",
+      "pH (1% in water)": "3-6"
+    },
+    "description": "Combines nonionic and cationic properties; useful in shampoos and conditioners to improve hair texture, and in fabric care formulations for softening.",
+    "product_url": "https://hexakimya.com/product/nonionic-surfactant-with-weak-cationic-property/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/39-700x700.jpg"
+  },
+  {
+    "id": 23,
+    "name": "Nonylphenol Ethoxylate (10EO)",
+    "category_breadcrumb": "Products > Non-ionic > Surfactant > Emulsifier",
+    "specifications": {
+      "Appearance": "Transparent/Colorless or cloudy liquid",
+      "Cloudy point": "64-66°C",
+      "pH (5% w/w)": "5-7",
+      "Density (25°C)": "1.05-1.07 kg/L",
+      "Viscosity (25°C)": "230-260 cps",
+      "Hydroxyl number": "85-89 mgKOH/g",
+      "HLB": "13.3-14"
+    },
+    "description": "Non-ionic surfactant used as industrial emulsifier and detergent base in textile, agricultural and paint applications, and in pesticide/cosmetic formulations.",
+    "product_url": "https://hexakimya.com/product/nonylphenol-ethoxylate-10eo/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/19-700x700.jpg"
+  },
+  {
+    "id": 24,
+    "name": "Polyethylene Glycol Glyceryl Cocoate",
+    "category_breadcrumb": "",
+    "specifications": {
+      "Appearance": "Colorless transparent liquid",
+      "Moisture": "Max 1%"
+    },
+    "description": "Non-ionic, coconut-oil-derived surfactant used as emulsifier and softening agent in shampoos, cosmetics and baby-care products for its mild, foam-enhancing properties.",
+    "product_url": "https://hexakimya.com/product/polyethylene-glycol-glyceryl-cocoate/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/47-700x700.jpg"
+  },
+  {
+    "id": 25,
+    "name": "Refined Glycerine USP 99.5% Liquid",
+    "category_breadcrumb": "Products > Manufactured goods > Cosmetics > Personal care > Humectant > Moisturizer",
+    "specifications": {
+      "Appearance (25°C)": "Clear, colorless, viscous liquid",
+      "Chemical formula": "C3H8O3",
+      "Molecular weight": "92.09 g/mol",
+      "Density": "1.261 g/cm3 at 25°C",
+      "Refractive index": "1.473 at 20°C",
+      "Boiling point": "290°C",
+      "Flash point": "160°C"
+    },
+    "description": "High-purity glycerine functioning as humectant, emollient, solvent, sweetener and preservative across personal care, pharmaceutical and food formulations; FDA GRAS, derived from biodiesel production.",
+    "product_url": "https://hexakimya.com/product/refined-glycerine-usp-99-5-liquid/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/30-700x700.jpg"
+  },
+  {
+    "id": 26,
+    "name": "Sodium Alkyl Benzene Sulfonate Paste 50%",
+    "category_breadcrumb": "",
+    "specifications": {
+      "Molecular mass": "344 g/mol",
+      "Free oil": "Max 2%",
+      "Color (Hazen, 5% solution)": "Max 20",
+      "Sodium sulfate": "Max 3%"
+    },
+    "description": "Anionic surfactant used as raw material in washing powder and household liquid detergent manufacture; also used in dishwashing liquids, industrial cleaners and car-wash formulations.",
+    "product_url": "https://hexakimya.com/product/sodium-alkyl-benzene-sulfonate-paste-50/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/3-700x700.jpg"
+  },
+  {
+    "id": 27,
+    "name": "Sodium Alkyl Benzene Sulfonate Powder 50%",
+    "category_breadcrumb": "",
+    "specifications": {
+      "Anionic active substance": "48.0-52.0%",
+      "Density": "0.3-0.5 g/cm3",
+      "pH (5% solution)": "8.0-11.0",
+      "Sodium sulfate": "Max 5%"
+    },
+    "description": "Anionic surfactant with high washing ability used as raw material in production of washing powders and household/industrial cleaners.",
+    "product_url": "https://hexakimya.com/product/sodium-alkyl-benzene-sulfonate-powder-50/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/2-700x700.jpg"
+  },
+  {
+    "id": 28,
+    "name": "Sodium Alpha Olefin Sulfonate 30%",
+    "category_breadcrumb": "Products > Manufactured goods > Anionic",
+    "specifications": {
+      "Appearance": "Light yellow liquid",
+      "Active substance": "28-32%",
+      "Molecular mass": "341 g/mol",
+      "Sodium carbonate": "40-43%",
+      "pH (10% w/w)": "9-11",
+      "Colors (COLT)": "Max 50",
+      "Dioxane (ppm)": "Max 50"
+    },
+    "description": "Anionic surfactant used in cosmetic, home care and industrial cleaning formulations; widely used in petrochemical and textile industry, industrial detergents and firefighting foam.",
+    "product_url": "https://hexakimya.com/product/sodium-alpha-olefin-sulfonate-30/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/15-700x700.jpg"
+  },
+  {
+    "id": 29,
+    "name": "Sodium Alpha Olefin Sulfonate 95%",
+    "category_breadcrumb": "",
+    "specifications": {
+      "Appearance": "Yellow string",
+      "Molecular Formula": "CnH2n-1SO3Na (n=14-16)",
+      "Molecular Mass": "324 g/mol",
+      "Density": "0.4-0.5 g/cm3",
+      "Active Percentage": "92% min",
+      "Color": "100 Klett max"
+    },
+    "description": "Anionic surfactant used in bath and hair detergents and industrial applications including construction, firefighting foam, and pesticide formulations as foaming/emulsifying agent.",
+    "product_url": "https://hexakimya.com/product/sodium-alpha-olefin-sulfonate-95/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/16-700x700.jpg"
+  },
+  {
+    "id": 30,
+    "name": "Sodium Laureth Sulfate/Glycol Stearate 30%",
+    "category_breadcrumb": "",
+    "specifications": {
+      "Active Matter": "30%",
+      "Appearance": "Liquid",
+      "Form": "Liquid (pumpable)"
+    },
+    "description": "Pearlising and viscosity control agent for personal care and household cleaning products; moisturizing additive compatible with multiple surfactant types in shampoos, conditioners, detergents and dishwashing liquids.",
+    "product_url": "https://hexakimya.com/product/sodium-laureth-sulfate-glycol-stearate-30/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/31-700x700.jpg"
+  },
+  {
+    "id": 31,
+    "name": "Sodium Lauryl Ether Sulfate 30% (2mol)",
+    "category_breadcrumb": "Products > Manufactured > Anionic > Foaming Agent",
+    "specifications": {
+      "note": "Detail page temporarily rate-limited (HTTP 429) during collection; listing-level data only."
+    },
+    "description": "Sodium Lauryl Ether Sulfate (2mol ethoxylation), 30% active - anionic foaming/cleansing surfactant, same product family as the 70% grade.",
+    "product_url": "https://hexakimya.com/product/sodium-lauryl-ether-sulfate-30-2mol/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/7-700x700.jpg"
+  },
+  {
+    "id": 32,
+    "name": "Sodium Lauryl Ether Sulfate 70% (1mol)",
+    "category_breadcrumb": "",
+    "specifications": {},
+    "description": "Anionic surfactant offering strong cleaning power while gentle to skin; suitable for hair shampoo, body shampoo, low-pH cleaners, including baby product formulations.",
+    "product_url": "https://hexakimya.com/product/sodium-lauryl-ether-sulfate-70-1mol/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/6-700x700.jpg"
+  },
+  {
+    "id": 33,
+    "name": "Sodium Lauryl Ether Sulfate 70% (2mol)",
+    "category_breadcrumb": "Products > Manufactured > Anionic > Foaming Agent",
+    "specifications": {
+      "Appearance": "White/light yellow paste",
+      "Molecular mass": "384 g/mol",
+      "Active substance": "68-72%",
+      "C12 (wt.%)": "65-75",
+      "C14 (wt.%)": "20-30",
+      "pH": "7-9",
+      "Dioxane (ppm)": "Max 50"
+    },
+    "description": "Removes fat as a foaming, cleansing and emulsifying agent for personal care detergents, household cleaners and industrial applications.",
+    "product_url": "https://hexakimya.com/product/linear-alkyl-benzene-sulfonic-triethanolamine-salt-50-copy/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/5-700x700.jpg"
+  },
+  {
+    "id": 34,
+    "name": "Sodium Lauryl Sulfate 30%",
+    "category_breadcrumb": "Products > Manufactured goods > Anionic > Surfactant",
+    "specifications": {
+      "Appearance at 25°C": "White pearly paste",
+      "Active substance": "26.5-28.5%",
+      "Moisture": "Max. 5%",
+      "Salt": "Max 2%",
+      "pH (5% W/W)": "6-8",
+      "Remaining dry substance": "Max 43%"
+    },
+    "description": "Pearlising agent used in all detergent products and as a viscosity controller; applied in shampoos, conditioners, body washes, laundry detergents and dishwashing liquids.",
+    "product_url": "https://hexakimya.com/product/sodium-lauryl-sulfate-30/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/8-700x700.jpg"
+  },
+  {
+    "id": 35,
+    "name": "Sodium Lauryl Sulfate 95%",
+    "category_breadcrumb": "",
+    "specifications": {},
+    "description": "Functions as an emulsifier or thickener across construction, pharmaceuticals, cosmetics and food production; removes grease and oil stains in engine cleaners and car washes.",
+    "product_url": "https://hexakimya.com/product/sodium-lauryl-sulfate-95/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/22-700x700.jpg"
+  },
+  {
+    "id": 36,
+    "name": "Sodium Xylene Sulfonate",
+    "category_breadcrumb": "Products > Manufactured > Surfactant",
+    "specifications": {
+      "Appearance": "Clear to amber liquid or powder",
+      "Chemical formula": "C8H9NaO3S",
+      "pH": "Acidic",
+      "Molecular weight": "206.21 g/mol",
+      "Density": "1.3 g/cm3 (liquid)",
+      "Melting point": ">300°C"
+    },
+    "description": "Wetting agent, emulsifier and foaming agent used in personal care and household cleaning products, enhancing product texture and cleaning efficacy.",
+    "product_url": "https://hexakimya.com/product/sodium-xylene-sulfonate/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/49-700x700.jpg"
+  },
+  {
+    "id": 37,
+    "name": "Triethanolamine 85%",
+    "category_breadcrumb": "",
+    "specifications": {},
+    "description": "Surfactant that reduces the surface tension between two media; neutralizes fatty acids, adjusts pH and buffers solutions in detergents, cosmetics, textiles, lubricants and pharmaceutical formulations.",
+    "product_url": "https://hexakimya.com/product/triethanolamine-85/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/27-700x700.jpg"
+  },
+  {
+    "id": 38,
+    "name": "Triethanolamine Lauryl Sulfate 40%",
+    "category_breadcrumb": "Products > Manufactured goods > Anionic > Foaming agent",
+    "specifications": {
+      "Appearance": "Transparent yellow liquid",
+      "Molecular mass": "428 g/mol",
+      "Active substance": "65-75%",
+      "Free oil": "Max 2.5%",
+      "C14 (wt.%)": "38-42%",
+      "Colors (Hazen)": "Max 30",
+      "pH (10% W/W)": "4-7",
+      "Salt": "Max 1%",
+      "Free amine": "Max 3%"
+    },
+    "description": "Anionic surfactant with triethanolamine offering mild cleaning property; primarily used in hair and body shampoo formulations for enhanced foaming and skin-softening.",
+    "product_url": "https://hexakimya.com/product/triethanolamine-lauryl-sulfate-40/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/10-700x700.jpg"
+  },
+  {
+    "id": 39,
+    "name": "Triethanolamine Lauryl Ether Sulfate 30%",
+    "category_breadcrumb": "Surfactants > Anionic Surfactants > Household Cleaners",
+    "specifications": {
+      "Active Matter": "30%",
+      "Appearance": "Colorless/light yellow liquid",
+      "Molecular Mass": "514 g/mol",
+      "pH (5% W/W)": "6-8",
+      "Moisture": "Max. 5%",
+      "Salt Content": "Max. 2%",
+      "Remaining Dry Substance": "Max. 43%"
+    },
+    "description": "Foaming and cleaning agent used in washing powders, washing liquids, dishwashing liquids and other household cleaners; suitable for baby products due to gentle, non-irritating properties.",
+    "product_url": "https://hexakimya.com/product/triethanolamine-lauryl-ether-sulfate-30/",
+    "image_url": "https://hexakimya.com/wp-content/uploads/2023/09/9-1-700x700.jpg"
+  }
+]
