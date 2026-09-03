@@ -77,8 +77,8 @@ msgstr "NexChemical — Передовая химия для устойчиво�
 msgid "Pioneering Chemistry for a Sustainable Future"
 msgstr "Передовая химия для устойчивого будущего"
 
-msgid "Bridging the gap between laboratory innovation and agricultural excellence with regulatory-compliant chemical solutions."
-msgstr "Мы соединяем лабораторные инновации и передовое сельское хозяйство с помощью химических решений, соответствующих нормативным требованиям."
+msgid "Bridging the gap between laboratory innovation and industrial application with regulatory-compliant chemical solutions."
+msgstr "Мы соединяем лабораторные инновации и промышленное применение с помощью химических решений, соответствующих нормативным требованиям."
 
 msgid "View Product Catalog"
 msgstr "Смотреть каталог продукции"
@@ -89,8 +89,8 @@ msgstr "Наши обязательства по устойчивому разв
 msgid "Who we are"
 msgstr "Кто мы"
 
-msgid "Rooted in innovation, growing smarter and more sustainable <span class=\"muted\">modern agriculture</span>"
-msgstr "Опираясь на инновации, выращиваем более разумное и устойчивое <span class=\"muted\">современное сельское хозяйство</span>"
+msgid "Grounded in innovation, building smarter and more sustainable <span class=\"muted\">modern chemistry</span>"
+msgstr "Опираясь на инновации, строим более разумную и устойчивую <span class=\"muted\">современную химию</span>"
 
 msgid "Agricultural research projects"
 msgstr "Сельскохозяйственных исследовательских проектов"
@@ -125,11 +125,11 @@ msgstr "Природные средства, повышающие плодоро
 msgid "Our products"
 msgstr "Наша продукция"
 
-msgid "Smart <span class=\"muted\">Solutions</span><br>Modern Farming"
-msgstr "Умные <span class=\"muted\">решения</span><br>для современного земледелия"
+msgid "Smart <span class=\"muted\">Solutions</span><br>Modern Industry"
+msgstr "Умные <span class=\"muted\">решения</span><br>для современной промышленности"
 
-msgid "Bio-Rational"
-msgstr "Биорациональный"
+msgid "Bio-Based"
+msgstr "Биооснованный"
 
 msgid "Add to favorites"
 msgstr "Добавить в избранное"
@@ -158,11 +158,11 @@ msgstr "О нас | NexChemical"
 msgid "About NexChemical"
 msgstr "О компании NexChemical"
 
-msgid "Engineering the Future of Agriculture &amp; Science"
-msgstr "Создаём будущее сельского хозяйства и науки"
+msgid "Engineering the Future of Chemistry &amp; Science"
+msgstr "Создаём будущее химии и науки"
 
-msgid "NexChemical supplies regulatory-certified chemistry products to industry and research customers, combining advanced genomics, artificial intelligence, and sustainable manufacturing to help growers do more with less."
-msgstr "NexChemical поставляет сертифицированную по нормативным требованиям химическую продукцию промышленным и исследовательским заказчикам, сочетая передовую геномику, искусственный интеллект и устойчивое производство, чтобы аграрии могли добиваться большего меньшими средствами."
+msgid "NexChemical supplies regulatory-certified chemistry products to industry and research customers, combining advanced genomics, artificial intelligence, and sustainable manufacturing to help laboratories and manufacturers do more with less."
+msgstr "NexChemical поставляет сертифицированную по нормативным требованиям химическую продукцию промышленным и исследовательским заказчикам, сочетая передовую геномику, искусственный интеллект и устойчивое производство, чтобы лаборатории и производители могли добиваться большего меньшими средствами."
 
 msgid "Illustration of a DNA helix and growing crop over a data network, representing NexChemical biotechnology and agricultural innovation"
 msgstr "Иллюстрация спирали ДНК и растущей культуры на фоне сети данных, символизирующая биотехнологии и сельскохозяйственные инновации NexChemical"
@@ -278,11 +278,11 @@ msgstr "Биоудобрение"
 msgid "Product Catalog — NexChemical"
 msgstr "Каталог продукции — NexChemical"
 
-msgid "Advanced Crop Protection"
-msgstr "Передовая защита растений"
+msgid "Advanced Chemicals & Reagents"
+msgstr "Передовые химикаты и реагенты"
 
-msgid "NEXCHEMICAL delivers regulatory-certified chemical solutions engineered for sustainable agriculture and industrial precision. Browse our validated SDS catalog."
-msgstr "NEXCHEMICAL предлагает сертифицированные по нормативным требованиям химические решения, разработанные для устойчивого сельского хозяйства и промышленной точности. Ознакомьтесь с нашим проверенным каталогом паспортов безопасности."
+msgid "NEXCHEMICAL delivers regulatory-certified chemical solutions engineered for laboratory accuracy and industrial precision. Browse our validated SDS catalog."
+msgstr "NEXCHEMICAL предлагает сертифицированные по нормативным требованиям химические решения, разработанные для лабораторной и промышленной точности. Ознакомьтесь с нашим проверенным каталогом паспортов безопасности."
 
 msgid "Field researcher inspecting crops"
 msgstr "Полевой исследователь, осматривающий посевы"
@@ -383,8 +383,8 @@ msgstr "Контакты — NexChemical"
 msgid "Connect with Our Experts"
 msgstr "Свяжитесь с нашими экспертами"
 
-msgid "Our global network of technical specialists and regulatory consultants is ready to support your industrial chemical and agricultural solution needs. Precision-driven guidance, anywhere in the world."
-msgstr "Наша глобальная сеть технических специалистов и консультантов по нормативным вопросам готова поддержать ваши потребности в промышленных химических и сельскохозяйственных решениях. Точное экспертное сопровождение в любой точке мира."
+msgid "Our global network of technical specialists and regulatory consultants is ready to support your industrial chemical and laboratory reagent needs. Precision-driven guidance, anywhere in the world."
+msgstr "Наша глобальная сеть технических специалистов и консультантов по нормативным вопросам готова поддержать ваши потребности в промышленных химических и лабораторных реагентах. Точное экспертное сопровождение в любой точке мира."
 
 msgid "Start a Consultation"
 msgstr "Начать консультацию"
