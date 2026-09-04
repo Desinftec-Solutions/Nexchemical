@@ -164,8 +164,8 @@ msgstr "Kimya və Elmin Gələcəyini Qururuq"
 msgid "NexChemical supplies regulatory-certified chemistry products to industry and research customers, combining advanced genomics, artificial intelligence, and sustainable manufacturing to help laboratories and manufacturers do more with less."
 msgstr "NexChemical sənaye və tədqiqat müştərilərinə normativ sertifikatlı kimya məhsulları təqdim edir, qabaqcıl genomika, süni intellekt və davamlı istehsalı birləşdirərək laboratoriyalara və istehsalçılara daha az resursla daha çox nailiyyət qazandırır."
 
-msgid "Illustration of a DNA helix and growing crop over a data network, representing NexChemical biotechnology and agricultural innovation"
-msgstr "Verilənlər şəbəkəsi üzərində DNT spiralı və böyüyən bitkinin təsviri, NexChemical-in biotexnologiya və kənd təsərrüfatı innovasiyasını təmsil edir"
+msgid "Chemists working in a modern analytical chemistry laboratory"
+msgstr "Müasir analitik kimya laboratoriyasında işləyən kimyaçılar"
 
 msgid "Our genomic research division develops deep molecular analysis to unlock crop variables and optimize yield for local soil and climate conditions."
 msgstr "Genomik tədqiqat bölməmiz bitki dəyişənlərini üzə çıxarmaq və yerli torpaq-iqlim şəraitinə uyğun məhsuldarlığı optimallaşdırmaq üçün dərin molekulyar təhlil aparır."
