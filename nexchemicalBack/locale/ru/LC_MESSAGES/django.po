@@ -284,8 +284,8 @@ msgstr "Передовые химикаты и реагенты"
 msgid "NEXCHEMICAL delivers regulatory-certified chemical solutions engineered for laboratory accuracy and industrial precision. Browse our validated SDS catalog."
 msgstr "NEXCHEMICAL предлагает сертифицированные по нормативным требованиям химические решения, разработанные для лабораторной и промышленной точности. Ознакомьтесь с нашим проверенным каталогом паспортов безопасности."
 
-msgid "Field researcher inspecting crops"
-msgstr "Полевой исследователь, осматривающий посевы"
+msgid "Chemist labeling reagent bottles on a laboratory bench"
+msgstr "Химик маркирует флаконы с реагентами на лабораторном столе"
 
 msgid "Download Full Index"
 msgstr "Скачать полный список"

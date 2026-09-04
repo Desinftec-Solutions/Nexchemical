@@ -284,8 +284,8 @@ msgstr "Qabaqcıl Kimyəvi Maddələr və Reagentlər"
 msgid "NEXCHEMICAL delivers regulatory-certified chemical solutions engineered for laboratory accuracy and industrial precision. Browse our validated SDS catalog."
 msgstr "NEXCHEMICAL laboratoriya və sənaye dəqiqliyi üçün hazırlanmış, normativ sertifikatlı kimyəvi həllər təqdim edir. Təsdiqlənmiş TVX kataloqumuza baxın."
 
-msgid "Field researcher inspecting crops"
-msgstr "Sahədə bitkiləri yoxlayan tədqiqatçı"
+msgid "Chemist labeling reagent bottles on a laboratory bench"
+msgstr "Laboratoriya masasında reagent şüşələrini etiketləyən kimyaçı"
 
 msgid "Download Full Index"
 msgstr "Tam Siyahını Yüklə"
