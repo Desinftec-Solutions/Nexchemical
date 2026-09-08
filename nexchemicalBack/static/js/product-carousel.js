@@ -7,22 +7,25 @@ document.addEventListener('DOMContentLoaded', function () {
   var total = cards.length;
   if (!surface || !total) return;
 
+  // Cards sit on the circumference of a circle of the given radius, spaced
+  // angleStep degrees apart (see render()) — radius is the knob to tune
+  // against the design: bigger = flatter arc, smaller = more pronounced bow.
   function getConfig(width) {
     if (width < 640) {
       return {
         distanceDivisor: 120, velocityDivisor: 500, sensitivity: 180,
-        xMultiplier: 130, yMultiplier: 26, rotationMultiplier: 8, scaleReduction: 0.06
+        radius: 820, angleStep: 10, scaleReduction: 0.06
       };
     }
     if (width < 1024) {
       return {
         distanceDivisor: 160, velocityDivisor: 650, sensitivity: 220,
-        xMultiplier: 190, yMultiplier: 38, rotationMultiplier: 10, scaleReduction: 0.09
+        radius: 980, angleStep: 11, scaleReduction: 0.09
       };
     }
     return {
       distanceDivisor: 200, velocityDivisor: 800, sensitivity: 250,
-      xMultiplier: 250, yMultiplier: 48, rotationMultiplier: 12, scaleReduction: 0.12
+      radius: 1150, angleStep: 12, scaleReduction: 0.12
     };
   }
 
@@ -69,6 +72,11 @@ document.addEventListener('DOMContentLoaded', function () {
     return diff;
   }
 
+  // Tracks each card's diff from the previous render, so a wrap (the
+  // leftmost card's diff jumping straight to the rightmost, or vice versa)
+  // can be told apart from ordinary continuous movement — see render().
+  var lastDiff = {};
+
   function render() {
     for (var i = 0; i < cards.length; i++) {
       var card = cards[i];
@@ -76,9 +84,14 @@ document.addEventListener('DOMContentLoaded', function () {
       var diff = wrappedDiff(index, progress);
       var absDiff = Math.abs(diff);
 
-      var x = diff * config.xMultiplier;
-      var rotate = absDiff < 0.05 ? 0 : diff * config.rotationMultiplier;
-      var y = absDiff < 0.05 ? 0 : absDiff * config.yMultiplier;
+      // Place the card on the circumference of a circle: one angle, scaled
+      // by distance from center, drives x/y/rotate together so they stay
+      // geometrically consistent (a real arc, not three independent ramps).
+      var angleDeg = diff * config.angleStep;
+      var angleRad = angleDeg * Math.PI / 180;
+      var x = config.radius * Math.sin(angleRad);
+      var y = config.radius * (1 - Math.cos(angleRad));
+      var rotate = absDiff < 0.05 ? 0 : angleDeg;
       if (card === hoveredCard) y -= HOVER_LIFT;
       var scale = 1 - absDiff * config.scaleReduction;
       var opacity = piecewise(
@@ -88,11 +101,32 @@ document.addEventListener('DOMContentLoaded', function () {
       );
       var zIndex = Math.round(100 - absDiff * 10) + (card === hoveredCard ? 20 : 0);
 
+      // wrappedDiff jumps a card's diff by a full lap almost instantly at
+      // the wrap point. Without this, the CSS transition on transform
+      // smoothly (and visibly) slides the card all the way across the
+      // stage instead of it just reappearing, already faded out, on the
+      // opposite side. Cards are invisible right at the wrap (opacity 0
+      // there), so snapping the transform with no transition for that one
+      // frame is unseen — it only reappears once opacity fades back in.
+      var previousDiff = lastDiff[index];
+      var wrapped = previousDiff !== undefined && Math.abs(diff - previousDiff) > total / 2;
+      lastDiff[index] = diff;
+
+      if (wrapped) card.style.transition = 'none';
+
       card.style.transform =
         'translate(-50%, -50%) translateX(' + x + 'px) translateY(' + y + 'px) ' +
         'rotate(' + rotate + 'deg) scale(' + scale + ')';
       card.style.opacity = String(opacity);
       card.style.zIndex = String(zIndex);
+
+      if (wrapped) {
+        // Flush the "none" transition and the snapped position within the
+        // same frame, then hand back to the CSS transition for whatever
+        // comes next.
+        void card.offsetHeight;
+        card.style.transition = '';
+      }
     }
   }
 
